@@ -1,0 +1,431 @@
+<link rel="stylesheet" type="text/css" href="../lib/css/jasmine.css">
+
+<script src="../lib/js/jquery.js"></script>
+<script type="text/javascript" src="../lib/js/jasmine.js"></script>
+<script type="text/javascript" src="../lib/js/jasmine-html.js"></script>
+<script type="text/javascript" src="../lib/js/boot.js"></script>
+<script src="../lib/js/angular.min.js"></script>
+<script type="text/javascript" src="../lib/ng-repeat-array/AngularRepeatArray.js"></script>
+<script type="text/javascript" src="../lib/js/checklist.js"></script>
+
+
+<script>
+
+describe("Filtering by type ", function() {
+
+  var tasks = [
+  {id:1,type:'apple'},
+  {id:2,type:'bananana'},
+  {id:3,type:'apple'},
+  {id:4,type:'pear'}];
+
+  it(" returns the correct tasks", function() {
+    var results = filterTasksByType(tasks,'apple');
+    expect(results.length).toBe(2);
+    expect(results[0].id).toBe(1);
+    expect(results[1].id).toBe(3);
+  });
+
+  it(" returns a blank array when there are no matching types", function() {
+    var results = filterTasksByType(tasks,'applesauce');
+    expect(results.length).toBe(0);
+    expect(results).toEqual([]);
+  });
+});
+
+
+describe(" Filtering tasks by required answer ", function() {
+  it(" returns the correct tasks when there is 1 required yes", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[2],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are 2 required yes", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[1,2],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:true},
+    {id:3,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there is 1 required no", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[1],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[2],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true}
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are 2 required no", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[1,2],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[3],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    {id:3,text:'',description:'',default:true}
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when questions dont exist required yes", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[1,2],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:true},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when questions dont exist required no", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[1,2],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[3],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are no questions required yes", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(2);
+    expect(results[0].id).toBe(1);
+    expect(results[1].id).toBe(2);
+  });
+
+  it(" returns the correct tasks when there are no questions required no", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,false);
+    expect(results.length).toBe(2);
+    expect(results[0].id).toBe(1);
+    expect(results[1].id).toBe(2);
+  });
+
+  it(" returns the correct tasks when going from a task with no questions to a task with questions required yes", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when going for a task with questions to a task with no questions required yes", function() {
+
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByRequired(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(2);
+  });
+});
+
+
+describe(" Finding the value of a question ", function() {
+  var tasks = [
+  {id:1,type:'',questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+  {id:2,type:'',questionsRequiredYes:[2],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+  var questions = [
+  {id:1,text:'',description:'',default:true},
+  {id:2,text:'',description:'',default:false}
+  ];
+
+  it(" returns the correct questions value", function() {
+    var results = findQuestionAnswer(questions,1);
+    expect(results).toBe(true);
+  });
+
+  it(" returns null when question does not exist", function() {
+    var results = findQuestionAnswer(questions,3);
+    expect(results).toBe(null);
+  });
+});
+
+
+describe(" Getting the property needed for required questions ", function() {
+
+  it(" returns the correct questions value when true", function() {
+    var results = getQuestionRequiredProperty(true);
+    expect(results).toBe('questionsRequiredYes');
+  });
+
+  it(" returns the correct questions value when false", function() {
+    var results = getQuestionRequiredProperty(false);
+    expect(results).toBe('questionsRequiredNo');
+  });
+});
+
+
+describe(" Getting the property needed for any questions ", function() {
+
+  it(" returns the correct questions value when true", function() {
+    var results = getQuestionsAnyProperty(true);
+    expect(results).toBe('questionsAnyYes');
+  });
+
+  it(" returns the correct questions value when false", function() {
+    var results = getQuestionsAnyProperty(false);
+    expect(results).toBe('questionsAnyNo');
+  });
+});
+
+describe(" Filtering tasks by the any answer property ", function() {
+
+  it(" returns the correct tasks when there is 1 any yes", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[2],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:false},
+    ];
+
+    var results = filterTasksByAny(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are 2 any yes", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1,2],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[3],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true},
+    {id:3,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there is 1 any no", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[1]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[2]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true},
+    ];
+
+    var results = filterTasksByAny(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are 2 any no", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[1,2]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[3]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:false},
+    {id:3,text:'',description:'',default:true}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when questions dont exist when any is no", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[1,2]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[5]}];
+    var questions = [
+    {id:1,text:'',description:'',default:true},
+    {id:2,text:'',description:'',default:false},
+    {id:3,text:'',description:'',default:true}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,false);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when questions dont exist when any is yes", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1,2],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[5],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true},
+    {id:3,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,true);
+    expect(results.length).toBe(1);
+    expect(results[0].id).toBe(1);
+  });
+
+  it(" returns the correct tasks when there are no where any is yes", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true},
+    {id:3,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,true);
+    expect(results.length).toBe(2);
+    expect(results[0].id).toBe(1);
+    expect(results[1].id).toBe(2);
+  });
+
+  it(" returns the correct tasks when there are no where any is no", function() {
+    var tasks = [
+    {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]},
+    {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[]}];
+    var questions = [
+    {id:1,text:'',description:'',default:false},
+    {id:2,text:'',description:'',default:true},
+    {id:3,text:'',description:'',default:false}
+    ];
+
+    var results = filterTasksByAny(tasks,questions,false);
+    expect(results.length).toBe(2);
+    expect(results[0].id).toBe(1);
+    expect(results[1].id).toBe(2);
+  });
+});
+
+describe(" Finding the owner of the task ", function() {
+
+  var roles = [
+  {name:1,value:'apple'},
+  {name:2,value:'pear'}
+  ];
+
+  it(" returns the correct owner based on role", function() {
+    var results = getOwnerProperty(roles,'name',1,'value');
+    expect(results).toBe('apple');
+  });
+
+  it(" returns empty when there are no owners", function() {
+    var results = getOwnerProperty(roles,'name',3,'value');
+    expect(results).toEqual('');
+  });
+
+  it(" returns empty when the property does not exist in the role", function() {
+    var results = getOwnerProperty(roles,'name',2,'role');
+    expect(results).toEqual('');
+  });
+});
+
+describe(" Changing the property of a JSON object ", function() {
+
+  it(" returns the correct change on the object", function() {
+    var roles = [
+    {name:1,value:'apple'},
+    {name:2,value:'pear'}
+    ];
+    var role = {name:1}
+
+    var results = changeRoleValue(roles,'name',role,'value',10);
+    expect(results.length).toBe(2);
+    expect(results[0].value).toBe(10);
+  });
+
+  it(" returns the original json array when there are no common properties", function() {
+    var roles = [
+    {name:1,value:'apple'},
+    {name:2,value:'pear'}
+    ];
+    var role = {name:1}
+
+    var results = changeRoleValue(roles,'blah',role,'value',10);
+    expect(results.length).toBe(2);
+    expect(results[0].value).toBe('apple')
+    expect(results[1].value).toBe('pear');
+  });
+
+
+});
+
+
+describe(" Finding the role we want to change ", function() {
+
+  it(" returns the correct role", function() {
+    var roles = [
+    {name:1,value:'apple'},
+    {name:2,value:'pear'}
+    ];
+
+    var results = findRoleBasedOnProperty(roles,'name',1);
+    expect(results.value).toBe('apple');
+  });
+
+});
+
+</script>
