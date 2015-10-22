@@ -70,6 +70,21 @@ type => What section of the checklist will this task be put in
 # Pictures:
 
 
+When there is no downpage
+<img scr="http://clickthisnick.com/release/DownpageNo.png">
+
+You get this release checklist:
+
+<img src="http://clickthisnick.com/release/NoChecklist.png">
+
+--
+
+When there is a downpage
+<img scr="http://clickthisnick.com/release/DownpageYes.png">
+
+You get this release checklist:
+
+<img src="http://clickthisnick.com/release/YesChecklist.png">
 
 
 # Examples:
