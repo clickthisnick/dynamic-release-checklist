@@ -6,6 +6,11 @@ Only have **_relevant_** items in your checklist.
 
 ------
 
+# Demo:
+
+<a href="http://clickthisnick.com/projects/dynamic-release-checklist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
+
+
 # The Problem:
 
 Too many times I see release checklists full of items that **don't apply to this release.** 
@@ -54,6 +59,8 @@ return [
 } 
 ```
 
+
+
 # Further Explanation:
 questionsRequiredYes => Put in any question ids that must be true for this item to be present
 
@@ -67,26 +74,7 @@ role => Who is responsible for this task
 
 type => What section of the checklist will this task be put in
 
-# Pictures:
 
-
-When there is no downpage
-<img scr="http://clickthisnick.com/release/DownpageNo.png">
-
-You get this release checklist:
-
-<img src="http://clickthisnick.com/release/NoChecklist.png">
-
---
-
-When there is a downpage
-<img scr="http://clickthisnick.com/release/DownpageYes.png">
-
-You get this release checklist:
-
-<img src="http://clickthisnick.com/release/YesChecklist.png">
-
-
-# Examples:
+# More Examples:
 
 Clone the repo and checkout the examples in the examples folder
