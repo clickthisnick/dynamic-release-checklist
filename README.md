@@ -13,7 +13,7 @@ Only have **_relevant_** items in your checklist.
 
 # The Problem:
 
-Too many times I see release checklists full of items that **don't apply to this release.** 
+Too many times I see release checklists full of items that **don't apply to this release.**
 
 This teachs and reinforces people to gloss over items, sometimes missing crucial tasks.
 
@@ -40,7 +40,7 @@ function questions(){
 return [
   {id:1,text:'Is there a downpage?',description:'',default:false}
   ];
-} 
+}
 ```
 
 Then tie the tasks to the question.
@@ -56,7 +56,7 @@ return [
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Developer',type:'Release',task:'Push Code'},
   {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Developer',type:'Release',task:'Remove Downpage'}
 ];
-} 
+}
 ```
 
 
