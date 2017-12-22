@@ -1,0 +1,21 @@
+{
+  "name": "dynamic-release-checklist",
+  "version": "1.0.0",
+  "description": "###That's why I created the Dynamic Release Checklist.",
+  "main": "index.js",
+  "directories": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./move.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clickthisnick/dynamic-release-checklist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clickthisnick/dynamic-release-checklist/issues"
+  },
+  "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme"
+}

@@ -15,7 +15,7 @@ Only have **_relevant_** items in your checklist.
 
 Too many times I see release checklists full of items that **don't apply to this release.**
 
-This teachs and reinforces people to gloss over items, sometimes missing crucial tasks.
+This teaches and reinforces people to gloss over items, sometimes missing crucial tasks.
 
 Imagine the checklist below with **no downpage**
 

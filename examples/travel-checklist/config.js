@@ -36,11 +36,12 @@ function roles() {
 function questions() {
 return [
     {id:1,text:'Are you taking a plane?',description:'',default:false},
-    {id:2,text:'Do you have bread?',description:'',default:false}
+    {id:2,text:'Do you have bread?',description:'',default:false},
+    {id:3,text:'Is your destination cold?',description:'',default:false},
   ];
 }
 
-function tasks(){
+function tasks() {
 return [
 
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Before',task:'Notify Any Mail Service You Are Going Away'},
@@ -93,5 +94,8 @@ return [
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Eat / Remove Perishable Fridgerator / Cupboard Items'},
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Take Out Trash'},
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Clean Sink'},
+
+  // Staying Warm
+  {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Wear / Pack Hat And Gloves'},
   ];
 }
