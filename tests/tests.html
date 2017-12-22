@@ -42,15 +42,12 @@ describe("Filtering tasks by required answer", function() {
       {id: 1, type: '', questionsRequiredYes: [1], questionsRequiredNo: [], questionsAnyYes: [], questionsAnyNo: []},
       {id: 2, type: '', questionsRequiredYes: [2], questionsRequiredNo: [], questionsAnyYes: [], questionsAnyNo: []}
     ];
-
     const questions = [
       {id: 1, text: '', description: '', default: true},
       {id: 2, text: '', description: '', default: false}
     ];
-
     const results = filterTasksByRequired(tasks, questions, true);
 
-    console.log(results)
     expect(results.length).toBe(1);
     expect(results[0].id).toBe(1);
   });
@@ -73,12 +70,12 @@ describe("Filtering tasks by required answer", function() {
 
   it("returns the correct tasks when there is 1 required no", function() {
     const tasks = [
-      {id:1,type:'',questionsRequiredYes:[],questionsRequiredNo:[1],questionsAnyYes:[],questionsAnyNo:[]},
-      {id:2,type:'',questionsRequiredYes:[],questionsRequiredNo:[2],questionsAnyYes:[],questionsAnyNo:[]}
+      {id: 1, type: '', questionsRequiredYes: [], questionsRequiredNo: [1], questionsAnyYes: [], questionsAnyNo: []},
+      {id: 2, type: '', questionsRequiredYes: [], questionsRequiredNo: [2], questionsAnyYes: [], questionsAnyNo: []}
     ];
     const questions = [
-      {id:1,text:'',description:'',default:false},
-      {id:2,text:'',description:'',default:true}
+      {id: 1, text: '', description: '', default: false},
+      {id: 2, text: '', description: '', default: true}
     ];
     const results = filterTasksByRequired(tasks, questions, false);
 
@@ -214,19 +211,6 @@ describe("Finding the value of a question", function() {
   it("returns undefined when question does not exist", function() {
     const results = findQuestion(questions, 3);
     expect(results).toBe(undefined);
-  });
-});
-
-describe("Getting the property needed for any questions", function() {
-
-  it("returns the correct questions value when true", function() {
-    const results = getQuestionsAnyProperty(true);
-    expect(results).toBe('questionsAnyYes');
-  });
-
-  it("returns the correct questions value when false", function() {
-    const results = getQuestionsAnyProperty(false);
-    expect(results).toBe('questionsAnyNo');
   });
 });
 

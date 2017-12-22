@@ -35,9 +35,9 @@ function roles() {
 
 function questions() {
 return [
-    {id:1,text:'Are you taking a plane?',description:'',default:false},
-    {id:2,text:'Do you have bread?',description:'',default:false},
-    {id:3,text:'Is your destination cold?',description:'',default:false},
+    {id: 1, text: 'Are you taking a plane?',    description: '', default: false},
+    {id: 2, text: 'Do you have bread?',         description: '', default: false},
+    {id: 3, text: 'Is your destination cold?',  description: '', default: false},
   ];
 }
 
