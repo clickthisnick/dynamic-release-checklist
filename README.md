@@ -8,7 +8,7 @@ Only have **_relevant_** items in your checklist.
 
 # Demo:
 
-<a href="http://clickthisnick.com/projects/dynamic-release-checklist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
+<a href="https://cdn.rawgit.com/clickthisnick/dynamic-release-checklist/7edf4834/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
 
 
 # The Problem:
@@ -50,7 +50,7 @@ Push code has no questionsRequiredYes so that tasks shows no matter what.
 The tasks Create Downpage and Remove Downpage only show when the question with an id of 1 is set to True.
 
 ```javascript
-function tasks(){
+function tasks() {
 return [
   {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Developer',type:'Release',task:'Create Downpage'},
   {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Developer',type:'Release',task:'Push Code'},
