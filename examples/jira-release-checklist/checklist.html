@@ -8,7 +8,7 @@
 	<script src="../../lib/js/bootstrap.min.js"></script>
 	<script src="../../lib/js/angular.min.js"></script>
 	<script src="../../lib/ng-repeat-array/AngularRepeatArray.js"></script>
-	
+
 	<!-- Add your config js file here -->
 	<script src="config.js"></script>
 	<!-- Add your config js file here -->
@@ -28,7 +28,7 @@
 
 	<div id="myTabContent" class="tab-content">
 
-		<div class="tab-pane fade  active in" id="questions">
+		<div class="tab-pane fade active in" id="questions">
 
 			<h1> {{checklist.questionsSectionTitle}} </h1>
 
@@ -48,7 +48,7 @@
 						<td>
 							<button
 							class="btn btn-{{checklist.getBtnStyle(question)}}"
-							ng-click = "checklist.flipBtnStatus(question)">
+							ng-click="checklist.flipBtnStatus(question)">
 							{{checklist.getBtnText(question)}}
 						</button>
 					</ditdv>
@@ -77,7 +77,7 @@
 					</td>
 
 					<td>
-						<input ng-model =newObject[role.role].name ng-change="checklist.changeRoleValue(checklist.roles,'role',role,'name',newObject[role.role].name)"}></input>
+						<input ng-model=newObject[role.role].name ng-change="checklist.changeRoleValue(checklist.roles, role, newObject[role.role].name)"}></input>
 					</td>
 
 					<!-- Example if you wanted username as well -->
@@ -90,7 +90,7 @@
 				<h1> {{checklist.checklistSectionTitle}} </h1>
 				<hr>
 
-				<div ng-repeat="type in checklist.ngArrLoop(checklist.getTypes(),1) track by $index">
+				<div ng-repeat="type in checklist.ngArrLoop(checklist.getTypes(), 1) track by $index">
 					<table class="table table-striped table-hover ">
 						<thead>
 							<tr>
@@ -103,7 +103,7 @@
 							<td>
 							</td>
 							<td>
-								<h3>{{checklist.ngArrProp(checklist.getTypes(),$index,1,1,'value')}}</h3>
+								<h3>{{checklist.ngArrProp(checklist.getTypes(), $index, 1, 1, 'value')}}</h3>
 							</td>
 							<td>
 							</td>
@@ -112,14 +112,14 @@
 							<td>
 								<!-- If using jira just use html <li class="checkbox" data-inline-task-id="0"><span>&nbsp;</span></li> -->
 								<!-- If not using jira just use html <input type="checkbox"></input> -->
-								<li class="checkbox" data-inline-task-id="0"><span>&nbsp;</span></li>
-								
+								<input type="checkbox"></input>
+
 							</td>
 							<td>
 								{{item.task}}
 							</td>
 							<td class="text-right">
-								{{checklist.getOwnerProperty(checklist.roles,'role',item.role,'name')}}
+								{{checklist.getOwnerProperty(checklist.roles, 'role', item.role, 'name')}}
 							</td>
 						</tr>
 					</table>

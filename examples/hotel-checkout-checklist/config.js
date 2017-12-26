@@ -4,11 +4,11 @@ function checklistSectionTitle(){
 
 function rolesSectionTitle(){
   return "Fill Out Who Is Covering Each Role";;
-} 
-  
+}
+
 function questionsSectionTitle(){
   return "Checklist Questions";
-} 
+}
 
 function questionTypes(){
   return [
@@ -23,14 +23,14 @@ var btnMapping =   {
     defaultTrue:'Yes'
   };
 return btnMapping;
-} 
+}
 
 function roles(){
   return [
-  {role:'Mom'},
-  {role:'Dad'},
-  {role:'Brother'},
-  {role:'Sister'}
+    {role:'Mom'},
+    {role:'Dad'},
+    {role:'Brother'},
+    {role:'Sister'}
   ];
 }
 
@@ -39,7 +39,7 @@ return [
   {id:1,text:'Do you need to turn in the key card',description:'',default:false},
   {id:2,text:'Is the car far away?',description:'',default:false}
   ];
-} 
+}
 
 function tasks(){
 return [
@@ -56,4 +56,4 @@ return [
   {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Mom',type:'Checkout',task:'Give receptionist the keycards'},
   {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Mom',type:'Checkout',task:'Check out of hotel/pay any fees'}
 ];
-} 
+}
