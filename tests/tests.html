@@ -366,33 +366,20 @@ describe("Finding the owner of the task", function() {
   });
 });
 
-describe("Changing the property of a JSON object", function() {
+describe("Changing the name of a role", function() {
 
-  it("returns the correct change on the object", function() {
-    const roles = [
-      {name: 1, value: 'apple'},
-      {name: 2, value: 'pear'}
-    ];
-    const role = {name: 1}
-    const results = changeRoleValue(roles, 'name', role, 'value', 10);
+  it("returns the roles array with correct values", function() {
+    const role1 = {role: 'Mathmetician', name: 'Wendy'};
+    const role2 = {role: 'Sales', name: 'Steve'};
+    const roles = [role1, role2];
+    const results = changeRoleValue(roles, role2, 'Kurt');
 
-    expect(results.length).toBe(2);
-    expect(results[0].value).toBe(10);
+    expect(results).toEqual([
+      {role: 'Mathmetician', name: 'Wendy'},
+      {role: 'Sales', name: 'Kurt'}
+    ]);
+
   });
-
-  it("returns the original json array when there are no common properties", function() {
-    const roles = [
-      {name: 1, value: 'apple'},
-      {name: 2, value: 'pear'}
-    ];
-    const role = {name: 1}
-    const results = changeRoleValue(roles, 'blah', role, 'value', 10);
-
-    expect(results.length).toBe(2);
-    expect(results[0].value).toBe('apple')
-    expect(results[1].value).toBe('pear');
-  });
-
 });
 
 </script>
