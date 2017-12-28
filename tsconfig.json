@@ -1,0 +1,29 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "allowJs": false,
+        "forceConsistentCasingInFileNames": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": false,
+        "noUnusedLocals": true,
+        "noEmitOnError": true,
+        "removeComments": true,
+        "suppressImplicitAnyIndexErrors": false,
+        "noImplicitReturns": true,
+        "inlineSourceMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "alwaysStrict": true,
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "target": "ES6",
+        "baseUrl": ".",
+        "paths": {
+            "@test/*": ["test/*"],
+            "@src/*": ["src/*"]
+        }
+    }
+}

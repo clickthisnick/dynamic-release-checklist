@@ -5,7 +5,8 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node_modules/.bin/jasmine-ts test/tests.spec.ts",
+    "lint": "node_modules/tslint/bin/tslint --project tsconfig.json",
     "compile": "./move.sh"
   },
   "repository": {
@@ -17,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/clickthisnick/dynamic-release-checklist/issues"
   },
-  "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme"
+  "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme",
+  "dependencies": {
+    "@types/jasmine": "^2.8.3",
+    "jasmine": "^2.8.0",
+    "jasmine-ts": "^0.2.1",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
 }
