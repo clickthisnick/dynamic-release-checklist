@@ -37,18 +37,18 @@ export class ChecklistFn {
     const newTasks: any = [];
     const property = expectedBool ? 'questionsAnyYes' : 'questionsAnyNo';
 
-    for (let i = 0; i < tasks.length; i++) {
+    for (const task of tasks) {
 
-      if (tasks[i][property].length === 0) {
-        newTasks.push(tasks[i]);
+      if (task[property].length === 0) {
+        newTasks.push(task);
         continue;
       }
 
-      for (let x = 0; x < tasks[i][property].length; x++) {
-        const question = this.findQuestion(questions, tasks[i][property][x]);
+      for (const taskProperty of task[property]) {
+        const question = this.findQuestion(questions, taskProperty);
 
         if (question !== undefined && question.default === expectedBool) {
-          newTasks.push(tasks[i]);
+          newTasks.push(task);
           break;
         }
       }
@@ -65,8 +65,8 @@ export class ChecklistFn {
   public static deepCopyArray(array) {
     const newArray: any = [];
 
-    for (let i=0; i<array.length; i++) {
-      newArray.push(array[i]);
+    for (const item of array) {
+      newArray.push(item);
     }
 
     return newArray;
