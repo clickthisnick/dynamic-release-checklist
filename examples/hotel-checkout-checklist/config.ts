@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export class Config {
   public static checklistSectionTitle() {
     return 'Hotel Checkout Checklist';

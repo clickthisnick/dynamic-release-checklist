@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export class Config {
   public static checklistSectionTitle() {
     return 'Travel Checklist';
@@ -56,7 +58,6 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Set Alarm To Wake Up'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Set Alarm 5 Minutes Before Having To Leave'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Set Alarm At Time Have To Leave'},
-
 
         // Tech For Tomorrow
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Charge Phone'},
