@@ -10,11 +10,8 @@
     "deleteDist": "rm -r dist || echo 'No dist to remove'",
     "precompile": "npm run deleteDist",
     "compile": "node_modules/typescript/bin/tsc",
-    "premoveResources": "npm run compile",
-    "moveResources": "./move.sh",
-    "prewebpack": "npm run moveResources",
-    "webpack": "npx webpack --config webpack.config.js",
-    "build": "npm run webpack"
+    "prebuild": "npm run compile",
+    "build": "./package.sh"
   },
   "repository": {
     "type": "git",

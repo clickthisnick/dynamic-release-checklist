@@ -14,13 +14,13 @@ jobs:
 
       - restore_cache:
           keys:
-             - v0-ci-pkg-{{ checksum ".circleci/package-lock.json" }}
+             - v0-ci-pkg-{{ checksum "package-lock.json" }}
              - v0-ci-pkg
 
       - run: npm install
 
       - save_cache:
-          key: v0-ci-pkg-{{ checksum ".circleci/package-lock.json" }}
+          key: v0-ci-pkg-{{ checksum "package-lock.json" }}
           paths:
             - .circleci/node_modules
 
