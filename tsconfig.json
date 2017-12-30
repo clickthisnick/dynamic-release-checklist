@@ -1,0 +1,38 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "allowJs": false,
+        "forceConsistentCasingInFileNames": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedParameters": false,
+        "noUnusedLocals": true,
+        "noEmitOnError": true,
+        "removeComments": true,
+        "suppressImplicitAnyIndexErrors": false,
+        "noImplicitReturns": true,
+        "inlineSourceMap": true,
+        "moduleResolution": "node",
+        "sourceMap": false,
+        "alwaysStrict": true,
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "outDir": "dist",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true, //for angular to be able to use metadata we specify in our components.
+        "experimentalDecorators": true, //angular needs decorators like @Component, @Injectable, etc.
+        "lib": [
+            "es2016",
+            "dom",
+            "es5"
+        ],
+        "target": "es5",
+        "baseUrl": ".",
+        "paths": {
+            "@test/*": ["test/*"],
+            "@src/*": ["src/*"]
+        }
+    }
+}
