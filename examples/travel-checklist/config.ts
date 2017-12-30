@@ -94,8 +94,14 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Take Out Trash'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Clean Sink'},
 
+        // Packing
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One Pair Of Underwear Per Day'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One T Shirt Per Day'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One Pair Of Socks Per 2 Days'},
+
         // Staying Warm
         {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Wear / Pack Hat And Gloves'},
+        {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack 1 Sweater For Every 3 Days Of Travel'},
       ];
   }
 }
