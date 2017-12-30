@@ -13,9 +13,9 @@ jobs:
       - checkout
 
       - restore_cache:
-        keys:
-           - v0-ci-pkg-{{ checksum ".circleci/package-lock.json" }}
-           - v0-ci-pkg
+          keys:
+             - v0-ci-pkg-{{ checksum ".circleci/package-lock.json" }}
+             - v0-ci-pkg
 
       - run: npm install
 
