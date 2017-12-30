@@ -8,7 +8,7 @@ Only have **_relevant_** items in your checklist.
 
 # Demo:
 
-<a href="https://cdn.rawgit.com/clickthisnick/dynamic-release-checklist/7edf4834/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
+<a href="https://cdn.rawgit.com/clickthisnick/dynamic-release-checklist/8cb1bcc6/dist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
 
 
 # The Problem:
