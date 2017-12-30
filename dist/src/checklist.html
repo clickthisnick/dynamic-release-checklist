@@ -2,23 +2,20 @@
 <html ng-app="Checklist">
 
 <head>
-	<link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
-	<link rel="stylesheet" type="text/css" href="../../lib/css/checklist.css">
-	<script src="../../lib/js/jquery.js"></script>
-	<script src="../../lib/js/bootstrap.min.js"></script>
-	<script src="../../lib/js/angular.min.js"></script>
-	<script src="../../lib/ng-repeat-array/AngularRepeatArray.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/bootswatch.css">
+	<link rel="stylesheet" type="text/css" href="../../src/css/checklist.css">
+	<script src="jquery.js"></script>
+	<script src="bundle.js"></script>
+	<script src="bootstrap.min.js"></script>
 
 	<!-- Add your config js file here -->
-	<script src="config.js"></script>
+	<!-- <script src="config.js"></script> -->
 	<!-- Add your config js file here -->
-
-	<script src="../../lib/js/checklist.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<body class="container" ng-controller="Controller as checklist">
+<body class="container" ng-controller="CheckListController as checklist">
 
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#questions" data-toggle="tab" aria-expanded="false">Questions</a></li>
@@ -51,7 +48,7 @@
 							ng-click="checklist.flipBtnStatus(question)">
 							{{checklist.getBtnText(question)}}
 						</button>
-					</ditdv>
+					</div>
 				</tr>
 			</tbody>
 		</table>
@@ -90,7 +87,7 @@
 				<h1> {{checklist.checklistSectionTitle}} </h1>
 				<hr>
 
-				<div ng-repeat="type in checklist.ngArrLoop(checklist.getTypes(), 1) track by $index">
+				<div ng-repeat="type in checklist.getTypes()">
 					<table class="table table-striped table-hover ">
 						<thead>
 							<tr>
@@ -103,12 +100,12 @@
 							<td>
 							</td>
 							<td>
-								<h3>{{checklist.ngArrProp(checklist.getTypes(), $index, 1, 1, 'value')}}</h3>
+								<h3>{{type.value}}</h3>
 							</td>
 							<td>
 							</td>
 						</tr>
-						<tr ng-repeat="item in checklist.getValidTasks(checklist.getTypes()[$index])">
+						<tr ng-repeat="item in checklist.getValidTasks(type)">
 							<td>
 								<!-- If using jira just use html <li class="checkbox" data-inline-task-id="0"><span>&nbsp;</span></li> -->
 								<!-- If not using jira just use html <input type="checkbox"></input> -->

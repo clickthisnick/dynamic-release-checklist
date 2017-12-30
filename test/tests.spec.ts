@@ -1,4 +1,4 @@
-import { ChecklistFn } from '../src/js/checklistfn';
+import { ChecklistFn } from '../src/checklistfn';
 
 describe('Filtering by type', () => {
   const tasks = [

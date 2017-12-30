@@ -8,7 +8,6 @@ export class ChecklistFn {
       if (checklistRole.role === role.role) {
         checklistRole.name = changeValue;
       }
-
     }
 
     return checklistRoles;
@@ -23,13 +22,13 @@ export class ChecklistFn {
 
     return tasks.filter((task) => {
       // TODO Separate into another function
-      const validTask = new Set(task[property].map((taskProperty) => {
+      const validTask = task[property].map((taskProperty) => {
         const question = this.findQuestion(questions, taskProperty);
 
         return question !== undefined && question.default === expectedBool;
-      }));
+      });
 
-      return !validTask.has(false);
+      return !validTask.includes(false);
     });
   }
 
