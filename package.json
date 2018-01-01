@@ -5,8 +5,13 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "./move.sh"
+    "test": "node_modules/.bin/jasmine-ts test/tests.spec.ts",
+    "lint": "node_modules/tslint/bin/tslint --project tsconfig.json",
+    "deleteDist": "rm -r dist || echo 'No dist to remove'",
+    "precompile": "npm run deleteDist",
+    "compile": "node_modules/typescript/bin/tsc",
+    "prebuild": "npm run compile",
+    "build": "./package.sh"
   },
   "repository": {
     "type": "git",
@@ -17,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/clickthisnick/dynamic-release-checklist/issues"
   },
-  "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme"
+  "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme",
+  "dependencies": {
+    "@types/angular": "^1.6.40",
+    "@types/jasmine": "^2.8.3",
+    "angular": "^1.6.8",
+    "bootstrap": "^3.3.7",
+    "jasmine": "^2.8.0",
+    "jasmine-ts": "^0.2.1",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
 }
