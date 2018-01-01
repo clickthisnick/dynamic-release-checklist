@@ -1,4 +1,4 @@
-# Is your release checklist full of fluff?
+## Is your release checklist full of fluff?
 
 ###That's why I created the Dynamic Release Checklist.
 
@@ -6,7 +6,7 @@ Only have **_relevant_** items in your checklist.
 
 ------
 
-# Demo:
+## Demo:
 
 <a href="https://cdn.rawgit.com/clickthisnick/dynamic-release-checklist/7edf4834/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
 
@@ -61,7 +61,7 @@ return [
 
 
 
-# Further Explanation:
+## Further Explanation:
 questionsRequiredYes => Put in any question ids that must be true for this item to be present
 
 questionsRequiredNo => Put in any question ids that must be false for this item to be present
@@ -75,6 +75,10 @@ role => Who is responsible for this task
 type => What section of the checklist will this task be put in
 
 
-# More Examples:
+## More Examples:
 
 Clone the repo and checkout the examples in the examples folder
+
+## License
+
+This project is licensed under the [Apache 2.0](LICENSE) license.
