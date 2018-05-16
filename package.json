@@ -27,8 +27,8 @@
     "@types/angular": "^1.6.40",
     "@types/jasmine": "^2.8.3",
     "angular": "^1.6.8",
-    "bootstrap": "^3.3.7",
-    "jasmine": "^2.8.0",
+    "bootstrap": "^4.1.1",
+    "jasmine": "^3.1.0",
     "jasmine-ts": "^0.2.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
