@@ -8,7 +8,7 @@ export class Config {
   }
 
   public static  questionsSectionTitle() {
-    return 'Example Questionaire';
+    return 'Example Questionnaire';
   }
 
   public static  questionTypes() {
@@ -17,7 +17,7 @@ export class Config {
     ];
   }
 
-  public static  QuestonButtonText() {
+  public static  QuestionButtonText() {
     return {
       defaultFalse:'No',
       defaultTrue:'Yes'

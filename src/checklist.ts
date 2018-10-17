@@ -7,7 +7,7 @@ export class CheckListController {
   rolesSectionTitle = Config.rolesSectionTitle();
   questionsSectionTitle = Config.questionsSectionTitle();
   questionTypes = Config.questionTypes();
-  questonButtonText = Config.QuestonButtonText();
+  questionButtonText = Config.QuestionButtonText();
   roles = Config.roles();
   questions = Config.questions();
   tasks = Config.tasks();
@@ -75,10 +75,10 @@ export class CheckListController {
 
   public getBtnText = (button) => {
     if (button.default) {
-      return this.questonButtonText.defaultTrue;
+      return this.questionButtonText.defaultTrue;
     }
 
-    return this.questonButtonText.defaultFalse;
+    return this.questionButtonText.defaultFalse;
   }
 
   // public ngArrLoop = (items, numberPerRow) => {
