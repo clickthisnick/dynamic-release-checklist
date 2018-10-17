@@ -5,7 +5,7 @@
   "main": "index.js",
   "directories": {},
   "scripts": {
-    "test": "node_modules/.bin/jasmine-ts test/tests.spec.ts",
+    "test": "node_modules/.bin/jasmine-ts --config=jasmine.json",
     "lint": "node_modules/tslint/bin/tslint --project tsconfig.json",
     "deleteDist": "rm -r dist || echo 'No dist to remove'",
     "precompile": "npm run deleteDist",
@@ -29,7 +29,8 @@
     "angular": "^1.6.8",
     "bootstrap": "^4.1.1",
     "jasmine": "^3.1.0",
-    "jasmine-ts": "^0.2.1",
+    "jasmine-ts": "^0.3.0",
+    "ts-node": "^7.0.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
   }
