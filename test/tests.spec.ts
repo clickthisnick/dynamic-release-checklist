@@ -3,7 +3,7 @@ import { ChecklistFn } from '../src/checklistfn';
 describe('Filtering by type', () => {
   const tasks = [
     {id: 1, type: 'apple'},
-    {id: 2, type: 'bananana'},
+    {id: 2, type: 'banana'},
     {id: 3, type: 'apple'},
     {id: 4, type: 'pear'}
   ];
@@ -352,13 +352,13 @@ describe('Finding the owner of the task', () => {
 describe('Changing the name of a role', () => {
 
   it('returns the roles array with correct values', () => {
-    const role1 = {role: 'Mathmetician', name: 'Wendy'};
+    const role1 = {role: 'Mathematician', name: 'Wendy'};
     const role2 = {role: 'Sales', name: 'Steve'};
     const roles = [role1, role2];
     const results = ChecklistFn.changeRoleValue(roles, role2, 'Kurt');
 
     expect(results).toEqual([
-      {role: 'Mathmetician', name: 'Wendy'},
+      {role: 'Mathematician', name: 'Wendy'},
       {role: 'Sales', name: 'Kurt'}
     ]);
   });

@@ -11,7 +11,7 @@
     "precompile": "npm run deleteDist",
     "compile": "node_modules/typescript/bin/tsc",
     "prebuild": "npm run compile",
-    "build": "./package.sh"
+    "build": "./build.sh"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,9 @@
     "ts-node": "^7.0.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.2",
+    "webpack": "^4.20.2"
   }
 }

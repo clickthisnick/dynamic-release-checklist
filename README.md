@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/clickthisnick/dynamic-release-checklist.svg)](https://greenkeeper.io/)
 
-###That's why I created the Dynamic Release Checklist.
+### That's why I created the Dynamic Release Checklist.
 
 Only have **_relevant_** items in your checklist.
 
@@ -11,7 +11,6 @@ Only have **_relevant_** items in your checklist.
 ## Demo:
 
 <a href="https://cdn.rawgit.com/clickthisnick/dynamic-release-checklist/8cb1bcc6/dist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
-
 
 # The Problem:
 
@@ -61,8 +60,6 @@ return [
 }
 ```
 
-
-
 ## Further Explanation:
 questionsRequiredYes => Put in any question ids that must be true for this item to be present
 
@@ -75,7 +72,6 @@ questionsAnyNo => If any of these questions are false this item will show
 role => Who is responsible for this task
 
 type => What section of the checklist will this task be put in
-
 
 ## More Examples:
 
