@@ -1,4 +1,4 @@
-# /bin/bash
+#!/bin/bash
 
 # Remove the config template
 rm dist/src/config.js
