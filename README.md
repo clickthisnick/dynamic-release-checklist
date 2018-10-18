@@ -10,7 +10,7 @@ Only have **_relevant_** items in your checklist.
 
 ## Demo:
 
-<a href="https://www.clickthisnick/dynamic-release-checklist/dist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
+<a href="https://www.clickthisnick.com/dynamic-release-checklist/dist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
 
 # The Problem:
 
