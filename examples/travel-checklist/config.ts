@@ -120,6 +120,9 @@ export class Config {
         // Staying Warm
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Wear / Pack Hat And Gloves'},
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack 1 Sweater For Every 3 Days Of Travel'},
+
+        // Prevent Accidents
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Go to Bathroom Before Leaving'},
       ];
   }
 }
