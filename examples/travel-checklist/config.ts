@@ -42,6 +42,7 @@ export class Config {
       {id: 3, text: 'Do you have bread?',         description: '', default: false},
       {id: 4, text: 'Is your destination cold?',  description: '', default: false},
       {id: 5, text: 'Is your destination sunny?',  description: '', default: false},
+      {id: 6, text: 'Are you staying at a friends house?',  description: '', default: false},
     ];
   }
 
@@ -115,6 +116,7 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One Pair Of Underwear Per Day'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One T Shirt Per Day'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack One Pair Of Socks Per 2 Days'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[6],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack A Towel'},
 
         // Staying Warm
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Wear / Pack Hat And Gloves'},
