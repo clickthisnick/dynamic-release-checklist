@@ -24,18 +24,18 @@
   },
   "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme",
   "dependencies": {
-    "@types/angular": "^1.6.40",
-    "@types/jasmine": "^3.0.0",
-    "angular": "^1.6.8",
-    "bootstrap": "^4.1.1",
-    "jasmine": "^3.1.0",
+    "@types/angular": "^1.6.57",
+    "@types/jasmine": "^3.5.0",
+    "angular": "^1.7.9",
+    "bootstrap": "^4.4.1",
+    "jasmine": "^3.5.0",
     "jasmine-ts": "^0.3.0",
     "ts-node": "^7.0.1",
-    "tslint": "^5.8.0",
-    "typescript": "^3.1.3"
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.2"
   },
   "devDependencies": {
-    "webpack-cli": "^3.1.2",
-    "webpack": "^4.20.2"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
