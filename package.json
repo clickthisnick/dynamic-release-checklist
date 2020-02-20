@@ -25,7 +25,7 @@
   "homepage": "https://github.com/clickthisnick/dynamic-release-checklist#readme",
   "dependencies": {
     "@types/angular": "^1.6.57",
-    "@types/jasmine": "^3.5.0",
+    "@types/jasmine": "^3.5.6",
     "angular": "^1.7.9",
     "bootstrap": "^4.4.1",
     "jasmine": "^3.5.0",
