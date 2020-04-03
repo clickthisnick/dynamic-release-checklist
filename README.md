@@ -1,7 +1,5 @@
 ## Is your release checklist full of fluff?
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/clickthisnick/dynamic-release-checklist.svg)](https://greenkeeper.io/)
-
 ### That's why I created the Dynamic Release Checklist.
 
 Only have **_relevant_** items in your checklist.
