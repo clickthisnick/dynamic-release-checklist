@@ -42,6 +42,7 @@ export class Config {
       {id: 3, text: 'Do you have bread?',         description: '', default: false},
       {id: 4, text: 'Is your destination cold?',  description: '', default: false},
       {id: 5, text: 'Is your destination sunny?',  description: '', default: false},
+      {id: 6, text: 'Will there be any pets?',  description: '', default: false},
     ];
   }
 
@@ -114,6 +115,7 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Turn Off Air Conditioners / Heaters'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack Hankerchief'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack Bandaids'},
+        {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Bring allergy medicine'},
 
         // Clean Up
         {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Put Any Bread In Freezer'},
