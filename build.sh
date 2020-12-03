@@ -9,6 +9,7 @@ rm dist/src/config.js
 checklists=(
     hotel-checkout-checklist
     jira-release-checklist
+    moving-checklist
     travel-checklist
 )
 

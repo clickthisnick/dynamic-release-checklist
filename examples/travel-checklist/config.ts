@@ -57,7 +57,6 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Download Google Maps Offline'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Download Flight App'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Download Netflix/Podcasts Offline'},
-        
 
         // ------------------ Night Before ------------------ //
         // Travel
