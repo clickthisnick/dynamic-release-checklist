@@ -4,7 +4,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Remove the config template
-rm dist/src/config.js
+rm -rf dist/src/config.js
 
 checklists=(
     hotel-checkout-checklist
