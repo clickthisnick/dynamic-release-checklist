@@ -42,7 +42,8 @@ export class Config {
       {id: 3, text: 'Do you have bread?',         description: '', default: false},
       {id: 4, text: 'Is your destination cold?',  description: '', default: false},
       {id: 5, text: 'Is your destination sunny?',  description: '', default: false},
-      {id: 6, text: 'Will there be any pets?',  description: '', default: false},
+      {id: 6, text: 'Will there be any pets (Aside from your own)?',  description: '', default: false},
+      {id: 7, text: 'Are you taking your pets?',  description: '', default: false},
     ];
   }
 
@@ -89,6 +90,10 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Pack 1 Garbage Bag Per Day'},
 
         // ------------------ Day Of ------------------ //
+
+        // Pet
+        {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Turn off pet feeder'},
+        {questionsRequiredYes:[],questionsRequiredNo:[7],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Night Before',task:'Clean pet bathroom'},
 
         // Bathroom
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Day Of',task:'Pack Toothpaste'},
