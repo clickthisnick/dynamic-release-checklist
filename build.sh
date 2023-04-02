@@ -7,6 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 rm -rf dist/src/config.js
 
 checklists=(
+    cleaning-checklist
     hotel-checkout-checklist
     jira-release-checklist
     moving-checklist
@@ -23,7 +24,10 @@ buildChecklist() {
     cd ${DIR}/dist/examples/${checklist} && ${DIR}/node_modules/webpack-cli/bin/cli.js
     cd "$DIR"/dist/examples/"${checklist}" && find *.js | grep -v bundle.js | xargs rm
 }
+
 export -f buildChecklist
+
+echo "Total checklists found: ${checklists[@]}"
 
 for checklist in "${checklists[@]}"
 do
