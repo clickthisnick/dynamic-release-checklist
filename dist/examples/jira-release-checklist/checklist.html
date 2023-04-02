@@ -3,7 +3,6 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="../../../lib/css/bootswatch.css">
-	<link rel="stylesheet" type="text/css" href="../../../lib/css/checklist.css">
 	<script src="../../../lib/js/jquery.js"></script>
 	<script src="bundle.js"></script>
 	<script src="../../../lib/js/bootstrap.min.js"></script>
@@ -91,31 +90,23 @@
 					<table class="table table-striped table-hover ">
 						<thead>
 							<tr>
-								<th>Completed</th>
 								<th>Task</th>
-								<th>Owner</th>
+								<th ng-show="anyRoles()">Owner</th>
 							</tr>
 						</thead>
 						<tr>
 							<td>
+								<h2>{{type.value}}</h2>
 							</td>
-							<td>
-								<h3>{{type.value}}</h3>
-							</td>
-							<td>
+							<td ng-show="anyRoles()">
 							</td>
 						</tr>
 						<tr ng-repeat="item in checklist.getValidTasks(type)">
-							<td>
-								<!-- If using jira just use html <li class="checkbox" data-inline-task-id="0"><span>&nbsp;</span></li> -->
-								<!-- If not using jira just use html <input type="checkbox"></input> -->
-								<input type="checkbox"></input>
-
-							</td>
-							<td>
+							<td style="{{checklist.getItemStyle(item)}}"
+								ng-click="checklist.toggleItemStyle(item)">
 								{{item.task}}
 							</td>
-							<td>
+							<td ng-show="anyRoles()">
 								{{checklist.getOwnerProperty(checklist.roles, 'role', item.role, 'name')}}
 							</td>
 						</tr>

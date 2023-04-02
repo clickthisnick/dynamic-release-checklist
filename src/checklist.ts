@@ -11,6 +11,7 @@ export class CheckListController {
   roles = Config.roles();
   questions = Config.questions();
   tasks = Config.tasks();
+  taskIndex = 0;
 
   /* DO NOT EDIT ANYTHING UNDERNEATH THESE LINES */
   /* DO NOT EDIT ANYTHING UNDERNEATH THESE LINES */
@@ -30,6 +31,7 @@ export class CheckListController {
 
   public changeRoleValue = (roles, role, changeValue) => {
     this.roles = ChecklistFn.changeRoleValue(roles, role, changeValue);
+    console.log(this.roles)
   }
 
   public getTypes = () => {
@@ -65,8 +67,41 @@ export class CheckListController {
     return 'danger';
   }
 
+  public toggleItemStyle = (item) => {
+    const doneStyle = "text-decoration:line-through; background-color:black"
+    if ('style' in item) {
+      if (item['style'] == doneStyle) {
+        item['style'] = "";
+      } else {
+        item['style'] = doneStyle;
+      }
+    } else {
+      item['style'] = doneStyle;
+    }
+  }
+
+  public getItemStyle = (item) => {
+    if ('style' in item) {
+      return item['style']
+    }
+    return ""
+  }
+
+  public currentTaskIndex() {
+    return this.taskIndex;
+  }
+
   public getOwnerProperty = (roles, propertyValue, property, returnProperty) => {
     return ChecklistFn.getOwnerProperty(roles, propertyValue, property, returnProperty);
+  }
+
+  public anyRoles = () => {
+    const roleNames = this.roles.map(role => {
+      return 'name' in role;
+    })
+
+    const isTrue = (element) => element === true;
+    return roleNames.some(isTrue)
   }
 
   public flipBtnStatus = (button) => {
