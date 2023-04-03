@@ -11,6 +11,7 @@ checklists=(
     hotel-checkout-checklist
     jira-release-checklist
     moving-checklist
+    stretch-checklist
     travel-checklist
 )
 
