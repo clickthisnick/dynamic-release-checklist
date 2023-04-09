@@ -53,7 +53,7 @@ export class Config {
 
       // mail
       {id: 9, text: 'Is there any mail on top of cupboard?', description: '', default: false},
-      
+
     ];
   }
 
@@ -74,7 +74,7 @@ export class Config {
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take out recycling'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put any trash from living room and kitchen into trash can'},
 
-        // Clean top down 
+        // Clean top down
         // Load Dishwasher
         {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put on gloves'},
         // {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Fill a coffee cup mug full of water'},

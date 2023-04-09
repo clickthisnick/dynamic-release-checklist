@@ -17,7 +17,7 @@ checklists=(
 
 buildChecklist() {
     checklist=$1
-    
+
     cd "$DIR" || exit 1
     cp -r "$DIR"/dist/src/. "$DIR"/dist/examples/"${checklist}"
     cp "$DIR"/webpack.config.js "$DIR"/dist/examples/"${checklist}"
