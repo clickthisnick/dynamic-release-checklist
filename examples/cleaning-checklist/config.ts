@@ -44,6 +44,7 @@ export class Config {
       {id: 3, text: 'Is there anything in the washing machine?', description: '', default: false},
       {id: 4, text: 'Is there anything in the dryer?', description: '', default: false},
       {id: 8, text: 'Are there any cardboard boxes out?', description: '', default: false},
+      {id: 10, text: 'Is the litterbox clean?', description: '', default: false},
 
       // living room
       {id: 5, text: 'Are there clothes in the living room?', description: '', default: false},
@@ -106,6 +107,7 @@ export class Config {
         {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Plugin in eucalpyous smelly thing'},
 
         {questionsRequiredYes:[8],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Recycle cardboard boxes'},
+        {questionsRequiredYes:[10],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Clean litterbox'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Sweep floor with red broom'},
         {questionsRequiredYes:[9],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take mail off cupboard and sort'},
 
