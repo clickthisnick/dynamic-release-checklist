@@ -65,12 +65,12 @@ export class Config {
         {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put away the clean dishes in the dishwasher'},
 
         // Long running things
+        {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Clean dryer lint filter'},
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put clothes in dryer into clean hamper'},
         {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put clean clothes into dryer'},
         {questionsRequiredYes:[5],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put away clothes in living room'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put dirty clothes into washing machine'},
 
-        // Trash - increasing capacity for cleaning
         {questionsRequiredYes:[2],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take trash'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take out recycling'},
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put any trash from living room and kitchen into trash can'},
