@@ -39,7 +39,7 @@
 
 					<tr ng-repeat="question in checklist.questions">
 						<td>
-							<h2>{{question.text}}</h2>
+							<h2 ng-click="checklist.flipBtnStatus(question)">{{question.text}}</h2>
 						</td>
 						<td>
 							<button
@@ -116,3 +116,4 @@
 		</div>
 	</body>
 	</html>
+
