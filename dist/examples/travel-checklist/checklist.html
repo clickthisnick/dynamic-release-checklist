@@ -39,7 +39,7 @@
 
 					<tr ng-repeat="question in checklist.questions">
 						<td>
-							{{question.text}}
+							<h2>{{question.text}}</h2>
 						</td>
 						<td>
 							<button
@@ -104,7 +104,7 @@
 						<tr ng-repeat="item in checklist.getValidTasks(type)">
 							<td style="{{checklist.getItemStyle(item)}}"
 								ng-click="checklist.toggleItemStyle(item)">
-								{{item.task}}
+								<h2>{{item.task}}</h2>
 							</td>
 							<td ng-show="anyRoles()">
 								{{checklist.getOwnerProperty(checklist.roles, 'role', item.role, 'name')}}
