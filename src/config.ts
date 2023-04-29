@@ -38,8 +38,8 @@ export class Config {
 
   public static tasks() {
     return [
-        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Devops',type:'Day Before',task:'Example Task Name'},
-      ];
+      {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[1],questionsAnyNo:[],role:'Devops',type:'Day Before',task:'Example Task Name'},
+    ];
   }
 
 }

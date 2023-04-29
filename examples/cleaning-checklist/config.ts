@@ -48,12 +48,18 @@ export class Config {
 
       // living room
       {id: 5, text: 'Are there clothes in the living room?', description: '', default: false},
+      {id: 10, text: 'Does the sofa need vaccuming?', description: '', default: false},
 
       // downstairs bathroom
       {id: 7, text: 'Does the downstairs bathroom need cleaning?', description: '', default: false},
 
       // mail
       {id: 9, text: 'Is there any mail on top of cupboard?', description: '', default: false},
+
+      // upstairs
+      {id: 11, text: 'Are there clean clothes?', description: '', default: false},
+
+
 
     ];
   }
@@ -108,10 +114,18 @@ export class Config {
 
         {questionsRequiredYes:[8],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Recycle cardboard boxes'},
         {questionsRequiredYes:[10],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Clean litterbox'},
-        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Sweep floor with red broom'},
-        {questionsRequiredYes:[9],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take mail off cupboard and sort'},
 
         // ------------------ Living Room ------------------ //
+        {questionsRequiredYes:[9],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Take mail off cupboard and sort'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Wipe off living room table'},
+        {questionsRequiredYes:[10],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Vacuum Sofa'},
+        {questionsRequiredYes:[10],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Vacuum Floor'},
+
+        // Floor
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Sweep floor with red broom'},
+
+        // Put away clean clothes
+        {questionsRequiredYes:[11],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put away clean clothes'},
 
       ];
   }
