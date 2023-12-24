@@ -103,6 +103,7 @@ export class Config {
         // Misc
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before', task:'Pack Hankerchief'},
         {questionsRequiredYes:[9],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Check You Have Passport'},
+        {questionsRequiredYes:[9],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Download airalo for sim card'},
 
         // Pet
         {questionsRequiredYes:[],questionsRequiredNo:[8],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Clean pet bathroom'},
