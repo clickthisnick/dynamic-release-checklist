@@ -39,6 +39,7 @@ export class Config {
       {id: 1, text: 'Are the dishes in the dishwasher clean?', description: '', default: false},
       {id: 2, text: 'Is the trash can more than halfway full?', description: '', default: false},
       {id: 6, text: 'Are there dirty dishes?', description: '', default: false},
+      {id: 13, text: 'Are the water bottles dirty?', description: '', default: false},
 
       // washing machine
       {id: 3, text: 'Is there anything in the washing machine?', description: '', default: false},
@@ -59,6 +60,10 @@ export class Config {
       // upstairs
       {id: 11, text: 'Are there clean clothes?', description: '', default: false},
 
+      {id: 12, text: 'Do you need to shave?', description: '', default: false},
+
+      
+
 
 
     ];
@@ -71,6 +76,7 @@ export class Config {
         {questionsRequiredYes:[1],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put away the clean dishes in the dishwasher'},
 
         // Long running things
+        {questionsRequiredYes:[13],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Add Cleaner Tablet To Water Bottle'},
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Clean dryer lint filter'},
         {questionsRequiredYes:[4],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put clothes in dryer into clean hamper'},
         {questionsRequiredYes:[3],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put clean clothes into dryer'},
@@ -97,11 +103,16 @@ export class Config {
         // {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Load everything else into dishwasher'},
         {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Start dishwasher'},
         {questionsRequiredYes:[6],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Spray and wipe countertop'},
+        {questionsRequiredYes:[13],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Scrub Water Bottle and Let Air Dry'},
 
         // Clean Downstairs bathroom
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Organize bathroom vanity'},
         {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Put away/Remove all items from bathroom'},
-        {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Face'},
+        {questionsRequiredYes:[12],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Face'},
+        {questionsRequiredYes:[12],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Nostrils'},
+        {questionsRequiredYes:[12],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Ears'},
+        {questionsRequiredYes:[12],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Tricep'},
+        {questionsRequiredYes:[12],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Shave Foot'},
         {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Wash Face'},
         {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Spray mirror cleaner and wipe off'},
         {questionsRequiredYes:[7],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Nick',type:'Clean',task:'Clean glass shelf'},

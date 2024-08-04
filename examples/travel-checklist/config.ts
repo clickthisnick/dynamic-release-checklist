@@ -46,6 +46,7 @@ export class Config {
       {id: 7, text: 'Are you taking your pets?',  description: '', default: false},
       {id: 8, text: 'Is the house going to be empty?',  description: '', default: false},
       {id: 9, text: 'Are you travelling Internationally?',  description: '', default: false},
+      {id: 10, text: 'Is anyone taking care of the pets?',  description: '', default: false},
     ];
   }
 
@@ -107,6 +108,14 @@ export class Config {
 
         // Pet
         {questionsRequiredYes:[],questionsRequiredNo:[8],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Clean pet bathroom'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Put toilet paper rack in downstairs bathroom'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Leave extra keys by door'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Make sure treats are in cupboard'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Make sure treats in cubby magnetized to door'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Unplug shade'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Shade remote in bowl'},
+        {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[10],questionsAnyNo:[],role:'Me',type:'Night Before',task:'Setup bed with blanket and pillow'},
+
 
         // Ensure bathroom items are packed - Duplicateda are packed in travel bag
         {questionsRequiredYes:[],questionsRequiredNo:[],questionsAnyYes:[],questionsAnyNo:[],role:'Me',type:'Night Before',task:'All Tasks Belows Are To Ensure Item(s) Are in Travel Bag'},
