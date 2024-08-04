@@ -49,7 +49,7 @@ export class Config {
 
       // living room
       {id: 5, text: 'Are there clothes in the living room?', description: '', default: false},
-      {id: 10, text: 'Does the sofa need vaccuming?', description: '', default: false},
+      {id: 10, text: 'Does the sofa need vacuuming?', description: '', default: false},
 
       // downstairs bathroom
       {id: 7, text: 'Does the downstairs bathroom need cleaning?', description: '', default: false},
@@ -62,7 +62,7 @@ export class Config {
 
       {id: 12, text: 'Do you need to shave?', description: '', default: false},
 
-      
+
 
 
 
