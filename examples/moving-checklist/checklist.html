@@ -50,7 +50,7 @@
 
     <script>
     const questions=[{"id": 1, "text": "Do you have lamps"}, {"id": 2, "text": "Do you have a metal bed frame"}, {"id": 3, "text": "Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws"}]
-    const tasks=[{"questionsRequiredYes": [1], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Moving Day", "task": "Unscrew Lightbulbs and Pack. (Movers won\"t move with lightbulbs in)"}, {"questionsRequiredYes": [2], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Moving Day", "task": "Fold metal bed frame, leaving screws in frame"}, {"questionsRequiredYes": [3], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Pre Move", "task": "Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Pre Move", "task": "Purchase boxes, around 38 medium for a 1 bedroom"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Pre Move", "task": "Purchase mattress cover"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "Movee", "type": "Pre Move", "task": "Confirm move with both places"}]
+    const tasks=[{"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Movee", "type": "Moving Day", "task": "Unscrew Lightbulbs and Pack. (Movers won\"t move with lightbulbs in)"}, {"questionsRequiredYes": [2], "questionsAnyYes": [], "role": "Movee", "type": "Moving Day", "task": "Fold metal bed frame, leaving screws in frame"}, {"questionsRequiredYes": [3], "questionsAnyYes": [], "role": "Movee", "type": "Pre Move", "task": "Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Movee", "type": "Pre Move", "task": "Purchase boxes, around 38 medium for a 1 bedroom"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Movee", "type": "Pre Move", "task": "Purchase mattress cover"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Movee", "type": "Pre Move", "task": "Confirm move with both places"}]
         const answers = {}
 
         function generateTaskTableHtml() {
@@ -79,9 +79,8 @@
 
         function generateTask(task, idx) {
             let questionsRequiredYes = task["questionsRequiredYes"]
-            let questionsRequiredNo = task["questionsRequiredNo"]
             let questionsAnyYes = task["questionsAnyYes"]
-            let questionsAnyNo = task["questionsAnyNo"]
+
             for (let aidx in questionsAnyYes) {
                 if (answers[questionsAnyYes[aidx]]) {
                     let tasksHTML = document.getElementById('tasksTable', idx)

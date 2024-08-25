@@ -1,128 +1,128 @@
 [
     // ------------------ Day Before ------------------ //
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Get A Hair Cut"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Notify Any Mail Service You Are Going Away"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Wash Any Clothes You Want To Wear"},
-    // {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Water Plants"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Delete All Game Apps"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Download Apple Maps Offline"},
-    {"questionsRequiredYes":[1],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Download Flight App"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Before","task":"Download Movies/Podcasts Offline"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Get A Hair Cut"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Notify Any Mail Service You Are Going Away"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Wash Any Clothes You Want To Wear"},
+    // {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Water Plants"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Delete All Game Apps"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Apple Maps Offline"},
+    {"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Flight App"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Movies/Podcasts Offline"},
 
     // ------------------ Night Before ------------------ //
     // Travel
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack Suitcase"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[1,2],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Check-in To Transportation"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack Suitcase"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[1,2],"role":"Me","type":"Night Before","task":"Check-in To Transportation"},
 
-    // {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set Out Keys / Phone"},
+    // {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Out Keys / Phone"},
 
     // Day Of Time Management
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set an Alarm based on Itinerary app"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set Alarm To Wake Up"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set Alarm 5 Minutes Before Having To Leave"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set Alarm At Time Have To Leave"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Set Alarm To Pack Retainer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set an Alarm based on Itinerary app"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm To Wake Up"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm 5 Minutes Before Having To Leave"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm At Time Have To Leave"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm To Pack Retainer"},
 
     // Tech For Tomorrow
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Charge Phone"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Charge Computer"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Charge Noise Cancelling Headphones"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Phone"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Computer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Noise Cancelling Headphones"},
 
     // Hygiene
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Shave Face"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Shave Notrils"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Cut Fingernails"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Shave Face"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Shave Notrils"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Cut Fingernails"},
 
     // Cleanup Before Gone For Awhile
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Eat / Remove Perishable Refrigerator / Cupboard Items You Won\"t Eat Day Of Travel"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Eat / Remove Perishable Refrigerator / Cupboard Items You Won\"t Eat Day Of Travel"},
 
     // Cleanup while on vacation
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack 1 Garbage Bag Per 2 Days"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack 1 Garbage Bag Per 2 Days"},
 
     // Packing clothes
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Underwear Per Day"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack One T Shirt Per Day"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Socks Per 2 Days"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Pants Per 2 Days"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Underwear Per Day"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One T Shirt Per Day"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Socks Per 2 Days"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Pants Per 2 Days"},
 
     // Packing Warm Clothes
-    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Pack 1 Sweater For Every 3 Days Of Travel"},
+    {"questionsRequiredYes":[4],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack 1 Sweater For Every 3 Days Of Travel"},
 
     // Misc
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before", "task":"Pack Hankerchief"},
-    {"questionsRequiredYes":[9],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Check You Have Passport"},
-    {"questionsRequiredYes":[9],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Download airalo for sim card"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before", "task":"Pack Hankerchief"},
+    {"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Check You Have Passport"},
+    {"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Download airalo for sim card"},
 
     // Pet
-    {"questionsRequiredYes":[],"questionsRequiredNo":[8],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Clean pet bathroom"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Put toilet paper rack in downstairs bathroom"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Leave extra keys by door"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Make sure treats are in cupboard"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Make sure treats in cubby magnetized to door"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Unplug shade"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Shade remote in bowl"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[10],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Setup bed with blanket and pillow"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Clean pet bathroom"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Put toilet paper rack in downstairs bathroom"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Leave extra keys by door"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats are in cupboard"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats in cubby magnetized to door"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Unplug shade"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Shade remote in bowl"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Setup bed with blanket and pillow"},
 
 
     // Ensure bathroom items are packed - Duplicateda are packed in travel bag
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"All Task's Belows Are To Ensure Item(s) Are in Travel Bag"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Toothpaste"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Floss Picks"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Hairgel"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Deodorant"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Cologne"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Face Trimmer"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Chap Stick"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Bandaids"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Sleep Mask"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"Bluelight Blocking Glasses"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Night Before","task":"All Task's Above Are To Ensure Item(s) Are in Travel Bag"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"All Task's Belows Are To Ensure Item(s) Are in Travel Bag"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Toothpaste"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Floss Picks"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Hairgel"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Deodorant"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Cologne"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Face Trimmer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Chap Stick"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bandaids"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Sleep Mask"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bluelight Blocking Glasses"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"All Task's Above Are To Ensure Item(s) Are in Travel Bag"},
 
     // ------------------ Day Of ------------------ //
 
     // Bathroom
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Retainer"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Retainer Cleaner"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Wash"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Serum"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Eye Cream"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Moisturizer"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Vitamin E Cream"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Other","type":"Day Of","task":"Pack Makeup Remover"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Retainer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Retainer Cleaner"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Wash"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Serum"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Eye Cream"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Moisturizer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Vitamin E Cream"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Other","type":"Day Of","task":"Pack Makeup Remover"},
 
     // Sunny
-    {"questionsRequiredYes":[5],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Sunscreen"},
+    {"questionsRequiredYes":[5],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Sunscreen"},
 
     // Misc
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Computer"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Computer Charger"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Check You Have Drivers License"},
-    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Unplug Electronics"},
-    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Turn Off Air Conditioners / Heaters"},
-    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Bring allergy medicine"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer Charger"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Check You Have Drivers License"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Unplug Electronics"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Turn Off Air Conditioners / Heaters"},
+    {"questionsRequiredYes":[6],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Bring allergy medicine"},
 
     // Clean Up
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[3,8],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Put Any Bread In Freezer"},
-    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Eat / Remove Perishable Refrigerator / Cupboard Items"},
-    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Take Out Trash"},
-    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Clean Sink"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[3,8],"role":"Me","type":"Day Of","task":"Put Any Bread In Freezer"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Eat / Remove Perishable Refrigerator / Cupboard Items"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Take Out Trash"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Clean Sink"},
 
     // Staying Warm
-    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Wear / Pack Hat And Gloves"},
+    {"questionsRequiredYes":[4],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Wear / Pack Hat And Gloves"},
 
     // Everyone Section
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Everything Below Is For Everyone"},
-    {"questionsRequiredYes":[5],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Sunglasses"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Water Bottle"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Noise Cancelling Headphones"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Headphone Charger"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Everything Below Is For Everyone"},
+    {"questionsRequiredYes":[5],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Sunglasses"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Water Bottle"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Noise Cancelling Headphones"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Headphone Charger"},
     // Phone
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger In Carry On"},
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger Cord In Carry On"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger In Carry On"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger Cord In Carry On"},
 
     // Prevent Accidents
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Go to Bathroom Before Leaving"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Go to Bathroom Before Leaving"},
 
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Me","type":"Day Of","task":"Everything Above Is For Everyone"}
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Everything Above Is For Everyone"}
     // Everyone Section
 ]

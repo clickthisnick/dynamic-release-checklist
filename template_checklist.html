@@ -77,9 +77,8 @@
 
         function generateTask(task, idx) {
             let questionsRequiredYes = task["questionsRequiredYes"]
-            let questionsRequiredNo = task["questionsRequiredNo"]
             let questionsAnyYes = task["questionsAnyYes"]
-            let questionsAnyNo = task["questionsAnyNo"]
+
             for (let aidx in questionsAnyYes) {
                 if (answers[questionsAnyYes[aidx]]) {
                     let tasksHTML = document.getElementById('tasksTable', idx)
