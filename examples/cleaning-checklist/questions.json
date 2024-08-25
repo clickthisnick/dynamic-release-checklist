@@ -1,0 +1,27 @@
+[
+    {"id": 1, "text": "Are the dishes in the dishwasher clean?", "description": "", "default": false},
+    {"id": 2, "text": "Is the trash can more than halfway full?", "description": "", "default": false},
+    {"id": 6, "text": "Are there dirty dishes?", "description": "", "default": false},
+    {"id": 13, "text": "Are the water bottles dirty?", "description": "", "default": false},
+
+    // washing machine
+    {"id": 3, "text": "Is there anything in the washing machine?", "description": "", "default": false},
+    {"id": 4, "text": "Is there anything in the dryer?", "description": "", "default": false},
+    {"id": 8, "text": "Are there any cardboard boxes out?", "description": "", "default": false},
+    {"id": 10, "text": "Is the litterbox clean?", "description": "", "default": false},
+
+    // living room
+    {"id": 5, "text": "Are there clothes in the living room?", "description": "", "default": false},
+    {"id": 10, "text": "Does the sofa need vacuuming?", "description": "", "default": false},
+
+    // downstairs bathroom
+    {"id": 7, "text": "Does the downstairs bathroom need cleaning?", "description": "", "default": false},
+
+    // mail
+    {"id": 9, "text": "Is there any mail on top of cupboard?", "description": "", "default": false},
+
+    // upstairs
+    {"id": 11, "text": "Are there clean clothes?", "description": "", "default": false},
+
+    {"id": 12, "text": "Do you need to shave?", "description": "", "default": false}
+]

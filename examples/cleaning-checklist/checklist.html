@@ -26,10 +26,17 @@
 			let pathSplit = window.location.pathname.split("/");
 			pathSplit.pop()
 			let indexDirPath = pathSplit.join("/")
-			indexDirPath = indexDirPath += "/config.js"
-			console.log(path)
-            const response = await fetch(indexDirPath);
-            const workouts = await response.json(); //extract JSON from the http response
+			let questionsUrl = indexDirPath + "/questions.json"
+            let tasksUrl = indexDirPath + "/tasks.json"
+
+            const questionsResponse = await fetch(questionsUrl);
+            const questions = await questionsResponse.json(); //extract JSON from the http response
+
+            const tasksResponse = await fetch(tasksUrl);
+            const tasks = await tasksResponse.json(); //extract JSON from the http response
+
+            console.log(questions)
+            console.log(tasks)
             // const workoutNames = workouts['workouts']
             // var select = document.getElementById("selectWorkout");
 

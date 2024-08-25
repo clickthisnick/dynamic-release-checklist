@@ -1,0 +1,69 @@
+[
+    // ------------------ Kitchen ------------------ //
+    // While hands are clean
+    {"questionsRequiredYes":[1],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put away the clean dishes in the dishwasher"},
+
+    // Long running things
+    {"questionsRequiredYes":[13],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Add Cleaner Tablet To Water Bottle"},
+    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Clean dryer lint filter"},
+    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put clothes in dryer into clean hamper"},
+    {"questionsRequiredYes":[3],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put clean clothes into dryer"},
+    {"questionsRequiredYes":[5],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put away clothes in living room"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put dirty clothes into washing machine"},
+
+    {"questionsRequiredYes":[2],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Take trash"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Take out recycling"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put any trash from living room and kitchen into trash can"},
+
+    // Clean top down
+    // Load Dishwasher
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put on gloves"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Fill a coffee cup mug full of water"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put all the utensils in the mug"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Stack all small plates with water inbetween"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Stack all large plates with water inbetween"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Wait 5 minutes"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put on gloves"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Brush off utensils and load in silverware washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Brush off bowls and load in top washer"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Brush off everything. small plates load in sideways, facing you bottom washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Brush off large plates and load normally in washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Load everything else into dishwasher"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Start dishwasher"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Spray and wipe countertop"},
+    {"questionsRequiredYes":[13],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Scrub Water Bottle and Let Air Dry"},
+
+    // Clean Downstairs bathroom
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Organize bathroom vanity"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put away/Remove all items from bathroom"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Shave Face"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Shave Nostrils"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Shave Ears"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Shave Tricep"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Shave Foot"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Wash Face"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Spray mirror cleaner and wipe off"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Clean glass shelf"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Clean sink"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Use broom and brush off toilet"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Clean toilet"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Sweep floor"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Wash floor with paper towels"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Plugin in eucalpyous smelly thing"},
+
+    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Recycle cardboard boxes"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Clean litterbox"},
+
+    // ------------------ Living Room ------------------ //
+    {"questionsRequiredYes":[9],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Take mail off cupboard and sort"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Wipe off living room table"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Vacuum Sofa"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Vacuum Floor"},
+
+    // Floor
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Sweep floor with red broom"},
+
+    // Put away clean clothes
+    {"questionsRequiredYes":[11],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","task":"Put away clean clothes"}
+
+]
