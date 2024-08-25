@@ -4,7 +4,7 @@
     <!-- Needed for mobile to function (somewhat) -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" type="text/css" href="assets/ceruleanBootswatch.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/ceruleanBootswatch.min.css"> -->
     <style>
 
         body {
@@ -19,45 +19,253 @@
             color: white;
         }
     </style>
-
+	<link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
+	<!-- <script src="../../lib/js/bootstrap.min.js"></script> -->
     <script>
-        const loadConfig = async () => {
-			// /Users/mycomputer/dev/dynamic-release-checklist/src/checklist.html
-			let pathSplit = window.location.pathname.split("/");
-			pathSplit.pop()
-			let indexDirPath = pathSplit.join("/")
-			let questionsUrl = indexDirPath + "/questions.json"
-            let tasksUrl = indexDirPath + "/tasks.json"
+        const answers = {}
+        const questions = {
+            1: "Are the dishes in the dishwasher clean?",
+            2: "Is the trash can more than halfway full?",
+            6: "Are there dirty dishes?",
+            13: "Are the water bottles dirty?",
 
-            const questionsResponse = await fetch(questionsUrl);
-            const questions = await questionsResponse.json(); //extract JSON from the http response
+            // washing machine
+            3: "Is there anything in the washing machine?",
+            4: "Is there anything in the dryer?",
+            8: "Are there any cardboard boxes out?",
+            10: "Is the litterbox clean?",
 
-            const tasksResponse = await fetch(tasksUrl);
-            const tasks = await tasksResponse.json(); //extract JSON from the http response
+            // living room
+            5: "Are there clothes in the living room?",
+            10: "Does the sofa need vacuuming?",
 
-            console.log(questions)
-            console.log(tasks)
-            // const workoutNames = workouts['workouts']
-            // var select = document.getElementById("selectWorkout");
+            // downstairs bathroom
+            7: "Does the downstairs bathroom need cleaning?",
 
-            // for(var i = 0; i < workoutNames.length; i++) {
-            //     var opt = workoutNames[i];
-            //     var el = document.createElement("option");
-            //     el.textContent = opt;
-            //     el.value = opt;
-            //     select.appendChild(el);
-            // }
+            // mail
+            9: "Is there any mail on top of cupboard?",
+
+            // upstairs
+            11: "Are there clean clothes?",
+
+            12: "Do you need to shave?"
         }
 
-		// function selectWorkout() {
-        //     selectedWorkoutRoutineName = document.getElementById("selectWorkout").value;
-        //     startWorkout(selectedWorkoutRoutineName)
-        // }
+tasks = [
+    // ------------------ Kitchen ------------------ //
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[1],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Test"},
+    // While hands are clean
+    {"questionsRequiredYes":[1],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put away the clean dishes in the dishwasher"},
 
-		loadConfig()
+    // Long running things
+    {"questionsRequiredYes":[13],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Add Cleaner Tablet To Water Bottle"},
+    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Clean dryer lint filter"},
+    {"questionsRequiredYes":[4],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put clothes in dryer into clean hamper"},
+    {"questionsRequiredYes":[3],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put clean clothes into dryer"},
+    {"questionsRequiredYes":[5],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put away clothes in living room"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put dirty clothes into washing machine"},
+
+    {"questionsRequiredYes":[2],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Take trash"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Take out recycling"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put any trash from living room and kitchen into trash can"},
+
+    // Clean top down
+    // Load Dishwasher
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put on gloves"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Fill a coffee cup mug full of water"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put all the utensils in the mug"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all small plates with water inbetween"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all large plates with water inbetween"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Wait 5 minutes"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put on gloves"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Brush off utensils and load in silverware washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Brush off bowls and load in top washer"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Brush off everything. small plates load in sideways, facing you bottom washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Brush off large plates and load normally in washer"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Load everything else into dishwasher"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Start dishwasher"},
+    {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Spray and wipe countertop"},
+    {"questionsRequiredYes":[13],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Scrub Water Bottle and Let Air Dry"},
+
+    // Clean Downstairs bathroom
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Organize bathroom vanity"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put away/Remove all items from bathroom"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Shave Face"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Shave Nostrils"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Shave Ears"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Shave Tricep"},
+    {"questionsRequiredYes":[12],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Shave Foot"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Wash Face"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Spray mirror cleaner and wipe off"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Clean glass shelf"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Clean sink"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Use broom and brush off toilet"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Clean toilet"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Sweep floor"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Wash floor with paper towels"},
+    {"questionsRequiredYes":[7],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Plugin in eucalpyous smelly thing"},
+
+    {"questionsRequiredYes":[8],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Recycle cardboard boxes"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Clean litterbox"},
+
+    // ------------------ Living Room ------------------ //
+    {"questionsRequiredYes":[9],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Take mail off cupboard and sort"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Wipe off living room table"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Vacuum Sofa"},
+    {"questionsRequiredYes":[10],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Vacuum Floor"},
+
+    // Floor
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Sweep floor with red broom"},
+
+    // Put away clean clothes
+    {"questionsRequiredYes":[11],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put away clean clothes"}
+
+]
+
+    function generateTaskTableHtml() {
+        return `<table id="tasksTable" class="table table-striped table-hover ">
+            <tbody>
+                <thead>
+                    <tr>
+                        <th>Tasks</th>
+                    </tr>
+                </thead>
+            </tbody>
+        </table>`
+    }
+
+    function allRequired(arr) {
+        if (Array.isArray(arr) && arr.length) {
+            for (let aidx in arr) {
+                if (!answers[arr[aidx]]) {
+                    return false
+                }
+            }
+            return true
+        }
+        return false
+    }
+
+    function generateTask(task, idx) {
+        let questionsRequiredYes = task["questionsRequiredYes"]
+        let questionsRequiredNo = task["questionsRequiredNo"]
+        let questionsAnyYes = task["questionsAnyYes"]
+        let questionsAnyNo = task["questionsAnyNo"]
+
+        for (let aidx in questionsAnyYes) {
+            if (answers[questionsAnyYes[aidx]]) {
+                let tasksHTML = document.getElementById('tasksTable', idx)
+                let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["text"], idx)
+                tasksHTML.innerHTML = newHTML
+                return
+            }
+        }
+        
+        if (allRequired(questionsRequiredYes)) {
+            let tasksHTML = document.getElementById('tasksTable', idx)
+            let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["text"], idx)
+            tasksHTML.innerHTML = newHTML
+            return
+        }
+    } 
+
+    function generateTasks() {
+        let idx = 1;
+        for (let taskEl in tasks) {
+            let task = tasks[taskEl]
+            generateTask(task, idx)
+            idx +=1
+        }
+    }
+
+    function switchToChecklist() {
+        document.getElementById("questions").style.visibility = "hidden";
+        document.getElementById("tasks").style.visibility = "visible";
+        document.getElementById("tasks").innerHTML = generateTaskTableHtml()
+        generateTasks()
+        document.getElementById('questions').innerHTML = ""; // TODO you cant go back
+    }
+
+    function switchToQuestions() {
+        document.getElementById("tasks").style.visibility = "hidden";
+        document.getElementById("questions").style.visibility = "visible";
+    }
+
+    function answerQuestion(idx) {
+        const answerButton = document.getElementById("answerQuestion" + idx)
+
+        if (answers[idx]) {
+            answerButton.classList.remove("btn-success")
+            answerButton.classList.add("btn-danger")
+            answerButton.innerText = "No"
+            answers[idx] = false
+        } else {
+            answerButton.classList.remove("btn-danger")
+            answerButton.classList.add("btn-success")
+            answerButton.innerText = "Yes"
+            answers[idx] = true   
+        }
+    }
+
+    
+    function generateQuestionRowHtml(questionText, idx) {
+        return `<tr><td><h2>` + questionText + `</h2>
+            </td>
+            <td>
+                <button id=answerQuestion` + idx + ` v"
+                class="btn btn-danger"
+                onclick="answerQuestion(` + idx + `)">
+                No
+            </button>
+            </div>
+        </tr>`
+    }
+
+    function generateTaskRowHtml(taskText, idx) {
+        return `<tr><td><h2>` + taskText + `</h2>
+            </td>
+        </tr>`
+    }
+
+		function loadConfig() {
+            let idx = 1 // Start at 1
+            for (let question in questions) {
+                answers[idx] = false
+                let questionsHTML = document.getElementById('questions')
+                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question], idx)
+                questionsHTML.innerHTML = newHTML
+                idx += 1
+            }
+        }
+
 	</script>
 </head>
 
+<div onclick="loadConfig()">
+    Start
+</div>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab" aria-expanded="false">Questions</a></li>
+    <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
+    <li class="nav-item" onclick="switchToChecklist()"><a class="nav-link" data-toggle="tab" aria-expanded="false">Checklist</a></li>
+</ul>
+
+<table id="questions" class="table table-striped table-hover ">
+    <tbody>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+    </tbody>
+</table>
+
+<div id="tasks" style="visibility:hidden">
+</div>
+
+<!-- 
 <div id="workout" style="visibility:hidden">
     <div id="header">
         <span id="workoutName"></span><br>
@@ -86,4 +294,4 @@
         <button onclick="resetTimer()">Timer</button><span id="timer"></span>    
 
     </div>
-</div>
+</div> -->
