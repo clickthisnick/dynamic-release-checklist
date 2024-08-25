@@ -74,8 +74,8 @@ tasks = [
     {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put on gloves"},
     // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Fill a coffee cup mug full of water"},
     // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put all the utensils in the mug"},
-    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all small plates with water inbetween"},
-    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all large plates with water inbetween"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all small plates with water in between"},
+    // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Stack all large plates with water in between"},
     // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Wait 5 minutes"},
     // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put on gloves"},
     // {"questionsRequiredYes":[6],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Brush off utensils and load in silverware washer"},
@@ -160,14 +160,14 @@ tasks = [
                 return
             }
         }
-        
+
         if (allRequired(questionsRequiredYes)) {
             let tasksHTML = document.getElementById('tasksTable', idx)
             let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["text"], idx)
             tasksHTML.innerHTML = newHTML
             return
         }
-    } 
+    }
 
     function generateTasks() {
         let idx = 1;
@@ -183,7 +183,7 @@ tasks = [
         document.getElementById("tasks").style.visibility = "visible";
         document.getElementById("tasks").innerHTML = generateTaskTableHtml()
         generateTasks()
-        document.getElementById('questions').innerHTML = ""; // TODO you cant go back
+        document.getElementById('questions').innerHTML = ""; // TODO you can't go back
     }
 
     function switchToQuestions() {
@@ -203,11 +203,11 @@ tasks = [
             answerButton.classList.remove("btn-danger")
             answerButton.classList.add("btn-success")
             answerButton.innerText = "Yes"
-            answers[idx] = true   
+            answers[idx] = true
         }
     }
 
-    
+
     function generateQuestionRowHtml(questionText, idx) {
         return `<tr><td><h2>` + questionText + `</h2>
             </td>
@@ -265,7 +265,7 @@ tasks = [
 <div id="tasks" style="visibility:hidden">
 </div>
 
-<!-- 
+<!--
 <div id="workout" style="visibility:hidden">
     <div id="header">
         <span id="workoutName"></span><br>
@@ -291,7 +291,7 @@ tasks = [
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="times" name="times"><br><br>
         <button onclick="saveWorkout()">Save Workout</button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button onclick="resetTimer()">Timer</button><span id="timer"></span>    
+        <button onclick="resetTimer()">Timer</button><span id="timer"></span>
 
     </div>
 </div> -->
