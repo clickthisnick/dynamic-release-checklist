@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Needed for mobile to function (somewhat) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
+                aria-expanded="false">Questions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
+        <li class="nav-item" onclick="switchToChecklist()"><a class="nav-link" data-toggle="tab"
+                aria-expanded="false">Checklist</a></li>
+    </ul>
+
+
+    <div id="tasks" style="visibility:hidden">
+    </div>
+
+    <table id="questions" class="table table-striped table-hover ">
+        <tbody>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .completed {
+            background-color: green;
+            color: white;
+        }
+
+        input,
+        button {
+            background-color: rgb(58, 25, 25);
+            background: rgb(58, 25, 25);
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
+
+    <script>
+    const questions=[{"id": 1, "text": "Is this your first release for this program?"}, {"id": 2, "text": "Will this release impact the availability scripts?"}, {"id": 3, "text": "Does this release include any new batch jobs?"}, {"id": 4, "text": "Does this release include any change to a Rule Engine?"}, {"id": 5, "text": "Does this release require a planned downtime window?"}]
+    const tasks=[{"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Pre Release", "task": "Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Pre Release", "task": "Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Pre Release", "task": "Create and send release Outlook meeting invite to release team"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [1], "questionsAnyNo": [], "role": "QA", "type": "Pre Release", "task": "Ensure Website availability is set up "}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [2], "questionsAnyNo": [], "role": "QA", "type": "Pre Release", "task": "Suspend availability scripts / Update if needed"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [3], "questionsAnyNo": [], "role": "SD", "type": "Pre Release", "task": "Push Batch job(s) to production (should be disabled on initial push)"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Ensure all automated tests are passing, (unit, integration, UI where applicable) "}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [4], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Ensure all Rule Engine TestSuites are passing."}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [5], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Suspend availability Alarms during scheduled downtime "}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Ensure no Batch Jobs are running"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Make a copy of production"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Push code to production"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [5], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Implement the Down Page"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [3], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Enable Batch Jobs and verify their schedule"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [4], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Push RuleEngine Code To Production"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Notify team that we are ready for smoke test"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "BA", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [5], "questionsAnyNo": [], "role": "SD", "type": "Release", "task": "Remove down page", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Release", "task": "Notify team of successful release by replying all to Outlook calendar invitation", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Pull the release branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Pull the master branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Merge release branch into master ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Push to master ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Merge master to any open release branches", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Create Release Tag on Master Branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Delete release branch if applicable", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Delete backup of production ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "SD", "type": "Post Release", "task": "Notify team to GRPO and delete/re-pull Integration branches", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Post Release", "task": "Do a Gitk to verify branch merging", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Post Release", "task": "Close the release task, verify checklist is complete and close the version, making sure the release date is accurate", "owner": ",comment:"}, {"questionsRequiredYes": [2], "questionsRequiredNo": [1], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Post Release", "task": "Deploy/Unsuspend availability script", "owner": ",comment:"}, {"questionsRequiredYes": [1], "questionsRequiredNo": [2], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Post Release", "task": "Deploy availability script", "owner": ",comment:"}, {"questionsRequiredYes": [1, 2], "questionsRequiredNo": [], "questionsAnyYes": [], "questionsAnyNo": [], "role": "QA", "type": "Post Release", "task": "Deploy availability script", "owner": ",comment:"}]
+        const answers = {}
+
+        function generateTaskTableHtml() {
+            return `<table id="tasksTable" class="table table-striped table-hover ">
+            <tbody>
+                <thead>
+                    <tr>
+                        <th>Tasks</th>
+                    </tr>
+                </thead>
+            </tbody>
+        </table>`
+        }
+
+        function allRequired(arr) {
+            if (Array.isArray(arr) && arr.length) {
+                for (let aidx in arr) {
+                    if (!answers[arr[aidx]]) {
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        }
+
+        function generateTask(task, idx) {
+            let questionsRequiredYes = task["questionsRequiredYes"]
+            let questionsRequiredNo = task["questionsRequiredNo"]
+            let questionsAnyYes = task["questionsAnyYes"]
+            let questionsAnyNo = task["questionsAnyNo"]
+            for (let aidx in questionsAnyYes) {
+                if (answers[questionsAnyYes[aidx]]) {
+                    let tasksHTML = document.getElementById('tasksTable', idx)
+                    let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
+                    tasksHTML.innerHTML = newHTML
+                    return
+                }
+            }
+
+            if (allRequired(questionsRequiredYes)) {
+                let tasksHTML = document.getElementById('tasksTable', idx)
+                let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
+                tasksHTML.innerHTML = newHTML
+                return
+            }
+        }
+
+        function generateTasks() {
+            let idx = 1;
+            for (let taskEl in tasks) {
+                let task = tasks[taskEl]
+                generateTask(task, idx)
+                idx += 1
+            }
+        }
+
+        function switchToChecklist() {
+            document.getElementById("questions").style.visibility = "hidden";
+            document.getElementById("tasks").style.visibility = "visible";
+            document.getElementById("tasks").innerHTML = generateTaskTableHtml()
+            generateTasks()
+            document.getElementById('questions').innerHTML = ""; // TODO you can't go back
+        }
+
+        function switchToQuestions() {
+            document.getElementById("tasks").style.visibility = "hidden";
+            document.getElementById("questions").style.visibility = "visible";
+        }
+
+        function answerQuestion(idx) {
+            const answerButton = document.getElementById("answerQuestion" + idx)
+
+            if (answers[idx]) {
+                answerButton.classList.remove("btn-success")
+                answerButton.classList.add("btn-danger")
+                answerButton.innerText = "No"
+                answers[idx] = false
+            } else {
+                answerButton.classList.remove("btn-danger")
+                answerButton.classList.add("btn-success")
+                answerButton.innerText = "Yes"
+                answers[idx] = true
+            }
+        }
+
+
+        function generateQuestionRowHtml(questionText, idx) {
+            return `<tr><td><h2>` + questionText + `</h2>
+            </td>
+            <td>
+                <button id=answerQuestion` + idx + ` v"
+                class="btn btn-danger"
+                onclick="answerQuestion(` + idx + `)">
+                No
+            </button>
+            </div>
+        </tr>`
+        }
+
+        function generateTaskRowHtml(taskText, idx) {
+            return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
+            </td>
+        </tr>`
+        }
+
+        function loadConfig() {
+            let idx = 1 // Start at 1
+            for (let question in questions) {
+                answers[idx] = false
+                let questionsHTML = document.getElementById('questions')
+                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
+                questionsHTML.innerHTML = newHTML
+                idx += 1
+            }
+        }
+
+        loadConfig()
+
+    </script>
+</head>

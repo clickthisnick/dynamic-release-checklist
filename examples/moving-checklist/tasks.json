@@ -1,0 +1,8 @@
+[
+    {"questionsRequiredYes":[1],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Moving Day","task":"Unscrew Lightbulbs and Pack. (Movers won\"t move with lightbulbs in)"},
+    {"questionsRequiredYes":[2],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Moving Day","task":"Fold metal bed frame, leaving screws in frame"},
+    {"questionsRequiredYes":[3],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Pre Move","task":"Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Pre Move","task":"Purchase boxes, around 38 medium for a 1 bedroom"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Pre Move","task":"Purchase mattress cover"},
+    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Movee","type":"Pre Move","task":"Confirm move with both places"}
+  ]

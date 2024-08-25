@@ -1,0 +1,7 @@
+[
+    {"id":1,"text":"Is this your first release for this program?"},
+    {"id":2,"text":"Will this release impact the availability scripts?"},
+    {"id":3,"text":"Does this release include any new batch jobs?"},
+    {"id":4,"text":"Does this release include any change to a Rule Engine?"},
+    {"id":5,"text":"Does this release require a planned downtime window?"}
+  ]

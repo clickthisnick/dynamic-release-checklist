@@ -1,0 +1,13 @@
+[
+    {"id": 1, "text": "Are you taking a plane?" },
+    {"id": 2, "text": "Are you taking a bus?"   },
+    {"id": 3, "text": "Do you have bread?"      },
+    {"id": 4, "text": "Is your destination cold?"},
+    {"id": 5, "text": "Is your destination sunny?"},
+    {"id": 6, "text": "Will there be any pets (Aside from your own)?"},
+    {"id": 7, "text": "Are you taking your pets?"},
+    {"id": 8, "text": "Is the house going to be empty?"},
+    {"id": 9, "text": "Are you travelling Internationally?"},
+    {"id": 10, "text": "Is anyone taking care of the pets?"}
+]
+

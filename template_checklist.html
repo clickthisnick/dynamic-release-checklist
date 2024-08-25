@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <!-- Needed for mobile to function (somewhat) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
+                aria-expanded="false">Questions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
+        <li class="nav-item" onclick="switchToChecklist()"><a class="nav-link" data-toggle="tab"
+                aria-expanded="false">Checklist</a></li>
+    </ul>
+
+
+    <div id="tasks" style="visibility:hidden">
+    </div>
+
+    <table id="questions" class="table table-striped table-hover ">
+        <tbody>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .completed {
+            background-color: green;
+            color: white;
+        }
+
+        input,
+        button {
+            background-color: rgb(58, 25, 25);
+            background: rgb(58, 25, 25);
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
+
+    <script>
+        const answers = {}
+
+        function generateTaskTableHtml() {
+            return `<table id="tasksTable" class="table table-striped table-hover ">
+            <tbody>
+                <thead>
+                    <tr>
+                        <th>Tasks</th>
+                    </tr>
+                </thead>
+            </tbody>
+        </table>`
+        }
+
+        function allRequired(arr) {
+            if (Array.isArray(arr) && arr.length) {
+                for (let aidx in arr) {
+                    if (!answers[arr[aidx]]) {
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        }
+
+        function generateTask(task, idx) {
+            let questionsRequiredYes = task["questionsRequiredYes"]
+            let questionsRequiredNo = task["questionsRequiredNo"]
+            let questionsAnyYes = task["questionsAnyYes"]
+            let questionsAnyNo = task["questionsAnyNo"]
+            for (let aidx in questionsAnyYes) {
+                if (answers[questionsAnyYes[aidx]]) {
+                    let tasksHTML = document.getElementById('tasksTable', idx)
+                    let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
+                    tasksHTML.innerHTML = newHTML
+                    return
+                }
+            }
+
+            if (allRequired(questionsRequiredYes)) {
+                let tasksHTML = document.getElementById('tasksTable', idx)
+                let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
+                tasksHTML.innerHTML = newHTML
+                return
+            }
+        }
+
+        function generateTasks() {
+            let idx = 1;
+            for (let taskEl in tasks) {
+                let task = tasks[taskEl]
+                generateTask(task, idx)
+                idx += 1
+            }
+        }
+
+        function switchToChecklist() {
+            document.getElementById("questions").style.visibility = "hidden";
+            document.getElementById("tasks").style.visibility = "visible";
+            document.getElementById("tasks").innerHTML = generateTaskTableHtml()
+            generateTasks()
+            document.getElementById('questions').innerHTML = ""; // TODO you can't go back
+        }
+
+        function switchToQuestions() {
+            document.getElementById("tasks").style.visibility = "hidden";
+            document.getElementById("questions").style.visibility = "visible";
+        }
+
+        function answerQuestion(idx) {
+            const answerButton = document.getElementById("answerQuestion" + idx)
+
+            if (answers[idx]) {
+                answerButton.classList.remove("btn-success")
+                answerButton.classList.add("btn-danger")
+                answerButton.innerText = "No"
+                answers[idx] = false
+            } else {
+                answerButton.classList.remove("btn-danger")
+                answerButton.classList.add("btn-success")
+                answerButton.innerText = "Yes"
+                answers[idx] = true
+            }
+        }
+
+
+        function generateQuestionRowHtml(questionText, idx) {
+            return `<tr><td><h2>` + questionText + `</h2>
+            </td>
+            <td>
+                <button id=answerQuestion` + idx + ` v"
+                class="btn btn-danger"
+                onclick="answerQuestion(` + idx + `)">
+                No
+            </button>
+            </div>
+        </tr>`
+        }
+
+        function generateTaskRowHtml(taskText, idx) {
+            return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
+            </td>
+        </tr>`
+        }
+
+        function loadConfig() {
+            let idx = 1 // Start at 1
+            for (let question in questions) {
+                answers[idx] = false
+                let questionsHTML = document.getElementById('questions')
+                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
+                questionsHTML.innerHTML = newHTML
+                idx += 1
+            }
+        }
+
+        loadConfig()
+
+    </script>
+</head>
