@@ -12,6 +12,11 @@
             color: white;
         }
 
+        .completed {
+            background-color:green;
+            color: white;
+        }
+
         input,
         button {
             background-color: rgb(58, 25, 25);
@@ -53,7 +58,6 @@
 
 tasks = [
     // ------------------ Kitchen ------------------ //
-    {"questionsRequiredYes":[],"questionsRequiredNo":[],"questionsAnyYes":[1],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Test"},
     // While hands are clean
     {"questionsRequiredYes":[1],"questionsRequiredNo":[],"questionsAnyYes":[],"questionsAnyNo":[],"role":"Nick","type":"Clean","text":"Put away the clean dishes in the dishwasher"},
 
@@ -222,7 +226,7 @@ tasks = [
     }
 
     function generateTaskRowHtml(taskText, idx) {
-        return `<tr><td><h2>` + taskText + `</h2>
+        return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
             </td>
         </tr>`
     }
@@ -264,34 +268,3 @@ tasks = [
 
 <div id="tasks" style="visibility:hidden">
 </div>
-
-<!--
-<div id="workout" style="visibility:hidden">
-    <div id="header">
-        <span id="workoutName"></span><br>
-        <span id="workoutLastCompleted"></span><br>
-        <input type="text" id="currentExerciseName" name="currentExerciseName">
-        <br>
-        <button onclick="prevExercise()">Prev</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button onclick="nextExercise()">Next</button>
-        <br><br>Previous:<br>
-        <span id="previousWorkoutExerciseReps"></span><br>
-        <span id="previousWorkoutExerciseWeights"></span><br>
-        <span id="previousWorkoutExerciseTimes"></span><br>
-        Current:
-        <span id="currentWorkoutExerciseReps"></span><br>
-        <span id="currentWorkoutExerciseWeights"></span><br>
-        <span id="currentWorkoutExerciseTimes"></span><br>
-        <label for="reps">Reps:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="reps" name="reps"><br><br>
-        <label for="weights">Weight:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="weights" name="weights"><br><br>
-        <label for="times">Time:</label>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="times" name="times"><br><br>
-        <button onclick="saveWorkout()">Save Workout</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button onclick="resetTimer()">Timer</button><span id="timer"></span>
-
-    </div>
-</div> -->
