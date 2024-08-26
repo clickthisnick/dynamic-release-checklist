@@ -9,7 +9,7 @@
         <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
                 aria-expanded="false">Questions</a></li>
         <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
-        <li class="nav-item" onclick="switchToChecklist()"><a class="nav-link" data-toggle="tab"
+        <li class="nav-item" onclick="switchToChecklist(true)"><a class="nav-link" data-toggle="tab"
                 aria-expanded="false">Checklist</a></li>
     </ul>
 
@@ -65,6 +65,14 @@
         </table>`
         }
 
+        function decodeQueryParam(p) {
+            return decodeURIComponent(p.replace(/\+/g, " "));
+        }
+
+        function loadJSONQueryParameter(data) {
+            return JSON.parse(decodeQueryParam(data));
+        }
+
         function allRequired(arr) {
             if (Array.isArray(arr) && arr.length) {
                 for (let aidx in arr) {
@@ -107,12 +115,19 @@
             }
         }
 
-        function switchToChecklist() {
+        function switchToChecklist(manual) {
             document.getElementById("questions").style.visibility = "hidden";
             document.getElementById("tasks").style.visibility = "visible";
             document.getElementById("tasks").innerHTML = generateTaskTableHtml()
             generateTasks()
             document.getElementById('questions').innerHTML = ""; // TODO you can't go back
+
+            if (manual) {
+                const url = new URL(location.href);
+                url.searchParams.set('answers', JSON.stringify(answers));
+                url.searchParams.set('redirectToTasks', true);
+                reloadPage(url)
+            }
         }
 
         function switchToQuestions() {
@@ -136,6 +151,9 @@
             }
         }
 
+        function reloadPage(url) {
+            location.href = url
+        }
 
         function generateQuestionRowHtml(questionText, idx) {
             return `<tr><td><h2>` + questionText + `</h2>
@@ -157,14 +175,44 @@
         }
 
         function loadConfig() {
+            const url = new URL(location.href);
+
+            let url_answers = {}
+            if (url.searchParams.get('answers')) {
+                url_answers = loadJSONQueryParameter(url.searchParams.get('answers'));
+            }
+
+            console.log(url_answers)
+            console.log('hi')
+
             let idx = 1 // Start at 1
             for (let question in questions) {
-                answers[idx] = false
                 let questionsHTML = document.getElementById('questions')
                 let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
                 questionsHTML.innerHTML = newHTML
+
+                // The opposite since answerQuestion will flip it
+                if (idx in url_answers && url_answers[idx] === true) {
+                    answers[idx] = false
+                } else {
+                    answers[idx] = true
+                }
+                answerQuestion(idx)
+
                 idx += 1
             }
+
+            let redirectToTasks = url.searchParams.get('redirectToTasks');
+
+            if (redirectToTasks) {
+                switchToChecklist(false)
+            }
+
+            if (Object.keys(url_answers).length === 0) {
+                url.searchParams.set('answers', JSON.stringify(answers));
+                reloadPage(url)
+            }
+
         }
 
         loadConfig()
