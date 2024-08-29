@@ -83,23 +83,30 @@
             return false
         }
 
+        function addTaskRow(task, idx) {
+            let tasksHTML = document.getElementById('tasksTable', idx)
+            let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
+            tasksHTML.innerHTML = newHTML
+        }
+
         function generateTask(task, idx) {
             let questionsRequiredYes = task["questionsRequiredYes"]
             let questionsAnyYes = task["questionsAnyYes"]
 
+            if (questionsRequiredYes.length === 0 && questionsAnyYes.length === 0) {
+                addTaskRow(task, idx)
+                return
+            }
+
             for (let aidx in questionsAnyYes) {
                 if (answers[questionsAnyYes[aidx]]) {
-                    let tasksHTML = document.getElementById('tasksTable', idx)
-                    let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
-                    tasksHTML.innerHTML = newHTML
+                    addTaskRow(task, idx)
                     return
                 }
             }
 
             if (allRequired(questionsRequiredYes)) {
-                let tasksHTML = document.getElementById('tasksTable', idx)
-                let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
-                tasksHTML.innerHTML = newHTML
+                addTaskRow(task, idx)
                 return
             }
         }
@@ -179,9 +186,6 @@
             if (url.searchParams.get('answers')) {
                 url_answers = loadJSONQueryParameter(url.searchParams.get('answers'));
             }
-
-            console.log(url_answers)
-            console.log('hi')
 
             let idx = 1 // Start at 1
             for (let question in questions) {
