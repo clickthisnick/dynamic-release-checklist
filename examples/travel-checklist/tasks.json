@@ -1,9 +1,13 @@
 [
     // ------------------ Day Before ------------------ //
+    {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Card"},
+    {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Badge"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Get A Hair Cut"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Notify Any Mail Service You Are Going Away"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Wash Any Clothes You Want To Wear"},
     // {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Water Plants"},
+    {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Corporate Card App"},
+    {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Put Corporate Card On Apple Pay"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Delete All Game Apps"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Apple Maps Offline"},
     {"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Flight App"},
@@ -52,6 +56,7 @@
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before", "task":"Pack Hankerchief"},
     {"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Check You Have Passport"},
     {"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Download airalo for sim card"},
+    {"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bring International Power Cord Plugs"},
 
     // Pet
     {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Clean pet bathroom"},
