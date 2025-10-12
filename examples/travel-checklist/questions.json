@@ -8,6 +8,7 @@
     {"id": 7, "text": "Are you taking your pets?"},
     {"id": 8, "text": "Is the house going to be empty?"},
     {"id": 9, "text": "Are you travelling Internationally?"},
-    {"id": 10, "text": "Is anyone taking care of the pets?"}
+    {"id": 10, "text": "Is anyone taking care of the pets?"},
+    {"id": 11, "text": "Is this a business trip?"},
 ]
 
