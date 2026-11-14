@@ -1,0 +1,457 @@
+Travel checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Are you taking a plane?
+   Default answer: No
+2. Are you taking a bus?
+   Default answer: No
+3. Do you have bread?
+   Default answer: No
+4. Is your destination cold?
+   Default answer: No
+5. Is your destination sunny?
+   Default answer: No
+6. Will there be any pets (Aside from your own)?
+   Default answer: No
+7. Are you taking your pets?
+   Default answer: No
+8. Is the house going to be empty?
+   Default answer: No
+9. Are you travelling Internationally?
+   Default answer: No
+10. Is anyone taking care of the pets?
+   Default answer: No
+11. Is this a business trip?
+   Default answer: No
+
+Tasks:
+1. Always show.
+   Section: Safety
+   Role: Me
+   Leave every smoke alarm and carbon monoxide alarm turned on and plugged in.
+
+2. Show if all of these answers are Yes: 11. Is this a business trip?
+   Section: Day Before
+   Role: Me
+   Obtain Corporate Card
+
+3. Show if all of these answers are Yes: 11. Is this a business trip?
+   Section: Day Before
+   Role: Me
+   Obtain Corporate Badge
+
+4. Always show.
+   Section: Day Before
+   Role: Me
+   Get A Hair Cut
+
+5. Always show.
+   Section: Day Before
+   Role: Me
+   Notify Any Mail Service You Are Going Away
+
+6. Always show.
+   Section: Day Before
+   Role: Me
+   Wash Any Clothes You Want To Wear
+
+7. Show if all of these answers are Yes: 11. Is this a business trip?
+   Section: Day Before
+   Role: Me
+   Download Corporate Card App
+
+8. Show if all of these answers are Yes: 11. Is this a business trip?
+   Section: Day Before
+   Role: Me
+   Put Corporate Card On Apple Pay
+
+9. Always show.
+   Section: Day Before
+   Role: Me
+   Delete All Game Apps
+
+10. Always show.
+   Section: Day Before
+   Role: Me
+   Download Apple Maps Offline
+
+11. Show if all of these answers are Yes: 1. Are you taking a plane?
+   Section: Day Before
+   Role: Me
+   Download Flight App
+
+12. Always show.
+   Section: Day Before
+   Role: Me
+   Download Movies/Podcasts Offline
+
+13. Always show.
+   Section: Night Before
+   Role: Me
+   Pack Suitcase
+
+14. Show if any of these answers are Yes: 1. Are you taking a plane?; 2. Are you taking a bus?
+   Section: Night Before
+   Role: Me
+   Check-in To Transportation
+
+15. Always show.
+   Section: Night Before
+   Role: Me
+   Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on.
+
+16. Always show.
+   Section: Night Before
+   Role: Me
+   Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on.
+
+17. Always show.
+   Section: Night Before
+   Role: Me
+   Set a phone alarm for 5 minutes before you have to leave.
+
+18. Always show.
+   Section: Night Before
+   Role: Me
+   Set a phone alarm for the time you have to leave.
+
+19. Always show.
+   Section: Night Before
+   Role: Me
+   Set a phone alarm as a reminder to pack your retainer.
+
+20. Always show.
+   Section: Night Before
+   Role: Me
+   Charge Phone
+
+21. Always show.
+   Section: Night Before
+   Role: Me
+   Charge Computer
+
+22. Always show.
+   Section: Night Before
+   Role: Me
+   Charge Noise Cancelling Headphones
+
+23. Always show.
+   Section: Night Before
+   Role: Me
+   Shave Face
+
+24. Always show.
+   Section: Night Before
+   Role: Me
+   Shave Notrils
+
+25. Always show.
+   Section: Night Before
+   Role: Me
+   Cut Fingernails
+
+26. Always show.
+   Section: Night Before
+   Role: Me
+   Eat / Remove Perishable Refrigerator / Cupboard Items You Won"t Eat Day Of Travel
+
+27. Always show.
+   Section: Night Before
+   Role: Me
+   Pack 1 Garbage Bag Per 2 Days
+
+28. Always show.
+   Section: Night Before
+   Role: Me
+   Pack One Pair Of Underwear Per Day
+
+29. Always show.
+   Section: Night Before
+   Role: Me
+   Pack One T Shirt Per Day
+
+30. Always show.
+   Section: Night Before
+   Role: Me
+   Pack One Pair Of Socks Per 2 Days
+
+31. Always show.
+   Section: Night Before
+   Role: Me
+   Pack One Pair Of Pants Per 2 Days
+
+32. Show if all of these answers are Yes: 4. Is your destination cold?
+   Section: Night Before
+   Role: Me
+   Pack 1 Sweater For Every 3 Days Of Travel
+
+33. Always show.
+   Section: Night Before
+   Role: Me
+   Pack Hankerchief
+
+34. Show if all of these answers are Yes: 9. Are you travelling Internationally?
+   Section: Night Before
+   Role: Me
+   Check You Have Passport
+
+35. Show if all of these answers are Yes: 9. Are you travelling Internationally?
+   Section: Night Before
+   Role: Me
+   Download airalo for sim card
+
+36. Show if all of these answers are Yes: 9. Are you travelling Internationally?
+   Section: Night Before
+   Role: Me
+   Bring International Power Cord Plugs
+
+37. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Night Before
+   Role: Me
+   Clean pet bathroom
+
+38. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Put toilet paper rack in downstairs bathroom
+
+39. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Leave extra keys by door
+
+40. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Make sure treats are in cupboard
+
+41. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Make sure treats in cubby magnetized to door
+
+42. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Unplug the window shade
+
+43. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Shade remote in bowl
+
+44. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
+   Section: Night Before
+   Role: Me
+   Setup bed with blanket and pillow
+
+45. Always show.
+   Section: Night Before
+   Role: Me
+   All Task's Belows Are To Ensure Item(s) Are in Travel Bag
+
+46. Always show.
+   Section: Night Before
+   Role: Me
+   Toothpaste
+
+47. Always show.
+   Section: Night Before
+   Role: Me
+   Floss Picks
+
+48. Always show.
+   Section: Night Before
+   Role: Me
+   Hairgel
+
+49. Always show.
+   Section: Night Before
+   Role: Me
+   Deodorant
+
+50. Always show.
+   Section: Night Before
+   Role: Me
+   Cologne
+
+51. Always show.
+   Section: Night Before
+   Role: Me
+   Face Trimmer
+
+52. Always show.
+   Section: Night Before
+   Role: Me
+   Chap Stick
+
+53. Always show.
+   Section: Night Before
+   Role: Me
+   Bandaids
+
+54. Always show.
+   Section: Night Before
+   Role: Me
+   Sleep Mask
+
+55. Always show.
+   Section: Night Before
+   Role: Me
+   Bluelight Blocking Glasses
+
+56. Always show.
+   Section: Night Before
+   Role: Me
+   All Task's Above Are To Ensure Item(s) Are in Travel Bag
+
+57. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Retainer
+
+58. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Retainer Cleaner
+
+59. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Face Lotion Wash
+
+60. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Face Lotion Serum
+
+61. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Face Lotion Eye Cream
+
+62. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Face Lotion Moisturizer
+
+63. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Vitamin E Cream
+
+64. Always show.
+   Section: Day Of
+   Role: Other
+   Pack Makeup Remover
+
+65. Show if all of these answers are Yes: 5. Is your destination sunny?
+   Section: Day Of
+   Role: Me
+   Pack Sunscreen
+
+66. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Computer
+
+67. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Computer Charger
+
+68. Always show.
+   Section: Day Of
+   Role: Me
+   Check You Have Drivers License
+
+69. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Unplug nonessential electronics such as televisions and chargers. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.
+
+70. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in.
+
+71. Show if all of these answers are Yes: 6. Will there be any pets (Aside from your own)?
+   Section: Day Of
+   Role: Me
+   Bring allergy medicine
+
+72. Show if any of these answers are Yes: 3. Do you have bread?; 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Put Any Bread In Freezer
+
+73. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Eat / Remove Perishable Refrigerator / Cupboard Items
+
+74. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Take Out Trash
+
+75. Show if all of these answers are Yes: 8. Is the house going to be empty?
+   Section: Day Of
+   Role: Me
+   Clean Sink
+
+76. Show if all of these answers are Yes: 4. Is your destination cold?
+   Section: Day Of
+   Role: Me
+   Wear / Pack Hat And Gloves
+
+77. Always show.
+   Section: Day Of
+   Role: Me
+   Everything Below Is For Everyone
+
+78. Show if all of these answers are Yes: 5. Is your destination sunny?
+   Section: Day Of
+   Role: Me
+   Pack Sunglasses
+
+79. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Water Bottle
+
+80. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Noise Cancelling Headphones
+
+81. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Headphone Charger
+
+82. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Phone Charger In Carry On
+
+83. Always show.
+   Section: Day Of
+   Role: Me
+   Pack Phone Charger Cord In Carry On
+
+84. Always show.
+   Section: Day Of
+   Role: Me
+   Go to Bathroom Before Leaving
+
+85. Always show.
+   Section: Day Of
+   Role: Me
+   Everything Above Is For Everyone

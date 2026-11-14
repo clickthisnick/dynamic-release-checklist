@@ -1,0 +1,46 @@
+Moving checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Do you have lamps
+   Default answer: No
+2. Do you have a metal bed frame
+   Default answer: No
+3. Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws
+   Default answer: No
+
+Tasks:
+1. Show if all of these answers are Yes: 1. Do you have lamps.
+   Section: Moving Day
+   Role: Movee
+   Unscrew Lightbulbs and Pack. (Movers won"t move with lightbulbs in)
+
+2. Show if all of these answers are Yes: 2. Do you have a metal bed frame.
+   Section: Moving Day
+   Role: Movee
+   Fold metal bed frame, leaving screws in frame
+
+3. Show if all of these answers are Yes: 3. Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws.
+   Section: Pre Move
+   Role: Movee
+   Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost
+
+4. Always show.
+   Section: Pre Move
+   Role: Movee
+   Purchase boxes, around 38 medium for a 1 bedroom
+
+5. Always show.
+   Section: Pre Move
+   Role: Movee
+   Purchase mattress cover
+
+6. Always show.
+   Section: Pre Move
+   Role: Movee
+   Confirm move with both places

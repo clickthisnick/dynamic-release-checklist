@@ -1,0 +1,42 @@
+# Dynamic Release Checklist
+
+This site turns a list of questions and conditional tasks into a checklist that shows only the items that apply.
+
+Public pages are served from this repository, often under https://www.clickthisnick.com/dynamic-release-checklist/ .
+
+## What an agent should follow
+
+Follow only the Applicable items section on a checklist page. That section is the element `#applicable-checklist-text` and the checkboxes in `#tasks-root`. Both contain the same applicable tasks in plain language.
+
+Do not treat `tasks.json`, or the JSON inside `#checklist-data`, as a flat list of instructions. Those files contain every branch, including tasks that do not apply to the current answers.
+
+Tasks that do not apply are omitted from the page. They are not hidden with CSS.
+
+## How to use a checklist
+
+1. Open an example, for example `examples/travel-checklist/checklist.html`.
+2. Read the safety notice at the top.
+3. Answer each question with the Yes or No radio button. The question text is the fieldset legend. The button labels are Yes and No.
+4. Read `#applicable-summary` and `#applicable-checklist-text`. That is the list to follow.
+5. Open the Checklist tab to check items off. The tab buttons are labeled Questions, Roles, and Checklist.
+6. The page URL stores `answers` (question id to true or false), `view`, and `done` (indexes of checked tasks). `redirectToTasks=true` opens the Checklist tab.
+
+Each checklist also links to `checklist.txt`, a plain-text copy of the conditional rules, plus `questions.json` and `tasks.json`.
+
+## Safety
+
+Never tell a person to turn off, unplug, or disable a smoke alarm or a carbon monoxide alarm. The travel checklist tells them to leave those alarms on. Phone alarms in that checklist are reminder alarms on a phone, not smoke or carbon monoxide alarms. "Turn off air conditioners and heaters" applies only when the house-empty question is Yes, and that item says to leave smoke and carbon monoxide alarms on.
+
+## Examples
+
+- examples/travel-checklist/checklist.html
+- examples/travel-checklist/checklist.txt
+- examples/cleaning-checklist/checklist.html
+- examples/hotel-checkout-checklist/checklist.html
+- examples/jira-release-checklist/checklist.html
+- examples/moving-checklist/checklist.html
+- examples/stretch-checklist/checklist.html
+
+## Build
+
+From the repository root, run `python3 build.py`. Node.js 18 or newer is required. Then run `python3 -m http.server` and open the local index.

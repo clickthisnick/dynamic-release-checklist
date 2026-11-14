@@ -1,225 +1,107 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-    <!-- Needed for mobile to function (somewhat) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <ul class="nav nav-tabs">
-        <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
-                aria-expanded="false">Questions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
-        <li class="nav-item" onclick="switchToChecklist(true)"><a class="nav-link" data-toggle="tab"
-                aria-expanded="false">Checklist</a></li>
-    </ul>
-
-
-    <div id="tasks" style="visibility:hidden">
-    </div>
-
-    <table id="questions" class="table table-striped table-hover ">
-        <tbody>
-            <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                </tr>
-            </thead>
-        </tbody>
-    </table>
-
-    <style>
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        .completed {
-            background-color: green;
-            color: white;
-        }
-
-        input,
-        button {
-            background-color: rgb(58, 25, 25);
-            background: rgb(58, 25, 25);
-            color: white;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
-
-    <script>
-    const questions=[{"id": 1, "text": "Is this your first release for this program?"}, {"id": 2, "text": "Will this release impact the availability scripts?"}, {"id": 3, "text": "Does this release include any new batch jobs?"}, {"id": 4, "text": "Does this release include any change to a Rule Engine?"}, {"id": 5, "text": "Does this release require a planned downtime window?"}]
-    const tasks=[{"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Pre Release", "task": "Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Pre Release", "task": "Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Pre Release", "task": "Create and send release Outlook meeting invite to release team"}, {"questionsRequiredYes": [], "questionsAnyYes": [1], "role": "QA", "type": "Pre Release", "task": "Ensure Website availability is set up "}, {"questionsRequiredYes": [], "questionsAnyYes": [2], "role": "QA", "type": "Pre Release", "task": "Suspend availability scripts / Update if needed"}, {"questionsRequiredYes": [], "questionsAnyYes": [3], "role": "SD", "type": "Pre Release", "task": "Push Batch job(s) to production (should be disabled on initial push)"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Release", "task": "Ensure all automated tests are passing, (unit, integration, UI where applicable) "}, {"questionsRequiredYes": [], "questionsAnyYes": [4], "role": "QA", "type": "Release", "task": "Ensure all Rule Engine TestSuites are passing."}, {"questionsRequiredYes": [], "questionsAnyYes": [5], "role": "QA", "type": "Release", "task": "Suspend availability Alarms during scheduled downtime "}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Release", "task": "Ensure no Batch Jobs are running"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Release", "task": "Make a copy of production"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Release", "task": "Push code to production"}, {"questionsRequiredYes": [], "questionsAnyYes": [5], "role": "SD", "type": "Release", "task": "Implement the Down Page"}, {"questionsRequiredYes": [], "questionsAnyYes": [3], "role": "SD", "type": "Release", "task": "Enable Batch Jobs and verify their schedule"}, {"questionsRequiredYes": [], "questionsAnyYes": [4], "role": "QA", "type": "Release", "task": "Push RuleEngine Code To Production"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Release", "task": "Notify team that we are ready for smoke test"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "BA", "type": "Release", "task": "Smoke Test after notification received ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [5], "role": "SD", "type": "Release", "task": "Remove down page", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Release", "task": "Notify team of successful release by replying all to Outlook calendar invitation", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Pull the release branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Pull the master branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Merge release branch into master ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Push to master ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Merge master to any open release branches", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Create Release Tag on Master Branch ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Delete release branch if applicable", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Delete backup of production ", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "SD", "type": "Post Release", "task": "Notify team to GRPO and delete/re-pull Integration branches", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Post Release", "task": "Do a Gitk to verify branch merging", "owner": ",comment:"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "QA", "type": "Post Release", "task": "Close the release task, verify checklist is complete and close the version, making sure the release date is accurate", "owner": ",comment:"}, {"questionsRequiredYes": [2], "questionsAnyYes": [], "role": "QA", "type": "Post Release", "task": "Deploy/Unsuspend availability script", "owner": ",comment:"}, {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "QA", "type": "Post Release", "task": "Deploy availability script", "owner": ",comment:"}, {"questionsRequiredYes": [1, 2], "questionsAnyYes": [], "role": "QA", "type": "Post Release", "task": "Deploy availability script", "owner": ",comment:"}]
-        const answers = {}
-
-        function generateTaskTableHtml() {
-            return `<table id="tasksTable" class="table table-striped table-hover ">
-            <tbody>
-                <thead>
-                    <tr>
-                        <th>Tasks</th>
-                    </tr>
-                </thead>
-            </tbody>
-        </table>`
-        }
-
-        function decodeQueryParam(p) {
-            return decodeURIComponent(p.replace(/\+/g, " "));
-        }
-
-        function loadJSONQueryParameter(data) {
-            return JSON.parse(decodeQueryParam(data));
-        }
-
-        function allRequired(arr) {
-            if (Array.isArray(arr) && arr.length) {
-                for (let aidx in arr) {
-                    if (!answers[arr[aidx]]) {
-                        return false
-                    }
-                }
-                return true
-            }
-            return false
-        }
-
-        function addTaskRow(task, idx) {
-            let tasksHTML = document.getElementById('tasksTable', idx)
-            let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
-            tasksHTML.innerHTML = newHTML
-        }
-
-        function generateTask(task, idx) {
-            let questionsRequiredYes = task["questionsRequiredYes"]
-            let questionsAnyYes = task["questionsAnyYes"]
-
-            if (questionsRequiredYes.length === 0 && questionsAnyYes.length === 0) {
-                addTaskRow(task, idx)
-                return
-            }
-
-            for (let aidx in questionsAnyYes) {
-                if (answers[questionsAnyYes[aidx]]) {
-                    addTaskRow(task, idx)
-                    return
-                }
-            }
-
-            if (allRequired(questionsRequiredYes)) {
-                addTaskRow(task, idx)
-                return
-            }
-        }
-
-        function generateTasks() {
-            let idx = 1;
-            for (let taskEl in tasks) {
-                let task = tasks[taskEl]
-                generateTask(task, idx)
-                idx += 1
-            }
-        }
-
-        function switchToChecklist(manual) {
-            document.getElementById("questions").style.visibility = "hidden";
-            document.getElementById("tasks").style.visibility = "visible";
-            document.getElementById("tasks").innerHTML = generateTaskTableHtml()
-            generateTasks()
-            document.getElementById('questions').innerHTML = ""; // TODO you can't go back
-
-            if (manual) {
-                const url = new URL(location.href);
-                url.searchParams.set('answers', JSON.stringify(answers));
-                url.searchParams.set('redirectToTasks', true);
-                reloadPage(url)
-            }
-        }
-
-        function switchToQuestions() {
-            document.getElementById("tasks").style.visibility = "hidden";
-            document.getElementById("questions").style.visibility = "visible";
-        }
-
-        function answerQuestion(idx) {
-            const answerButton = document.getElementById("answerQuestion" + idx)
-
-            if (answers[idx]) {
-                answerButton.classList.remove("btn-success")
-                answerButton.classList.add("btn-danger")
-                answerButton.innerText = "No"
-                answers[idx] = false
-            } else {
-                answerButton.classList.remove("btn-danger")
-                answerButton.classList.add("btn-success")
-                answerButton.innerText = "Yes"
-                answers[idx] = true
-            }
-        }
-
-        function reloadPage(url) {
-            location.href = url
-        }
-
-        function generateQuestionRowHtml(questionText, idx) {
-            return `<tr><td><h2>` + questionText + `</h2>
-            </td>
-            <td>
-                <button id=answerQuestion` + idx + ` v"
-                class="btn btn-danger"
-                onclick="answerQuestion(` + idx + `)">
-                No
-            </button>
-            </div>
-        </tr>`
-        }
-
-        function generateTaskRowHtml(taskText, idx) {
-            return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
-            </td>
-        </tr>`
-        }
-
-        function loadConfig() {
-            const url = new URL(location.href);
-
-            let url_answers = {}
-            if (url.searchParams.get('answers')) {
-                url_answers = loadJSONQueryParameter(url.searchParams.get('answers'));
-            }
-
-            let idx = 1 // Start at 1
-            for (let question in questions) {
-                let questionsHTML = document.getElementById('questions')
-                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
-                questionsHTML.innerHTML = newHTML
-
-                // The opposite since answerQuestion will flip it
-                if (idx in url_answers && url_answers[idx] === true) {
-                    answers[idx] = false
-                } else {
-                    answers[idx] = true
-                }
-                answerQuestion(idx)
-
-                idx += 1
-            }
-
-            let redirectToTasks = url.searchParams.get('redirectToTasks');
-
-            if (redirectToTasks) {
-                switchToChecklist(false)
-            }
-
-            if (Object.keys(url_answers).length === 0) {
-                url.searchParams.set('answers', JSON.stringify(answers));
-                reloadPage(url)
-            }
-
-        }
-
-        loadConfig()
-
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jira release checklist</title>
+    <meta name="description" content="Jira release checklist: answer the questions and follow only the applicable items.">
+    <link rel="stylesheet" href="../../lib/css/bootswatch.css">
+    <link rel="stylesheet" href="../../lib/css/checklist.css">
+    <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
 </head>
+<body>
+    <a class="skip-link" href="#applicable">Skip to applicable items</a>
+    <header>
+        <h1>Jira release checklist</h1>
+        <p id="safety-notice" role="note" data-testid="safety-notice">
+            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
+            Do not turn them off or unplug them. This checklist does not ask you to disable them.
+        </p>
+    </header>
+    <main id="main">
+        <p class="howto">
+            Answer each question Yes or No. Follow only the applicable items.
+            Tasks that do not apply are left out of the page. Checked items are saved in this page's URL.
+        </p>
+        <nav class="file-links" aria-label="Checklist files">
+            <a href="checklist.txt" data-testid="rules-link">Machine-readable rules (plain text)</a>
+            <a href="questions.json">Questions (JSON)</a>
+            <a href="tasks.json">Conditional tasks (JSON, not a flat todo list)</a>
+            <a href="../../llms.txt">Notes for automated agents (llms.txt)</a>
+        </nav>
+        <section id="applicable" aria-labelledby="applicable-heading">
+            <h2 id="applicable-heading">Applicable items</h2>
+            <p id="applicable-summary" data-testid="applicable-summary">23 of 35 tasks apply. 12 tasks are hidden because their conditions are not met.</p>
+            <p>
+                <button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button>
+            </p>
+            <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Jira release checklist
+Follow only the applicable items below. Items that do not apply are omitted from this list.
+Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+
+Answers:
+- No. Is this your first release for this program?
+- No. Will this release impact the availability scripts?
+- No. Does this release include any new batch jobs?
+- No. Does this release include any change to a Rule Engine?
+- No. Does this release require a planned downtime window?
+
+Applicable items (23 of 35):
+1. Pre Release. Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate. Role: QA.
+2. Pre Release. Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist. Role: QA.
+3. Pre Release. Create and send release Outlook meeting invite to release team. Role: QA.
+4. Release. Ensure all automated tests are passing, (unit, integration, UI where applicable) . Role: QA.
+5. Release. Ensure no Batch Jobs are running. Role: SD.
+6. Release. Make a copy of production. Role: SD.
+7. Release. Push code to production. Role: SD.
+8. Release. Notify team that we are ready for smoke test. Role: SD.
+9. Release. Smoke Test after notification received . Role: QA.
+10. Release. Smoke Test after notification received . Role: SD.
+11. Release. Smoke Test after notification received . Role: BA.
+12. Release. Notify team of successful release by replying all to Outlook calendar invitation. Role: QA.
+13. Post Release. Pull the release branch . Role: SD.
+14. Post Release. Pull the master branch . Role: SD.
+15. Post Release. Merge release branch into master . Role: SD.
+16. Post Release. Push to master . Role: SD.
+17. Post Release. Merge master to any open release branches. Role: SD.
+18. Post Release. Create Release Tag on Master Branch . Role: SD.
+19. Post Release. Delete release branch if applicable. Role: SD.
+20. Post Release. Delete backup of production . Role: SD.
+21. Post Release. Notify team to GRPO and delete/re-pull Integration branches. Role: SD.
+22. Post Release. Do a Gitk to verify branch merging. Role: QA.
+23. Post Release. Close the release task, verify checklist is complete and close the version, making sure the release date is accurate. Role: QA.
+</pre>
+        </section>
+        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+        <div class="tablist" role="tablist" aria-label="Checklist sections">
+            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
+            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
+            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
+        </div>
+        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
+            <h2>Questions</h2>
+            <form id="question-form" autocomplete="off">
+                <div id="questions-root"><fieldset class="question" data-testid="question-1"><legend>Is this your first release for this program?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></fieldset><fieldset class="question" data-testid="question-2"><legend>Will this release impact the availability scripts?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></fieldset><fieldset class="question" data-testid="question-3"><legend>Does this release include any new batch jobs?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-3" id="question-3-yes" data-testid="answer-3-yes" data-question-id="3" value="yes"><label for="question-3-yes">Yes</label><input type="radio" autocomplete="off" name="question-3" id="question-3-no" data-testid="answer-3-no" data-question-id="3" value="no" checked><label for="question-3-no">No</label></div></fieldset><fieldset class="question" data-testid="question-4"><legend>Does this release include any change to a Rule Engine?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-4" id="question-4-yes" data-testid="answer-4-yes" data-question-id="4" value="yes"><label for="question-4-yes">Yes</label><input type="radio" autocomplete="off" name="question-4" id="question-4-no" data-testid="answer-4-no" data-question-id="4" value="no" checked><label for="question-4-no">No</label></div></fieldset><fieldset class="question" data-testid="question-5"><legend>Does this release require a planned downtime window?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-5" id="question-5-yes" data-testid="answer-5-yes" data-question-id="5" value="yes"><label for="question-5-yes">Yes</label><input type="radio" autocomplete="off" name="question-5" id="question-5-no" data-testid="answer-5-no" data-question-id="5" value="no" checked><label for="question-5-no">No</label></div></fieldset></div>
+            </form>
+        </div>
+        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
+            <h2>Roles</h2>
+            <p>These are the applicable tasks for each role. Check them off on the Checklist tab.</p>
+            <div id="roles-root"><section aria-labelledby="role-qa"><h3 id="role-qa">QA</h3><ul><li>Pre Release. Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate</li><li>Pre Release. Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist</li><li>Pre Release. Create and send release Outlook meeting invite to release team</li><li>Release. Ensure all automated tests are passing, (unit, integration, UI where applicable) </li><li>Release. Smoke Test after notification received </li><li>Release. Notify team of successful release by replying all to Outlook calendar invitation</li><li>Post Release. Do a Gitk to verify branch merging</li><li>Post Release. Close the release task, verify checklist is complete and close the version, making sure the release date is accurate</li></ul></section><section aria-labelledby="role-sd"><h3 id="role-sd">SD</h3><ul><li>Release. Ensure no Batch Jobs are running</li><li>Release. Make a copy of production</li><li>Release. Push code to production</li><li>Release. Notify team that we are ready for smoke test</li><li>Release. Smoke Test after notification received </li><li>Post Release. Pull the release branch </li><li>Post Release. Pull the master branch </li><li>Post Release. Merge release branch into master </li><li>Post Release. Push to master </li><li>Post Release. Merge master to any open release branches</li><li>Post Release. Create Release Tag on Master Branch </li><li>Post Release. Delete release branch if applicable</li><li>Post Release. Delete backup of production </li><li>Post Release. Notify team to GRPO and delete/re-pull Integration branches</li></ul></section><section aria-labelledby="role-ba"><h3 id="role-ba">BA</h3><ul><li>Release. Smoke Test after notification received </li></ul></section></div>
+        </div>
+        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
+            <h2>Checklist</h2>
+            <p>Check an item when it is done. The item text stays on the page.</p>
+            <div id="tasks-root"><section class="task-group"><h3>Pre Release</h3><ul class="task-list"><li data-task-index="0"><input type="checkbox" id="task-0" data-testid="task-0" data-task-index="0" data-task-text="Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate"><label for="task-0">Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate <span class="task-role">Role: QA.</span></label></li><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist"><label for="task-1">Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist <span class="task-role">Role: QA.</span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="Create and send release Outlook meeting invite to release team"><label for="task-2">Create and send release Outlook meeting invite to release team <span class="task-role">Role: QA.</span></label></li></ul></section><section class="task-group"><h3>Release</h3><ul class="task-list"><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="Ensure all automated tests are passing, (unit, integration, UI where applicable) "><label for="task-6">Ensure all automated tests are passing, (unit, integration, UI where applicable)  <span class="task-role">Role: QA.</span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Ensure no Batch Jobs are running"><label for="task-9">Ensure no Batch Jobs are running <span class="task-role">Role: SD.</span></label></li><li data-task-index="10"><input type="checkbox" id="task-10" data-testid="task-10" data-task-index="10" data-task-text="Make a copy of production"><label for="task-10">Make a copy of production <span class="task-role">Role: SD.</span></label></li><li data-task-index="11"><input type="checkbox" id="task-11" data-testid="task-11" data-task-index="11" data-task-text="Push code to production"><label for="task-11">Push code to production <span class="task-role">Role: SD.</span></label></li><li data-task-index="15"><input type="checkbox" id="task-15" data-testid="task-15" data-task-index="15" data-task-text="Notify team that we are ready for smoke test"><label for="task-15">Notify team that we are ready for smoke test <span class="task-role">Role: SD.</span></label></li><li data-task-index="16"><input type="checkbox" id="task-16" data-testid="task-16" data-task-index="16" data-task-text="Smoke Test after notification received "><label for="task-16">Smoke Test after notification received  <span class="task-role">Role: QA.</span></label></li><li data-task-index="17"><input type="checkbox" id="task-17" data-testid="task-17" data-task-index="17" data-task-text="Smoke Test after notification received "><label for="task-17">Smoke Test after notification received  <span class="task-role">Role: SD.</span></label></li><li data-task-index="18"><input type="checkbox" id="task-18" data-testid="task-18" data-task-index="18" data-task-text="Smoke Test after notification received "><label for="task-18">Smoke Test after notification received  <span class="task-role">Role: BA.</span></label></li><li data-task-index="20"><input type="checkbox" id="task-20" data-testid="task-20" data-task-index="20" data-task-text="Notify team of successful release by replying all to Outlook calendar invitation"><label for="task-20">Notify team of successful release by replying all to Outlook calendar invitation <span class="task-role">Role: QA.</span></label></li></ul></section><section class="task-group"><h3>Post Release</h3><ul class="task-list"><li data-task-index="21"><input type="checkbox" id="task-21" data-testid="task-21" data-task-index="21" data-task-text="Pull the release branch "><label for="task-21">Pull the release branch  <span class="task-role">Role: SD.</span></label></li><li data-task-index="22"><input type="checkbox" id="task-22" data-testid="task-22" data-task-index="22" data-task-text="Pull the master branch "><label for="task-22">Pull the master branch  <span class="task-role">Role: SD.</span></label></li><li data-task-index="23"><input type="checkbox" id="task-23" data-testid="task-23" data-task-index="23" data-task-text="Merge release branch into master "><label for="task-23">Merge release branch into master  <span class="task-role">Role: SD.</span></label></li><li data-task-index="24"><input type="checkbox" id="task-24" data-testid="task-24" data-task-index="24" data-task-text="Push to master "><label for="task-24">Push to master  <span class="task-role">Role: SD.</span></label></li><li data-task-index="25"><input type="checkbox" id="task-25" data-testid="task-25" data-task-index="25" data-task-text="Merge master to any open release branches"><label for="task-25">Merge master to any open release branches <span class="task-role">Role: SD.</span></label></li><li data-task-index="26"><input type="checkbox" id="task-26" data-testid="task-26" data-task-index="26" data-task-text="Create Release Tag on Master Branch "><label for="task-26">Create Release Tag on Master Branch  <span class="task-role">Role: SD.</span></label></li><li data-task-index="27"><input type="checkbox" id="task-27" data-testid="task-27" data-task-index="27" data-task-text="Delete release branch if applicable"><label for="task-27">Delete release branch if applicable <span class="task-role">Role: SD.</span></label></li><li data-task-index="28"><input type="checkbox" id="task-28" data-testid="task-28" data-task-index="28" data-task-text="Delete backup of production "><label for="task-28">Delete backup of production  <span class="task-role">Role: SD.</span></label></li><li data-task-index="29"><input type="checkbox" id="task-29" data-testid="task-29" data-task-index="29" data-task-text="Notify team to GRPO and delete/re-pull Integration branches"><label for="task-29">Notify team to GRPO and delete/re-pull Integration branches <span class="task-role">Role: SD.</span></label></li><li data-task-index="30"><input type="checkbox" id="task-30" data-testid="task-30" data-task-index="30" data-task-text="Do a Gitk to verify branch merging"><label for="task-30">Do a Gitk to verify branch merging <span class="task-role">Role: QA.</span></label></li><li data-task-index="31"><input type="checkbox" id="task-31" data-testid="task-31" data-task-index="31" data-task-text="Close the release task, verify checklist is complete and close the version, making sure the release date is accurate"><label for="task-31">Close the release task, verify checklist is complete and close the version, making sure the release date is accurate <span class="task-role">Role: QA.</span></label></li></ul></section></div>
+        </div>
+        <noscript>
+            <p>
+                JavaScript is off, so the applicable list uses No for every question that does not set a default.
+                Read checklist.txt for the conditional rules. Do not treat tasks.json as a list of things to do.
+            </p>
+        </noscript>
+    </main>
+    <script id="checklist-data" type="application/json">{"title":"Jira release checklist","questions":[{"id":1,"text":"Is this your first release for this program?"},{"id":2,"text":"Will this release impact the availability scripts?"},{"id":3,"text":"Does this release include any new batch jobs?"},{"id":4,"text":"Does this release include any change to a Rule Engine?"},{"id":5,"text":"Does this release require a planned downtime window?"}],"tasks":[{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Pre Release","task":"Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Pre Release","task":"Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Pre Release","task":"Create and send release Outlook meeting invite to release team"},{"questionsRequiredYes":[],"questionsAnyYes":[1],"role":"QA","type":"Pre Release","task":"Ensure Website availability is set up "},{"questionsRequiredYes":[],"questionsAnyYes":[2],"role":"QA","type":"Pre Release","task":"Suspend availability scripts / Update if needed"},{"questionsRequiredYes":[],"questionsAnyYes":[3],"role":"SD","type":"Pre Release","task":"Push Batch job(s) to production (should be disabled on initial push)"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Release","task":"Ensure all automated tests are passing, (unit, integration, UI where applicable) "},{"questionsRequiredYes":[],"questionsAnyYes":[4],"role":"QA","type":"Release","task":"Ensure all Rule Engine TestSuites are passing."},{"questionsRequiredYes":[],"questionsAnyYes":[5],"role":"QA","type":"Release","task":"Suspend availability Alarms during scheduled downtime "},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Release","task":"Ensure no Batch Jobs are running"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Release","task":"Make a copy of production"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Release","task":"Push code to production"},{"questionsRequiredYes":[],"questionsAnyYes":[5],"role":"SD","type":"Release","task":"Implement the Down Page"},{"questionsRequiredYes":[],"questionsAnyYes":[3],"role":"SD","type":"Release","task":"Enable Batch Jobs and verify their schedule"},{"questionsRequiredYes":[],"questionsAnyYes":[4],"role":"QA","type":"Release","task":"Push RuleEngine Code To Production"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Release","task":"Notify team that we are ready for smoke test"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Release","task":"Smoke Test after notification received ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Release","task":"Smoke Test after notification received ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"BA","type":"Release","task":"Smoke Test after notification received ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[5],"role":"SD","type":"Release","task":"Remove down page","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Release","task":"Notify team of successful release by replying all to Outlook calendar invitation","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Pull the release branch ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Pull the master branch ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Merge release branch into master ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Push to master ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Merge master to any open release branches","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Create Release Tag on Master Branch ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Delete release branch if applicable","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Delete backup of production ","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"SD","type":"Post Release","task":"Notify team to GRPO and delete/re-pull Integration branches","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Post Release","task":"Do a Gitk to verify branch merging","owner":",comment:"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"QA","type":"Post Release","task":"Close the release task, verify checklist is complete and close the version, making sure the release date is accurate","owner":",comment:"},{"questionsRequiredYes":[2],"questionsAnyYes":[],"role":"QA","type":"Post Release","task":"Deploy/Unsuspend availability script","owner":",comment:"},{"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"QA","type":"Post Release","task":"Deploy availability script","owner":",comment:"},{"questionsRequiredYes":[1,2],"questionsAnyYes":[],"role":"QA","type":"Post Release","task":"Deploy availability script","owner":",comment:"}]}</script>
+    <script src="../../lib/js/checklist.js"></script>
+</body>
+</html>

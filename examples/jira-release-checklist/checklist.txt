@@ -1,0 +1,195 @@
+Jira release checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Is this your first release for this program?
+   Default answer: No
+2. Will this release impact the availability scripts?
+   Default answer: No
+3. Does this release include any new batch jobs?
+   Default answer: No
+4. Does this release include any change to a Rule Engine?
+   Default answer: No
+5. Does this release require a planned downtime window?
+   Default answer: No
+
+Tasks:
+1. Always show.
+   Section: Pre Release
+   Role: QA
+   Verify there is a version in JIRA associated with all stories in release. Make sure the version description and release date are accurate
+
+2. Always show.
+   Section: Pre Release
+   Role: QA
+   Create Jira task for the release, add it to the appropriate sprint, and link to the wiki release checklist
+
+3. Always show.
+   Section: Pre Release
+   Role: QA
+   Create and send release Outlook meeting invite to release team
+
+4. Show if any of these answers are Yes: 1. Is this your first release for this program?
+   Section: Pre Release
+   Role: QA
+   Ensure Website availability is set up 
+
+5. Show if any of these answers are Yes: 2. Will this release impact the availability scripts?
+   Section: Pre Release
+   Role: QA
+   Suspend availability scripts / Update if needed
+
+6. Show if any of these answers are Yes: 3. Does this release include any new batch jobs?
+   Section: Pre Release
+   Role: SD
+   Push Batch job(s) to production (should be disabled on initial push)
+
+7. Always show.
+   Section: Release
+   Role: QA
+   Ensure all automated tests are passing, (unit, integration, UI where applicable) 
+
+8. Show if any of these answers are Yes: 4. Does this release include any change to a Rule Engine?
+   Section: Release
+   Role: QA
+   Ensure all Rule Engine TestSuites are passing.
+
+9. Show if any of these answers are Yes: 5. Does this release require a planned downtime window?
+   Section: Release
+   Role: QA
+   Suspend availability Alarms during scheduled downtime 
+
+10. Always show.
+   Section: Release
+   Role: SD
+   Ensure no Batch Jobs are running
+
+11. Always show.
+   Section: Release
+   Role: SD
+   Make a copy of production
+
+12. Always show.
+   Section: Release
+   Role: SD
+   Push code to production
+
+13. Show if any of these answers are Yes: 5. Does this release require a planned downtime window?
+   Section: Release
+   Role: SD
+   Implement the Down Page
+
+14. Show if any of these answers are Yes: 3. Does this release include any new batch jobs?
+   Section: Release
+   Role: SD
+   Enable Batch Jobs and verify their schedule
+
+15. Show if any of these answers are Yes: 4. Does this release include any change to a Rule Engine?
+   Section: Release
+   Role: QA
+   Push RuleEngine Code To Production
+
+16. Always show.
+   Section: Release
+   Role: SD
+   Notify team that we are ready for smoke test
+
+17. Always show.
+   Section: Release
+   Role: QA
+   Smoke Test after notification received 
+
+18. Always show.
+   Section: Release
+   Role: SD
+   Smoke Test after notification received 
+
+19. Always show.
+   Section: Release
+   Role: BA
+   Smoke Test after notification received 
+
+20. Show if any of these answers are Yes: 5. Does this release require a planned downtime window?
+   Section: Release
+   Role: SD
+   Remove down page
+
+21. Always show.
+   Section: Release
+   Role: QA
+   Notify team of successful release by replying all to Outlook calendar invitation
+
+22. Always show.
+   Section: Post Release
+   Role: SD
+   Pull the release branch 
+
+23. Always show.
+   Section: Post Release
+   Role: SD
+   Pull the master branch 
+
+24. Always show.
+   Section: Post Release
+   Role: SD
+   Merge release branch into master 
+
+25. Always show.
+   Section: Post Release
+   Role: SD
+   Push to master 
+
+26. Always show.
+   Section: Post Release
+   Role: SD
+   Merge master to any open release branches
+
+27. Always show.
+   Section: Post Release
+   Role: SD
+   Create Release Tag on Master Branch 
+
+28. Always show.
+   Section: Post Release
+   Role: SD
+   Delete release branch if applicable
+
+29. Always show.
+   Section: Post Release
+   Role: SD
+   Delete backup of production 
+
+30. Always show.
+   Section: Post Release
+   Role: SD
+   Notify team to GRPO and delete/re-pull Integration branches
+
+31. Always show.
+   Section: Post Release
+   Role: QA
+   Do a Gitk to verify branch merging
+
+32. Always show.
+   Section: Post Release
+   Role: QA
+   Close the release task, verify checklist is complete and close the version, making sure the release date is accurate
+
+33. Show if all of these answers are Yes: 2. Will this release impact the availability scripts?
+   Section: Post Release
+   Role: QA
+   Deploy/Unsuspend availability script
+
+34. Show if all of these answers are Yes: 1. Is this your first release for this program?
+   Section: Post Release
+   Role: QA
+   Deploy availability script
+
+35. Show if all of these answers are Yes: 1. Is this your first release for this program?; 2. Will this release impact the availability scripts?
+   Section: Post Release
+   Role: QA
+   Deploy availability script

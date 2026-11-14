@@ -1,0 +1,74 @@
+Hotel checkout checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Do you need to turn in the key card
+   Default answer: No
+2. Is the car far away?
+   Default answer: No
+
+Tasks:
+1. Show if all of these answers are Yes: 1. Do you need to turn in the key card.
+   Section: Pre Checkout
+   Role: Mom
+   Get everyones keycard
+
+2. Always show.
+   Section: Pre Checkout
+   Role: Dad
+   Check if any food is left in fridge
+
+3. Always show.
+   Section: Pre Checkout
+   Role: Mom
+   Make sure nothing is left behind in the bathroom
+
+4. Always show.
+   Section: Pre Checkout
+   Role: Sister
+   Check the closet to make sure nothing is left behind
+
+5. Always show.
+   Section: Pre Checkout
+   Role: Brother
+   Look under the beds to make sure nothing is left behind
+
+6. Always show.
+   Section: Checkout
+   Role: Dad
+   Carry suitcases downstairs
+
+7. Always show.
+   Section: Checkout
+   Role: Brother
+   Help dad carry suitecases downstairs
+
+8. Always show.
+   Section: Checkout
+   Role: Brother
+   Wait in lobby with suitcases
+
+9. Show if all of these answers are Yes: 2. Is the car far away?
+   Section: Checkout
+   Role: Dad
+   Walk to car and bring to front of hotel
+
+10. Always show.
+   Section: Checkout
+   Role: Sister
+   Do one final walkthrough of room to check for left items
+
+11. Show if all of these answers are Yes: 1. Do you need to turn in the key card.
+   Section: Checkout
+   Role: Mom
+   Give receptionist the keycards
+
+12. Show if all of these answers are Yes: 1. Do you need to turn in the key card.
+   Section: Checkout
+   Role: Mom
+   Check out of hotel/pay any fees

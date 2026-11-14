@@ -1,0 +1,92 @@
+Stretch checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Test?
+   Default answer: No
+
+Tasks:
+1. Always show.
+   Section: Stretch
+   Role: Nick
+   Set timer for 60 seconds
+
+2. Always show.
+   Section: Stretch
+   Role: Nick
+   2 leg down
+
+3. Always show.
+   Section: Stretch
+   Role: Nick
+   standing quad leg to back stretch right
+
+4. Always show.
+   Section: Stretch
+   Role: Nick
+   standing quad leg to back stretch left
+
+5. Always show.
+   Section: Stretch
+   Role: Nick
+   Butterfly
+
+6. Always show.
+   Section: Stretch
+   Role: Nick
+   30 Hand Crushes Each Hand
+
+7. Always show.
+   Section: Stretch
+   Role: Nick
+   16 Right Hand 150lb Hand Squeeze
+
+8. Always show.
+   Section: Stretch
+   Role: Nick
+   10 Left Hand 150lb Hand Squeeze
+
+9. Always show.
+   Section: Stretch
+   Role: Nick
+   Back twist left
+
+10. Always show.
+   Section: Stretch
+   Role: Nick
+   Back twist right
+
+11. Always show.
+   Section: Stretch
+   Role: Nick
+   Butterfly one leg right straight
+
+12. Always show.
+   Section: Stretch
+   Role: Nick
+   Butterfly one leg left straight
+
+13. Always show.
+   Section: Stretch
+   Role: Nick
+   Cobra
+
+14. Always show.
+   Section: Stretch
+   Role: Nick
+   2 leg down
+
+15. Always show.
+   Section: Stretch
+   Role: Nick
+   25 push ups
+
+16. Always show.
+   Section: Stretch
+   Role: Nick
+   25 squats
