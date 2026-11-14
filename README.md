@@ -36,7 +36,7 @@ You now have two items ( Create Downpage and Remove Downpage ) that are no longe
 
 ##### Create questions that reduce your release checklist to only the _necessary_ items
 
-Each example is a folder with `questions.json` and `tasks.json`. `python3 build.py` writes `checklist.html` and `checklist.txt`.
+Each example is a folder with `questions.json` and `tasks.json`. `node scripts/build.js` writes `checklist.html` and `checklist.txt`. The browser then filters those pages. Python is not used.
 
 ```json
 [
@@ -71,20 +71,21 @@ The page shows only the applicable tasks. The Applicable items box is also plain
 
 ## Run locally
 
-Python 3 and Node.js 18 or newer:
+Node.js 18 or newer:
 
 ```bash
-python3 build.py
-python3 -m http.server 8000
+node scripts/build.js
+node scripts/serve.js 8000
 ```
 
 Open http://127.0.0.1:8000/
 
+The build writes the same static files the site publishes. It does not run when someone opens a checklist. `src/checklist.template.html` is the page shell.
+
 Tests:
 
 ```bash
-python3 -m unittest discover -s tests -v
-node --test tests/checklist.test.js
+node --test tests/checklist.test.js tests/build.test.js
 ```
 
 ## Safety

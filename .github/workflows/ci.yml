@@ -9,25 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
       - name: Lint
         run: |
-          python -m compileall -q build.py tests
           node --check lib/js/checklist.js
+          node --check scripts/build.js
+          node --check scripts/serve.js
           node --check tests/checklist.test.js
+          node --check tests/build.test.js
           node --check tests/browser_smoke.mjs
       - name: Test
         run: |
-          python -m unittest discover -s tests -v
-          node --test tests/checklist.test.js
+          node --test tests/checklist.test.js tests/build.test.js
       - name: Rebuild and confirm generated pages are committed
         run: |
-          python3 build.py
+          node scripts/build.js
           if [ -n "$(git status --porcelain)" ]; then
             git status --porcelain
             exit 1

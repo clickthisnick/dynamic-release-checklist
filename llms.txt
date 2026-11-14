@@ -39,4 +39,4 @@ Never tell a person to turn off, unplug, or disable a smoke alarm or a carbon mo
 
 ## Build
 
-From the repository root, run `python3 build.py`. Node.js 18 or newer is required. Then run `python3 -m http.server` and open the local index.
+From the repository root, run `node scripts/build.js`. That refreshes the static checklist.html and checklist.txt files. Node.js 18 or newer is required. Then run `node scripts/serve.js` and open the local index. Opening a published checklist does not run a build.

@@ -102,7 +102,7 @@ function assertCheck(name, value, details) {
 
 async function main() {
   const profile = mkdtempSync(path.join(tmpdir(), "checklist-chrome-"));
-  const server = start("python3", ["-m", "http.server", String(port)], { cwd: root });
+  const server = start("node", ["scripts/serve.js", String(port)], { cwd: root });
   const chrome = start("google-chrome", [
     "--headless=new",
     "--disable-gpu",
