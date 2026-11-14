@@ -10,34 +10,52 @@
     <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
 </head>
 <body>
-    <a class="skip-link" href="#applicable">Skip to applicable items</a>
+    <a class="skip-link" href="#panel-questions">Skip to questions</a>
     <header>
         <h1>Hotel checkout checklist</h1>
         <p id="safety-notice" role="note" data-testid="safety-notice">
-            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
-            Do not turn them off or unplug them. This checklist does not ask you to disable them.
+            Leave smoke and CO alarms on and plugged in.
+            Do not turn them off or unplug them.
+            A phone alarm is only a reminder on your phone.
         </p>
     </header>
     <main id="main">
-        <p class="howto">
-            Answer each question Yes or No. Follow only the applicable items.
-            Tasks that do not apply are left out of the page. Checked items are saved in this page's URL.
-        </p>
-        <nav class="file-links" aria-label="Checklist files">
-            <a href="checklist.txt" data-testid="rules-link">Machine-readable rules (plain text)</a>
-            <a href="questions.json">Questions (JSON)</a>
-            <a href="tasks.json">Conditional tasks (JSON, not a flat todo list)</a>
-            <a href="../../llms.txt">Notes for automated agents (llms.txt)</a>
-        </nav>
-        <section id="applicable" aria-labelledby="applicable-heading">
-            <h2 id="applicable-heading">Applicable items</h2>
-            <p id="applicable-summary" data-testid="applicable-summary">8 of 12 tasks apply. 4 tasks are hidden because their conditions are not met.</p>
-            <p>
-                <button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button>
-            </p>
+        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+        <div class="tablist" role="tablist" aria-label="Checklist sections">
+            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
+            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
+            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
+        </div>
+        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
+            <h2>Questions</h2>
+            <form id="question-form" autocomplete="off">
+                <div id="questions-root"><div class="question" role="group" aria-labelledby="question-1-text" data-testid="question-1"><p class="question-text" id="question-1-text">Do you need to turn in the key card</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></div><div class="question" role="group" aria-labelledby="question-2-text" data-testid="question-2"><p class="question-text" id="question-2-text">Is the car far away?</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></div></div>
+            </form>
+        </div>
+        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
+            <h2>Roles</h2>
+            <div id="roles-root"><section aria-labelledby="role-dad"><h3 id="role-dad">Dad</h3><ul><li>Pre Checkout. Check if any food is left in fridge</li><li>Checkout. Carry suitcases downstairs</li></ul></section><section aria-labelledby="role-mom"><h3 id="role-mom">Mom</h3><ul><li>Pre Checkout. Make sure nothing is left behind in the bathroom</li></ul></section><section aria-labelledby="role-sister"><h3 id="role-sister">Sister</h3><ul><li>Pre Checkout. Check the closet to make sure nothing is left behind</li><li>Checkout. Do one final walkthrough of room to check for left items</li></ul></section><section aria-labelledby="role-brother"><h3 id="role-brother">Brother</h3><ul><li>Pre Checkout. Look under the beds to make sure nothing is left behind</li><li>Checkout. Help dad carry suitecases downstairs</li><li>Checkout. Wait in lobby with suitcases</li></ul></section></div>
+        </div>
+        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
+            <h2>Checklist</h2>
+            <div id="tasks-root"><section class="task-group"><h3>Pre Checkout</h3><ul class="task-list"><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="Check if any food is left in fridge"><label for="task-1"><span class="task-text">Check if any food is left in fridge</span><span class="task-role">Dad</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="Make sure nothing is left behind in the bathroom"><label for="task-2"><span class="task-text">Make sure nothing is left behind in the bathroom</span><span class="task-role">Mom</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="Check the closet to make sure nothing is left behind"><label for="task-3"><span class="task-text">Check the closet to make sure nothing is left behind</span><span class="task-role">Sister</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Look under the beds to make sure nothing is left behind"><label for="task-4"><span class="task-text">Look under the beds to make sure nothing is left behind</span><span class="task-role">Brother</span><span class="visually-hidden task-state"></span></label></li></ul></section><section class="task-group"><h3>Checkout</h3><ul class="task-list"><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="Carry suitcases downstairs"><label for="task-5"><span class="task-text">Carry suitcases downstairs</span><span class="task-role">Dad</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="Help dad carry suitecases downstairs"><label for="task-6"><span class="task-text">Help dad carry suitecases downstairs</span><span class="task-role">Brother</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="7"><input type="checkbox" id="task-7" data-testid="task-7" data-task-index="7" data-task-text="Wait in lobby with suitcases"><label for="task-7"><span class="task-text">Wait in lobby with suitcases</span><span class="task-role">Brother</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Do one final walkthrough of room to check for left items"><label for="task-9"><span class="task-text">Do one final walkthrough of room to check for left items</span><span class="task-role">Sister</span><span class="visually-hidden task-state"></span></label></li></ul></section></div>
+        </div>
+        <details id="applicable">
+            <summary>
+                <span id="applicable-heading">Applicable items</span>
+                <span id="applicable-summary" data-testid="applicable-summary">8 of 12 tasks apply. 4 tasks are hidden because their conditions are not met.</span>
+            </summary>
+            <nav class="file-links" aria-label="Checklist files">
+                <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
+                <a href="questions.json">Questions</a>
+                <a href="tasks.json">Conditional tasks</a>
+                <a href="../../llms.txt">Agent notes</a>
+            </nav>
+            <p><button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button></p>
             <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Hotel checkout checklist
 Follow only the applicable items below. Items that do not apply are omitted from this list.
 Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+A phone alarm is a reminder on a phone, not a smoke or carbon monoxide alarm.
 
 Answers:
 - No. Do you need to turn in the key card
@@ -53,29 +71,7 @@ Applicable items (8 of 12):
 7. Checkout. Wait in lobby with suitcases. Role: Brother.
 8. Checkout. Do one final walkthrough of room to check for left items. Role: Sister.
 </pre>
-        </section>
-        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
-        <div class="tablist" role="tablist" aria-label="Checklist sections">
-            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
-            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
-            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
-        </div>
-        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
-            <h2>Questions</h2>
-            <form id="question-form" autocomplete="off">
-                <div id="questions-root"><fieldset class="question" data-testid="question-1"><legend>Do you need to turn in the key card</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></fieldset><fieldset class="question" data-testid="question-2"><legend>Is the car far away?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></fieldset></div>
-            </form>
-        </div>
-        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
-            <h2>Roles</h2>
-            <p>These are the applicable tasks for each role. Check them off on the Checklist tab.</p>
-            <div id="roles-root"><section aria-labelledby="role-dad"><h3 id="role-dad">Dad</h3><ul><li>Pre Checkout. Check if any food is left in fridge</li><li>Checkout. Carry suitcases downstairs</li></ul></section><section aria-labelledby="role-mom"><h3 id="role-mom">Mom</h3><ul><li>Pre Checkout. Make sure nothing is left behind in the bathroom</li></ul></section><section aria-labelledby="role-sister"><h3 id="role-sister">Sister</h3><ul><li>Pre Checkout. Check the closet to make sure nothing is left behind</li><li>Checkout. Do one final walkthrough of room to check for left items</li></ul></section><section aria-labelledby="role-brother"><h3 id="role-brother">Brother</h3><ul><li>Pre Checkout. Look under the beds to make sure nothing is left behind</li><li>Checkout. Help dad carry suitecases downstairs</li><li>Checkout. Wait in lobby with suitcases</li></ul></section></div>
-        </div>
-        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
-            <h2>Checklist</h2>
-            <p>Check an item when it is done. The item text stays on the page.</p>
-            <div id="tasks-root"><section class="task-group"><h3>Pre Checkout</h3><ul class="task-list"><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="Check if any food is left in fridge"><label for="task-1">Check if any food is left in fridge <span class="task-role">Role: Dad.</span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="Make sure nothing is left behind in the bathroom"><label for="task-2">Make sure nothing is left behind in the bathroom <span class="task-role">Role: Mom.</span></label></li><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="Check the closet to make sure nothing is left behind"><label for="task-3">Check the closet to make sure nothing is left behind <span class="task-role">Role: Sister.</span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Look under the beds to make sure nothing is left behind"><label for="task-4">Look under the beds to make sure nothing is left behind <span class="task-role">Role: Brother.</span></label></li></ul></section><section class="task-group"><h3>Checkout</h3><ul class="task-list"><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="Carry suitcases downstairs"><label for="task-5">Carry suitcases downstairs <span class="task-role">Role: Dad.</span></label></li><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="Help dad carry suitecases downstairs"><label for="task-6">Help dad carry suitecases downstairs <span class="task-role">Role: Brother.</span></label></li><li data-task-index="7"><input type="checkbox" id="task-7" data-testid="task-7" data-task-index="7" data-task-text="Wait in lobby with suitcases"><label for="task-7">Wait in lobby with suitcases <span class="task-role">Role: Brother.</span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Do one final walkthrough of room to check for left items"><label for="task-9">Do one final walkthrough of room to check for left items <span class="task-role">Role: Sister.</span></label></li></ul></section></div>
-        </div>
+        </details>
         <noscript>
             <p>
                 JavaScript is off, so the applicable list uses No for every question that does not set a default.

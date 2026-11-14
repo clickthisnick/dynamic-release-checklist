@@ -10,34 +10,52 @@
     <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
 </head>
 <body>
-    <a class="skip-link" href="#applicable">Skip to applicable items</a>
+    <a class="skip-link" href="#panel-questions">Skip to questions</a>
     <header>
         <h1>Stretch checklist</h1>
         <p id="safety-notice" role="note" data-testid="safety-notice">
-            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
-            Do not turn them off or unplug them. This checklist does not ask you to disable them.
+            Leave smoke and CO alarms on and plugged in.
+            Do not turn them off or unplug them.
+            A phone alarm is only a reminder on your phone.
         </p>
     </header>
     <main id="main">
-        <p class="howto">
-            Answer each question Yes or No. Follow only the applicable items.
-            Tasks that do not apply are left out of the page. Checked items are saved in this page's URL.
-        </p>
-        <nav class="file-links" aria-label="Checklist files">
-            <a href="checklist.txt" data-testid="rules-link">Machine-readable rules (plain text)</a>
-            <a href="questions.json">Questions (JSON)</a>
-            <a href="tasks.json">Conditional tasks (JSON, not a flat todo list)</a>
-            <a href="../../llms.txt">Notes for automated agents (llms.txt)</a>
-        </nav>
-        <section id="applicable" aria-labelledby="applicable-heading">
-            <h2 id="applicable-heading">Applicable items</h2>
-            <p id="applicable-summary" data-testid="applicable-summary">16 of 16 tasks apply. 0 tasks are hidden because their conditions are not met.</p>
-            <p>
-                <button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button>
-            </p>
+        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+        <div class="tablist" role="tablist" aria-label="Checklist sections">
+            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
+            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
+            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
+        </div>
+        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
+            <h2>Questions</h2>
+            <form id="question-form" autocomplete="off">
+                <div id="questions-root"><div class="question" role="group" aria-labelledby="question-1-text" data-testid="question-1"><p class="question-text" id="question-1-text">Test?</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></div></div>
+            </form>
+        </div>
+        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
+            <h2>Roles</h2>
+            <div id="roles-root"><section aria-labelledby="role-nick"><h3 id="role-nick">Nick</h3><ul><li>Stretch. Set timer for 60 seconds</li><li>Stretch. 2 leg down</li><li>Stretch. standing quad leg to back stretch right</li><li>Stretch. standing quad leg to back stretch left</li><li>Stretch. Butterfly</li><li>Stretch. 30 Hand Crushes Each Hand</li><li>Stretch. 16 Right Hand 150lb Hand Squeeze</li><li>Stretch. 10 Left Hand 150lb Hand Squeeze</li><li>Stretch. Back twist left</li><li>Stretch. Back twist right</li><li>Stretch. Butterfly one leg right straight</li><li>Stretch. Butterfly one leg left straight</li><li>Stretch. Cobra</li><li>Stretch. 2 leg down</li><li>Stretch. 25 push ups</li><li>Stretch. 25 squats</li></ul></section></div>
+        </div>
+        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
+            <h2>Checklist</h2>
+            <div id="tasks-root"><section class="task-group"><h3>Stretch</h3><ul class="task-list"><li data-task-index="0"><input type="checkbox" id="task-0" data-testid="task-0" data-task-index="0" data-task-text="Set timer for 60 seconds"><label for="task-0"><span class="task-text">Set timer for 60 seconds</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="2 leg down"><label for="task-1"><span class="task-text">2 leg down</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="standing quad leg to back stretch right"><label for="task-2"><span class="task-text">standing quad leg to back stretch right</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="standing quad leg to back stretch left"><label for="task-3"><span class="task-text">standing quad leg to back stretch left</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Butterfly"><label for="task-4"><span class="task-text">Butterfly</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="30 Hand Crushes Each Hand"><label for="task-5"><span class="task-text">30 Hand Crushes Each Hand</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="16 Right Hand 150lb Hand Squeeze"><label for="task-6"><span class="task-text">16 Right Hand 150lb Hand Squeeze</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="7"><input type="checkbox" id="task-7" data-testid="task-7" data-task-index="7" data-task-text="10 Left Hand 150lb Hand Squeeze"><label for="task-7"><span class="task-text">10 Left Hand 150lb Hand Squeeze</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="8"><input type="checkbox" id="task-8" data-testid="task-8" data-task-index="8" data-task-text="Back twist left"><label for="task-8"><span class="task-text">Back twist left</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Back twist right"><label for="task-9"><span class="task-text">Back twist right</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="10"><input type="checkbox" id="task-10" data-testid="task-10" data-task-index="10" data-task-text="Butterfly one leg right straight"><label for="task-10"><span class="task-text">Butterfly one leg right straight</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="11"><input type="checkbox" id="task-11" data-testid="task-11" data-task-index="11" data-task-text="Butterfly one leg left straight"><label for="task-11"><span class="task-text">Butterfly one leg left straight</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="12"><input type="checkbox" id="task-12" data-testid="task-12" data-task-index="12" data-task-text="Cobra"><label for="task-12"><span class="task-text">Cobra</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="13"><input type="checkbox" id="task-13" data-testid="task-13" data-task-index="13" data-task-text="2 leg down"><label for="task-13"><span class="task-text">2 leg down</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="14"><input type="checkbox" id="task-14" data-testid="task-14" data-task-index="14" data-task-text="25 push ups"><label for="task-14"><span class="task-text">25 push ups</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="15"><input type="checkbox" id="task-15" data-testid="task-15" data-task-index="15" data-task-text="25 squats"><label for="task-15"><span class="task-text">25 squats</span><span class="task-role">Nick</span><span class="visually-hidden task-state"></span></label></li></ul></section></div>
+        </div>
+        <details id="applicable">
+            <summary>
+                <span id="applicable-heading">Applicable items</span>
+                <span id="applicable-summary" data-testid="applicable-summary">16 of 16 tasks apply. 0 tasks are hidden because their conditions are not met.</span>
+            </summary>
+            <nav class="file-links" aria-label="Checklist files">
+                <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
+                <a href="questions.json">Questions</a>
+                <a href="tasks.json">Conditional tasks</a>
+                <a href="../../llms.txt">Agent notes</a>
+            </nav>
+            <p><button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button></p>
             <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Stretch checklist
 Follow only the applicable items below. Items that do not apply are omitted from this list.
 Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+A phone alarm is a reminder on a phone, not a smoke or carbon monoxide alarm.
 
 Answers:
 - No. Test?
@@ -60,29 +78,7 @@ Applicable items (16 of 16):
 15. Stretch. 25 push ups. Role: Nick.
 16. Stretch. 25 squats. Role: Nick.
 </pre>
-        </section>
-        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
-        <div class="tablist" role="tablist" aria-label="Checklist sections">
-            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
-            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
-            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
-        </div>
-        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
-            <h2>Questions</h2>
-            <form id="question-form" autocomplete="off">
-                <div id="questions-root"><fieldset class="question" data-testid="question-1"><legend>Test?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></fieldset></div>
-            </form>
-        </div>
-        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
-            <h2>Roles</h2>
-            <p>These are the applicable tasks for each role. Check them off on the Checklist tab.</p>
-            <div id="roles-root"><section aria-labelledby="role-nick"><h3 id="role-nick">Nick</h3><ul><li>Stretch. Set timer for 60 seconds</li><li>Stretch. 2 leg down</li><li>Stretch. standing quad leg to back stretch right</li><li>Stretch. standing quad leg to back stretch left</li><li>Stretch. Butterfly</li><li>Stretch. 30 Hand Crushes Each Hand</li><li>Stretch. 16 Right Hand 150lb Hand Squeeze</li><li>Stretch. 10 Left Hand 150lb Hand Squeeze</li><li>Stretch. Back twist left</li><li>Stretch. Back twist right</li><li>Stretch. Butterfly one leg right straight</li><li>Stretch. Butterfly one leg left straight</li><li>Stretch. Cobra</li><li>Stretch. 2 leg down</li><li>Stretch. 25 push ups</li><li>Stretch. 25 squats</li></ul></section></div>
-        </div>
-        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
-            <h2>Checklist</h2>
-            <p>Check an item when it is done. The item text stays on the page.</p>
-            <div id="tasks-root"><section class="task-group"><h3>Stretch</h3><ul class="task-list"><li data-task-index="0"><input type="checkbox" id="task-0" data-testid="task-0" data-task-index="0" data-task-text="Set timer for 60 seconds"><label for="task-0">Set timer for 60 seconds <span class="task-role">Role: Nick.</span></label></li><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="2 leg down"><label for="task-1">2 leg down <span class="task-role">Role: Nick.</span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="standing quad leg to back stretch right"><label for="task-2">standing quad leg to back stretch right <span class="task-role">Role: Nick.</span></label></li><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="standing quad leg to back stretch left"><label for="task-3">standing quad leg to back stretch left <span class="task-role">Role: Nick.</span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Butterfly"><label for="task-4">Butterfly <span class="task-role">Role: Nick.</span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="30 Hand Crushes Each Hand"><label for="task-5">30 Hand Crushes Each Hand <span class="task-role">Role: Nick.</span></label></li><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="16 Right Hand 150lb Hand Squeeze"><label for="task-6">16 Right Hand 150lb Hand Squeeze <span class="task-role">Role: Nick.</span></label></li><li data-task-index="7"><input type="checkbox" id="task-7" data-testid="task-7" data-task-index="7" data-task-text="10 Left Hand 150lb Hand Squeeze"><label for="task-7">10 Left Hand 150lb Hand Squeeze <span class="task-role">Role: Nick.</span></label></li><li data-task-index="8"><input type="checkbox" id="task-8" data-testid="task-8" data-task-index="8" data-task-text="Back twist left"><label for="task-8">Back twist left <span class="task-role">Role: Nick.</span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Back twist right"><label for="task-9">Back twist right <span class="task-role">Role: Nick.</span></label></li><li data-task-index="10"><input type="checkbox" id="task-10" data-testid="task-10" data-task-index="10" data-task-text="Butterfly one leg right straight"><label for="task-10">Butterfly one leg right straight <span class="task-role">Role: Nick.</span></label></li><li data-task-index="11"><input type="checkbox" id="task-11" data-testid="task-11" data-task-index="11" data-task-text="Butterfly one leg left straight"><label for="task-11">Butterfly one leg left straight <span class="task-role">Role: Nick.</span></label></li><li data-task-index="12"><input type="checkbox" id="task-12" data-testid="task-12" data-task-index="12" data-task-text="Cobra"><label for="task-12">Cobra <span class="task-role">Role: Nick.</span></label></li><li data-task-index="13"><input type="checkbox" id="task-13" data-testid="task-13" data-task-index="13" data-task-text="2 leg down"><label for="task-13">2 leg down <span class="task-role">Role: Nick.</span></label></li><li data-task-index="14"><input type="checkbox" id="task-14" data-testid="task-14" data-task-index="14" data-task-text="25 push ups"><label for="task-14">25 push ups <span class="task-role">Role: Nick.</span></label></li><li data-task-index="15"><input type="checkbox" id="task-15" data-testid="task-15" data-task-index="15" data-task-text="25 squats"><label for="task-15">25 squats <span class="task-role">Role: Nick.</span></label></li></ul></section></div>
-        </div>
+        </details>
         <noscript>
             <p>
                 JavaScript is off, so the applicable list uses No for every question that does not set a default.

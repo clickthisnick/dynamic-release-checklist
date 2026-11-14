@@ -90,7 +90,8 @@ test("rules text spells out conditions", () => {
         questionsAnyYes: [],
         role: "Me",
         type: "Day Of",
-        task: "Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in.",
+        task: "Turn off air conditioners and heaters",
+        note: "Leave smoke alarms and carbon monoxide alarms on and plugged in.",
       },
     ]
   );
@@ -102,7 +103,7 @@ test("rules text spells out conditions", () => {
   );
   assert.equal(text.includes("empty?."), false);
   assert.equal(
-    text.includes("Leave smoke alarms and carbon monoxide alarms on and plugged in."),
+    text.includes("Note: Leave smoke alarms and carbon monoxide alarms on and plugged in."),
     true
   );
 });
@@ -119,16 +120,21 @@ test("real examples build a safe travel page", () => {
   const pre = page.slice(preStart, page.indexOf("</pre>", preStart));
   assert.equal(page.includes("<title>Travel checklist</title>"), true);
   assert.equal(page.includes("Is this a business trip?"), true);
-  assert.equal(pre.includes("Leave every smoke alarm"), true);
+  assert.equal(pre.includes("Leave smoke and CO alarms on and plugged in."), true);
   assert.equal(pre.includes("Set a phone alarm to wake up"), true);
+  assert.equal(page.includes("<details id=\"applicable\">"), true);
   assert.equal(pre.includes("Turn off air conditioners"), false);
   assert.equal(page.includes("Set Alarm To Wake Up"), false);
   assert.equal(page.includes("Turn Off Air Conditioners / Heaters"), false);
   assert.equal(page.includes("Unplug Electronics"), false);
   assert.equal(page.includes('type="application/json"'), true);
-  assert.equal(page.includes("Machine-readable rules"), true);
+  assert.equal(page.includes("Plain-text rules"), true);
   assert.equal(rules.includes("Obtain Corporate Card"), true);
-  assert.equal(rules.includes("Leave smoke alarms and carbon monoxide alarms on and plugged in."), true);
+  assert.equal(rules.includes("Leave smoke and CO alarms on and plugged in."), true);
+  assert.equal(
+    rules.includes("Note: Leave smoke alarms and carbon monoxide alarms on and plugged in."),
+    true
+  );
   assert.equal(rules.includes("<script>"), false);
   const cleaning = JSON.parse(
     build.stripRelaxedJson(fs.readFileSync(path.join(dest, "cleaning-checklist", "questions.json"), "utf8"))

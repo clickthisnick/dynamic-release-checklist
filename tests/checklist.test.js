@@ -20,21 +20,23 @@ const travelLike = {
       questionsAnyYes: [],
       role: "Me",
       type: "Night Before",
-      task: "Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on.",
+      task: "Set a phone alarm to wake up",
     },
     {
       questionsRequiredYes: [8],
       questionsAnyYes: [],
       role: "Me",
       type: "Day Of",
-      task: "Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in.",
+      task: "Turn off air conditioners and heaters",
+      note: "Leave smoke alarms and carbon monoxide alarms on and plugged in.",
     },
     {
       questionsRequiredYes: [8],
       questionsAnyYes: [],
       role: "Me",
       type: "Day Of",
-      task: "Unplug nonessential electronics such as televisions and chargers. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.",
+      task: "Unplug nonessential electronics",
+      note: "Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.",
     },
   ],
 };
@@ -53,7 +55,7 @@ test("default answers omit empty-house tasks and keep the safety line", () => {
   assert.equal(text.includes("Turn off air conditioners"), false);
   assert.equal(html.includes("Turn off air conditioners"), false);
   assert.equal(html.includes("visibility:hidden"), false);
-  assert.match(html, /<label for="task-0">Leave every smoke alarm/);
+  assert.match(html, /<span class="task-text">Leave every smoke alarm/);
   assert.match(html, /id="task-0"/);
 });
 
@@ -70,8 +72,9 @@ test("answering the house question shows the heater item with the alarm warning"
     text,
     /Turn off air conditioners and heaters\. Leave smoke alarms and carbon monoxide alarms on and plugged in\./
   );
-  assert.match(html, /Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator\./);
-  assert.match(html, /<label for="task-2">Turn off air conditioners/);
+  assert.match(html, /<span class="task-text">Turn off air conditioners and heaters<\/span>/);
+  assert.match(html, /class="visually-hidden"> Leave smoke alarms and carbon monoxide alarms on and plugged in\./);
+  assert.match(html, /class="visually-hidden"> Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator\./);
 });
 
 test("question ids are not array positions", () => {
@@ -164,7 +167,7 @@ test("question and task text cannot inject HTML", () => {
   assert.match(questionsHtml, /&lt;img src=x onerror=&quot;alert\(1\)&quot;&gt;/);
   assert.equal(tasksHtml.includes("<script>"), false);
   assert.match(tasksHtml, /&lt;\/script&gt;&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
-  assert.match(tasksHtml, /Role: &lt;b&gt;Me&lt;\/b&gt;\./);
+  assert.match(tasksHtml, /class="task-role">&lt;b&gt;Me&lt;\/b&gt;<\/span>/);
 });
 
 test("summary counts hidden tasks", () => {

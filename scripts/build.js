@@ -177,6 +177,7 @@ function rulesText(title, questions, tasks) {
     "This file lists every conditional rule. It is not a flat todo list.",
     "Do only the items whose conditions match the answers.",
     "Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.",
+    "A phone alarm is a reminder on a phone, not a smoke or carbon monoxide alarm.",
     "On the checklist page, follow only the Applicable items section",
     "(#applicable-checklist-text). Tasks that do not apply are omitted there.",
     "",
@@ -194,6 +195,9 @@ function rulesText(title, questions, tasks) {
     lines.push("   Section: " + (task.type || "Tasks"));
     lines.push("   Role: " + (task.role || "Unassigned"));
     lines.push("   " + (task.task || ""));
+    if (task.note) {
+      lines.push("   Note: " + task.note);
+    }
     lines.push("");
   });
   return lines.join("\n").replace(/\s+$/g, "") + "\n";
