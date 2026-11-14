@@ -12,8 +12,8 @@
     <header>
         <h1>Dynamic Release Checklist</h1>
         <p id="safety-notice" role="note">
-            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
-            A checklist item means that only when it says so.
+            Leave smoke and CO alarms on and plugged in.
+            Do not turn them off or unplug them. A phone alarm is only a reminder on your phone.
         </p>
     </header>
     <main>
@@ -36,9 +36,9 @@
         </ul>
         <h2>Run locally</h2>
         <ol>
-            <li>Install Python 3 and Node.js 18 or newer.</li>
-            <li>From this folder, run <code>python3 build.py</code>.</li>
-            <li>Run <code>python3 -m http.server 8000</code>.</li>
+            <li>Install Node.js 18 or newer.</li>
+            <li>From this folder, run <code>node scripts/build.js</code>.</li>
+            <li>Run <code>node scripts/serve.js 8000</code>.</li>
             <li>Open <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>.</li>
         </ol>
     </main>

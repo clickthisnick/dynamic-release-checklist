@@ -102,7 +102,7 @@ function assertCheck(name, value, details) {
 
 async function main() {
   const profile = mkdtempSync(path.join(tmpdir(), "checklist-chrome-"));
-  const server = start("python3", ["-m", "http.server", String(port)], { cwd: root });
+  const server = start("node", ["scripts/serve.js", String(port)], { cwd: root });
   const chrome = start("google-chrome", [
     "--headless=new",
     "--disable-gpu",
@@ -145,7 +145,8 @@ async function main() {
         oldAlarm: document.body.innerText.includes("Set Alarm To Wake Up"),
         oldTurnOff: document.body.innerText.includes("Turn Off Air Conditioners"),
         heaterInPre: pre.includes("Turn off air conditioners"),
-        safetyInPre: pre.includes("Leave every smoke alarm and carbon monoxide alarm turned on"),
+        safetyInPre: pre.includes("Leave smoke and CO alarms on and plugged in."),
+        detailsOpen: document.getElementById("applicable").open,
         phoneAlarm: pre.includes("Set a phone alarm to wake up"),
         labelFor: label ? label.getAttribute("for") : "",
         taskType: task ? task.type : "",
@@ -159,16 +160,17 @@ async function main() {
     })()`);
     assertCheck("title", initial.title === "Travel checklist", initial.title);
     assertCheck("heading", initial.h1 === "Travel checklist", initial.h1);
-    assertCheck("safety banner", initial.safety.includes("leave smoke alarms"), initial.safety);
+    assertCheck("safety banner", initial.safety.includes("Leave smoke and CO alarms"), initial.safety);
     assertCheck("phone alarm in applicable list", initial.phoneAlarm, initial.pre);
     assertCheck("safety item in applicable list", initial.safetyInPre, initial.pre);
+    assertCheck("agent list collapsed", initial.detailsOpen === false, String(initial.detailsOpen));
     assertCheck("heater hidden by default", !initial.heaterInPre, initial.pre);
     assertCheck("old alarm wording gone", !initial.oldAlarm, "old text still visible");
     assertCheck("old turn-off wording gone", !initial.oldTurnOff, "old text still visible");
     assertCheck("checkbox label", initial.labelFor === "task-0" && initial.taskType === "checkbox", JSON.stringify(initial));
     assertCheck("question labels", initial.yesLabel === "Yes" && initial.noChecked, JSON.stringify(initial));
     assertCheck("checklist panel hidden", initial.checklistHidden && initial.rolesHidden, JSON.stringify(initial));
-    assertCheck("status loaded", initial.status.includes("Loaded Travel checklist"), initial.status);
+    assertCheck("summary loaded", initial.pre.includes("Applicable items ("), initial.pre.slice(0, 180));
     assertCheck("corporate card hidden", !initial.corporate, initial.pre);
     await saveShot(cdp, "/tmp/travel-default.png");
 
@@ -180,7 +182,7 @@ async function main() {
         pre,
         status: document.getElementById("status").textContent,
         heater: pre.includes("Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in."),
-        unplug: pre.includes("Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.")
+        unplug: pre.includes("Unplug nonessential electronics. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.")
       };
     })()`);
     assertCheck("heater shown with warning", afterYes.heater, afterYes.pre);
@@ -194,15 +196,31 @@ async function main() {
       const heater = boxes.find((box) => (box.getAttribute("data-task-text") || "").includes("Turn off air conditioners"));
       const label = heater ? document.querySelector("label[for='" + heater.id + "']") : null;
       heater.click();
+      const visible = label ? label.querySelector(".task-text").innerText : "";
+      const stateEl = label ? label.querySelector(".task-state") : null;
+      const noteEl = label ? label.querySelector(".visually-hidden:not(.task-state)") : null;
+      const hiddenBox = (el) => {
+        if (!el) return false;
+        const box = el.getBoundingClientRect();
+        return getComputedStyle(el).position === "absolute" && box.width <= 2 && box.height <= 2;
+      };
       return {
         panelHidden: document.getElementById("panel-checklist").hidden,
-        labelText: label ? label.textContent : "",
+        visible,
+        state: stateEl ? stateEl.textContent : "",
+        noteHidden: hiddenBox(noteEl),
+        stateHidden: hiddenBox(stateEl),
         status: document.getElementById("status").textContent,
         url: location.search
       };
     })()`);
     assertCheck("checklist visible", !checked.panelHidden, "panel stayed hidden");
-    assertCheck("heater label", checked.labelText.includes("Leave smoke alarms"), checked.labelText);
+    assertCheck("heater label stays short", checked.visible === "Turn off air conditioners and heaters", checked.visible);
+    assertCheck(
+      "completed text is hidden",
+      checked.state === "Completed." && checked.noteHidden && checked.stateHidden,
+      JSON.stringify(checked)
+    );
     assertCheck("complete status", checked.status.startsWith("Marked complete:"), checked.status);
     assertCheck("url saved", checked.url.includes("redirectToTasks=true") && checked.url.includes("answers="), checked.url);
     await evaluate(
@@ -223,7 +241,7 @@ async function main() {
       return {
         checklistHidden: document.getElementById("panel-checklist").hidden,
         corporate: pre.includes("Obtain Corporate Card"),
-        heater: pre.includes("Leave smoke alarms and carbon monoxide alarms on and plugged in."),
+        heater: pre.includes("Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in."),
         firstChecked: document.getElementById("task-0")?.checked || false,
         houseYes: document.getElementById("question-8-yes")?.checked || false
       };

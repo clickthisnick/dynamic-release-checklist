@@ -3,6 +3,7 @@ Travel checklist
 This file lists every conditional rule. It is not a flat todo list.
 Do only the items whose conditions match the answers.
 Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+A phone alarm is a reminder on a phone, not a smoke or carbon monoxide alarm.
 On the checklist page, follow only the Applicable items section
 (#applicable-checklist-text). Tasks that do not apply are omitted there.
 
@@ -34,7 +35,7 @@ Tasks:
 1. Always show.
    Section: Safety
    Role: Me
-   Leave every smoke alarm and carbon monoxide alarm turned on and plugged in.
+   Leave smoke and CO alarms on and plugged in.
 
 2. Show if all of these answers are Yes: 11. Is this a business trip?
    Section: Day Before
@@ -104,27 +105,27 @@ Tasks:
 15. Always show.
    Section: Night Before
    Role: Me
-   Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on.
+   Set a phone alarm from the itinerary app
 
 16. Always show.
    Section: Night Before
    Role: Me
-   Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on.
+   Set a phone alarm to wake up
 
 17. Always show.
    Section: Night Before
    Role: Me
-   Set a phone alarm for 5 minutes before you have to leave.
+   Set a phone alarm for 5 minutes before leaving
 
 18. Always show.
    Section: Night Before
    Role: Me
-   Set a phone alarm for the time you have to leave.
+   Set a phone alarm for when you have to leave
 
 19. Always show.
    Section: Night Before
    Role: Me
-   Set a phone alarm as a reminder to pack your retainer.
+   Set a phone alarm to pack your retainer
 
 20. Always show.
    Section: Night Before
@@ -240,6 +241,7 @@ Tasks:
    Section: Night Before
    Role: Me
    Unplug the window shade
+   Note: This is the window shade, not a smoke alarm or carbon monoxide alarm.
 
 43. Show if any of these answers are Yes: 10. Is anyone taking care of the pets?
    Section: Night Before
@@ -374,12 +376,14 @@ Tasks:
 69. Show if all of these answers are Yes: 8. Is the house going to be empty?
    Section: Day Of
    Role: Me
-   Unplug nonessential electronics such as televisions and chargers. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.
+   Unplug nonessential electronics
+   Note: Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.
 
 70. Show if all of these answers are Yes: 8. Is the house going to be empty?
    Section: Day Of
    Role: Me
-   Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in.
+   Turn off air conditioners and heaters
+   Note: Leave smoke alarms and carbon monoxide alarms on and plugged in.
 
 71. Show if all of these answers are Yes: 6. Will there be any pets (Aside from your own)?
    Section: Day Of
