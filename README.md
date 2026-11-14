@@ -6,11 +6,15 @@ Only have **_relevant_** items in your checklist.
 
 ------
 
-## Demo:
+## Demo
 
-<a href="https://www.clickthisnick.com/dynamic-release-checklist/examples/jira-release-checklist/checklist.html" target="_blank"> Click For Demo</a>
+- [Jira release checklist](examples/jira-release-checklist/checklist.html)
+- [Travel checklist](examples/travel-checklist/checklist.html)
+- [All examples](index.html)
 
-# The Problem:
+Hosted copy: <a href="https://www.clickthisnick.com/dynamic-release-checklist/examples/jira-release-checklist/checklist.html">clickthisnick.com demo</a>
+
+# The Problem
 
 Too many times I see release checklists full of items that **don't apply to this release.**
 
@@ -28,48 +32,68 @@ You now have two items ( Create Downpage and Remove Downpage ) that are no longe
 
 -----
 
-# The Solution:
+# The Solution
 
 ##### Create questions that reduce your release checklist to only the _necessary_ items
 
-First create a question
+Each example is a folder with `questions.json` and `tasks.json`. `python3 build.py` writes `checklist.html` and `checklist.txt`.
 
-```javascript
-function questions(){
-return [
-  {id:1,text:'Is there a downpage?',description:'',default:false}
-  ];
-}
+```json
+[
+  {"id": 1, "text": "Is there a downpage?", "default": false}
+]
 ```
 
-Then tie the tasks to the question.
+`questions.json` may use full-line `//` comments and a trailing comma. The `id` is the value tasks refer to. It is not the row number. `default` is optional and is `false` when omitted.
 
-Push code has no questionsRequiredYes so that tasks shows no matter what.
+Push code has no question ids, so that task shows no matter what.
 
-The tasks Create Downpage and Remove Downpage only show when the question with an id of 1 is set to True.
+Create Downpage and Remove Downpage show when question 1 is Yes.
 
-```javascript
-function tasks() {
-return [
-  {questionsRequiredYes:[1],questionsAnyYes:[],role:'Developer',type:'Release',task:'Create Downpage'},
-  {questionsRequiredYes:[],questionsAnyYes:[],role:'Developer',type:'Release',task:'Push Code'},
-  {questionsRequiredYes:[1],questionsAnyYes:[],role:'Developer',type:'Release',task:'Remove Downpage'}
-];
-}
+```json
+[
+  {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Create Downpage"},
+  {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Push Code"},
+  {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Remove Downpage"}
+]
 ```
 
-## Further Explanation:
-questionsRequiredYes => Put in any question ids that must be true for this item to be present
+## Further Explanation
 
-questionsAnyYes => If any of these questions are true this item will show
+- `questionsRequiredYes`: every listed question id must be Yes. An empty list does not by itself show the task.
+- `questionsAnyYes`: the task shows when any listed question id is Yes.
+- If both lists are non-empty, either condition is enough.
+- If both lists are empty, the task always shows.
+- `role`: who is responsible. The Roles tab groups the applicable tasks by this value.
+- `type`: which section of the checklist the task is in.
 
-role => Who is responsible for this task
+The page shows only the applicable tasks. The Applicable items box is also plain text, and `checklist.txt` lists every rule with its condition. Saved answers live in the `answers` URL parameter, keyed by question id. `redirectToTasks=true` opens the Checklist tab.
 
-type => What section of the checklist will this task be put in
+## Run locally
 
-## More Examples:
+Python 3 and Node.js 18 or newer:
 
-Clone the repo and checkout the examples in the examples folder
+```bash
+python3 build.py
+python3 -m http.server 8000
+```
+
+Open http://127.0.0.1:8000/
+
+Tests:
+
+```bash
+python3 -m unittest discover -s tests -v
+node --test tests/checklist.test.js
+```
+
+## Safety
+
+Checklist text is instructions. Items that tell you to turn something off or unplug something say what to leave alone. Do not turn off or unplug smoke alarms or carbon monoxide alarms. See [llms.txt](llms.txt) for notes aimed at automated browser agents.
+
+## More Examples
+
+The examples folder has travel, cleaning, moving, stretch, hotel checkout, and Jira release checklists.
 
 ## License
 

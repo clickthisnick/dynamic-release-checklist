@@ -12,7 +12,7 @@
 
     // living room
     {"id": 5, "text": "Are there clothes in the living room?", "description": "", "default": false},
-    {"id": 10, "text": "Does the sofa need vacuuming?", "description": "", "default": false},
+    {"id": 14, "text": "Does the sofa need vacuuming?", "description": "", "default": false},
 
     // downstairs bathroom
     {"id": 7, "text": "Does the downstairs bathroom need cleaning?", "description": "", "default": false},

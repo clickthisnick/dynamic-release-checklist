@@ -1,4 +1,6 @@
 [
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Safety","task":"Leave every smoke alarm and carbon monoxide alarm turned on and plugged in."},
+
     // ------------------ Day Before ------------------ //
     {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Card"},
     {"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Badge"},
@@ -21,11 +23,11 @@
     // {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Out Keys / Phone"},
 
     // Day Of Time Management
-    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set an Alarm based on Itinerary app"},
-    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm To Wake Up"},
-    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm 5 Minutes Before Having To Leave"},
-    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm At Time Have To Leave"},
-    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set Alarm To Pack Retainer"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on."},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on."},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm for 5 minutes before you have to leave."},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm for the time you have to leave."},
+    {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm as a reminder to pack your retainer."},
 
     // Tech For Tomorrow
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Phone"},
@@ -64,7 +66,7 @@
     {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Leave extra keys by door"},
     {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats are in cupboard"},
     {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats in cubby magnetized to door"},
-    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Unplug shade"},
+    {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Unplug the window shade"},
     {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Shade remote in bowl"},
     {"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Setup bed with blanket and pillow"},
 
@@ -102,8 +104,8 @@
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer Charger"},
     {"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Check You Have Drivers License"},
-    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Unplug Electronics"},
-    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Turn Off Air Conditioners / Heaters"},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Unplug nonessential electronics such as televisions and chargers. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator."},
+    {"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in."},
     {"questionsRequiredYes":[6],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Bring allergy medicine"},
 
     // Clean Up

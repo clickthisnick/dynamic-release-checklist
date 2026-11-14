@@ -1,0 +1,233 @@
+Cleaning checklist
+
+This file lists every conditional rule. It is not a flat todo list.
+Do only the items whose conditions match the answers.
+Never turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+On the checklist page, follow only the Applicable items section
+(#applicable-checklist-text). Tasks that do not apply are omitted there.
+
+Questions:
+1. Are the dishes in the dishwasher clean?
+   Default answer: No
+2. Is the trash can more than halfway full?
+   Default answer: No
+6. Are there dirty dishes?
+   Default answer: No
+13. Are the water bottles dirty?
+   Default answer: No
+3. Is there anything in the washing machine?
+   Default answer: No
+4. Is there anything in the dryer?
+   Default answer: No
+8. Are there any cardboard boxes out?
+   Default answer: No
+10. Is the litterbox clean?
+   Default answer: No
+5. Are there clothes in the living room?
+   Default answer: No
+14. Does the sofa need vacuuming?
+   Default answer: No
+7. Does the downstairs bathroom need cleaning?
+   Default answer: No
+9. Is there any mail on top of cupboard?
+   Default answer: No
+11. Are there clean clothes?
+   Default answer: No
+12. Do you need to shave?
+   Default answer: No
+
+Tasks:
+1. Show if all of these answers are Yes: 1. Are the dishes in the dishwasher clean?
+   Section: Clean
+   Role: Nick
+   Put away the clean dishes in the dishwasher
+
+2. Show if all of these answers are Yes: 13. Are the water bottles dirty?
+   Section: Clean
+   Role: Nick
+   Add Cleaner Tablet To Water Bottle
+
+3. Show if all of these answers are Yes: 4. Is there anything in the dryer?
+   Section: Clean
+   Role: Nick
+   Clean dryer lint filter
+
+4. Show if all of these answers are Yes: 4. Is there anything in the dryer?
+   Section: Clean
+   Role: Nick
+   Put clothes in dryer into clean hamper
+
+5. Show if all of these answers are Yes: 3. Is there anything in the washing machine?
+   Section: Clean
+   Role: Nick
+   Put clean clothes into dryer
+
+6. Show if all of these answers are Yes: 5. Are there clothes in the living room?
+   Section: Clean
+   Role: Nick
+   Put away clothes in living room
+
+7. Always show.
+   Section: Clean
+   Role: Nick
+   Put dirty clothes into washing machine
+
+8. Show if all of these answers are Yes: 2. Is the trash can more than halfway full?
+   Section: Clean
+   Role: Nick
+   Take trash
+
+9. Always show.
+   Section: Clean
+   Role: Nick
+   Take out recycling
+
+10. Always show.
+   Section: Clean
+   Role: Nick
+   Put any trash from living room and kitchen into trash can
+
+11. Show if all of these answers are Yes: 6. Are there dirty dishes?
+   Section: Clean
+   Role: Nick
+   Put on gloves
+
+12. Show if all of these answers are Yes: 6. Are there dirty dishes?
+   Section: Clean
+   Role: Nick
+   Brush off everything. small plates load in sideways, facing you bottom washer
+
+13. Show if all of these answers are Yes: 6. Are there dirty dishes?
+   Section: Clean
+   Role: Nick
+   Start dishwasher
+
+14. Show if all of these answers are Yes: 6. Are there dirty dishes?
+   Section: Clean
+   Role: Nick
+   Spray and wipe countertop
+
+15. Show if all of these answers are Yes: 13. Are the water bottles dirty?
+   Section: Clean
+   Role: Nick
+   Scrub Water Bottle and Let Air Dry
+
+16. Always show.
+   Section: Clean
+   Role: Nick
+   Organize bathroom vanity
+
+17. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Put away/Remove all items from bathroom
+
+18. Show if all of these answers are Yes: 12. Do you need to shave?
+   Section: Clean
+   Role: Nick
+   Shave Face
+
+19. Show if all of these answers are Yes: 12. Do you need to shave?
+   Section: Clean
+   Role: Nick
+   Shave Nostrils
+
+20. Show if all of these answers are Yes: 12. Do you need to shave?
+   Section: Clean
+   Role: Nick
+   Shave Ears
+
+21. Show if all of these answers are Yes: 12. Do you need to shave?
+   Section: Clean
+   Role: Nick
+   Shave Tricep
+
+22. Show if all of these answers are Yes: 12. Do you need to shave?
+   Section: Clean
+   Role: Nick
+   Shave Foot
+
+23. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Wash Face
+
+24. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Spray mirror cleaner and wipe off
+
+25. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Clean glass shelf
+
+26. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Clean sink
+
+27. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Use broom and brush off toilet
+
+28. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Clean toilet
+
+29. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Sweep floor
+
+30. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Wash floor with paper towels
+
+31. Show if all of these answers are Yes: 7. Does the downstairs bathroom need cleaning?
+   Section: Clean
+   Role: Nick
+   Plugin in eucalpyous smelly thing
+
+32. Show if all of these answers are Yes: 8. Are there any cardboard boxes out?
+   Section: Clean
+   Role: Nick
+   Recycle cardboard boxes
+
+33. Show if all of these answers are Yes: 10. Is the litterbox clean?
+   Section: Clean
+   Role: Nick
+   Clean litterbox
+
+34. Show if all of these answers are Yes: 9. Is there any mail on top of cupboard?
+   Section: Clean
+   Role: Nick
+   Take mail off cupboard and sort
+
+35. Always show.
+   Section: Clean
+   Role: Nick
+   Wipe off living room table
+
+36. Show if all of these answers are Yes: 14. Does the sofa need vacuuming?
+   Section: Clean
+   Role: Nick
+   Vacuum Sofa
+
+37. Show if all of these answers are Yes: 14. Does the sofa need vacuuming?
+   Section: Clean
+   Role: Nick
+   Vacuum Floor
+
+38. Always show.
+   Section: Clean
+   Role: Nick
+   Sweep floor with red broom
+
+39. Show if all of these answers are Yes: 11. Are there clean clothes?
+   Section: Clean
+   Role: Nick
+   Put away clean clothes

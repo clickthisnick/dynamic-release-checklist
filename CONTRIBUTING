@@ -1,1 +1,12 @@
-Thank you for contributing! Create a pull request and I will review it to include in the project!
+Thank you for contributing! Create a pull request and I will review it to include in the project.
+
+Run `python3 build.py` after changing questions, tasks, or `template_checklist.html`, and commit the generated `checklist.html` and `checklist.txt` files.
+
+Run the tests before opening a pull request:
+
+```bash
+python3 -m unittest discover -s tests -v
+node --test tests/checklist.test.js
+```
+
+Node.js 18 or newer is required for the build and the browser page.

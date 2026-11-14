@@ -1,225 +1,96 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-    <!-- Needed for mobile to function (somewhat) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <ul class="nav nav-tabs">
-        <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
-                aria-expanded="false">Questions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
-        <li class="nav-item" onclick="switchToChecklist(true)"><a class="nav-link" data-toggle="tab"
-                aria-expanded="false">Checklist</a></li>
-    </ul>
-
-
-    <div id="tasks" style="visibility:hidden">
-    </div>
-
-    <table id="questions" class="table table-striped table-hover ">
-        <tbody>
-            <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                </tr>
-            </thead>
-        </tbody>
-    </table>
-
-    <style>
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        .completed {
-            background-color: green;
-            color: white;
-        }
-
-        input,
-        button {
-            background-color: rgb(58, 25, 25);
-            background: rgb(58, 25, 25);
-            color: white;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
-
-    <script>
-    const questions=[{"id": 1, "text": "Test?"}]
-    const tasks=[{"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Set timer for 60 seconds"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "2 leg down"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "standing quad leg to back stretch right"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "standing quad leg to back stretch left"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Butterfly"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "30 Hand Crushes Each Hand"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "16 Right Hand 150lb Hand Squeeze"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "10 Left Hand 150lb Hand Squeeze"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Back twist left"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Back twist right"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Butterfly one leg right straight"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Butterfly one leg left straight"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "Cobra"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "2 leg down"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "25 push ups"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Nick", "type": "Stretch", "task": "25 squats"}]
-        const answers = {}
-
-        function generateTaskTableHtml() {
-            return `<table id="tasksTable" class="table table-striped table-hover ">
-            <tbody>
-                <thead>
-                    <tr>
-                        <th>Tasks</th>
-                    </tr>
-                </thead>
-            </tbody>
-        </table>`
-        }
-
-        function decodeQueryParam(p) {
-            return decodeURIComponent(p.replace(/\+/g, " "));
-        }
-
-        function loadJSONQueryParameter(data) {
-            return JSON.parse(decodeQueryParam(data));
-        }
-
-        function allRequired(arr) {
-            if (Array.isArray(arr) && arr.length) {
-                for (let aidx in arr) {
-                    if (!answers[arr[aidx]]) {
-                        return false
-                    }
-                }
-                return true
-            }
-            return false
-        }
-
-        function addTaskRow(task, idx) {
-            let tasksHTML = document.getElementById('tasksTable', idx)
-            let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
-            tasksHTML.innerHTML = newHTML
-        }
-
-        function generateTask(task, idx) {
-            let questionsRequiredYes = task["questionsRequiredYes"]
-            let questionsAnyYes = task["questionsAnyYes"]
-
-            if (questionsRequiredYes.length === 0 && questionsAnyYes.length === 0) {
-                addTaskRow(task, idx)
-                return
-            }
-
-            for (let aidx in questionsAnyYes) {
-                if (answers[questionsAnyYes[aidx]]) {
-                    addTaskRow(task, idx)
-                    return
-                }
-            }
-
-            if (allRequired(questionsRequiredYes)) {
-                addTaskRow(task, idx)
-                return
-            }
-        }
-
-        function generateTasks() {
-            let idx = 1;
-            for (let taskEl in tasks) {
-                let task = tasks[taskEl]
-                generateTask(task, idx)
-                idx += 1
-            }
-        }
-
-        function switchToChecklist(manual) {
-            document.getElementById("questions").style.visibility = "hidden";
-            document.getElementById("tasks").style.visibility = "visible";
-            document.getElementById("tasks").innerHTML = generateTaskTableHtml()
-            generateTasks()
-            document.getElementById('questions').innerHTML = ""; // TODO you can't go back
-
-            if (manual) {
-                const url = new URL(location.href);
-                url.searchParams.set('answers', JSON.stringify(answers));
-                url.searchParams.set('redirectToTasks', true);
-                reloadPage(url)
-            }
-        }
-
-        function switchToQuestions() {
-            document.getElementById("tasks").style.visibility = "hidden";
-            document.getElementById("questions").style.visibility = "visible";
-        }
-
-        function answerQuestion(idx) {
-            const answerButton = document.getElementById("answerQuestion" + idx)
-
-            if (answers[idx]) {
-                answerButton.classList.remove("btn-success")
-                answerButton.classList.add("btn-danger")
-                answerButton.innerText = "No"
-                answers[idx] = false
-            } else {
-                answerButton.classList.remove("btn-danger")
-                answerButton.classList.add("btn-success")
-                answerButton.innerText = "Yes"
-                answers[idx] = true
-            }
-        }
-
-        function reloadPage(url) {
-            location.href = url
-        }
-
-        function generateQuestionRowHtml(questionText, idx) {
-            return `<tr><td><h2>` + questionText + `</h2>
-            </td>
-            <td>
-                <button id=answerQuestion` + idx + ` v"
-                class="btn btn-danger"
-                onclick="answerQuestion(` + idx + `)">
-                No
-            </button>
-            </div>
-        </tr>`
-        }
-
-        function generateTaskRowHtml(taskText, idx) {
-            return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
-            </td>
-        </tr>`
-        }
-
-        function loadConfig() {
-            const url = new URL(location.href);
-
-            let url_answers = {}
-            if (url.searchParams.get('answers')) {
-                url_answers = loadJSONQueryParameter(url.searchParams.get('answers'));
-            }
-
-            let idx = 1 // Start at 1
-            for (let question in questions) {
-                let questionsHTML = document.getElementById('questions')
-                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
-                questionsHTML.innerHTML = newHTML
-
-                // The opposite since answerQuestion will flip it
-                if (idx in url_answers && url_answers[idx] === true) {
-                    answers[idx] = false
-                } else {
-                    answers[idx] = true
-                }
-                answerQuestion(idx)
-
-                idx += 1
-            }
-
-            let redirectToTasks = url.searchParams.get('redirectToTasks');
-
-            if (redirectToTasks) {
-                switchToChecklist(false)
-            }
-
-            if (Object.keys(url_answers).length === 0) {
-                url.searchParams.set('answers', JSON.stringify(answers));
-                reloadPage(url)
-            }
-
-        }
-
-        loadConfig()
-
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stretch checklist</title>
+    <meta name="description" content="Stretch checklist: answer the questions and follow only the applicable items.">
+    <link rel="stylesheet" href="../../lib/css/bootswatch.css">
+    <link rel="stylesheet" href="../../lib/css/checklist.css">
+    <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
 </head>
+<body>
+    <a class="skip-link" href="#applicable">Skip to applicable items</a>
+    <header>
+        <h1>Stretch checklist</h1>
+        <p id="safety-notice" role="note" data-testid="safety-notice">
+            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
+            Do not turn them off or unplug them. This checklist does not ask you to disable them.
+        </p>
+    </header>
+    <main id="main">
+        <p class="howto">
+            Answer each question Yes or No. Follow only the applicable items.
+            Tasks that do not apply are left out of the page. Checked items are saved in this page's URL.
+        </p>
+        <nav class="file-links" aria-label="Checklist files">
+            <a href="checklist.txt" data-testid="rules-link">Machine-readable rules (plain text)</a>
+            <a href="questions.json">Questions (JSON)</a>
+            <a href="tasks.json">Conditional tasks (JSON, not a flat todo list)</a>
+            <a href="../../llms.txt">Notes for automated agents (llms.txt)</a>
+        </nav>
+        <section id="applicable" aria-labelledby="applicable-heading">
+            <h2 id="applicable-heading">Applicable items</h2>
+            <p id="applicable-summary" data-testid="applicable-summary">16 of 16 tasks apply. 0 tasks are hidden because their conditions are not met.</p>
+            <p>
+                <button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button>
+            </p>
+            <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Stretch checklist
+Follow only the applicable items below. Items that do not apply are omitted from this list.
+Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+
+Answers:
+- No. Test?
+
+Applicable items (16 of 16):
+1. Stretch. Set timer for 60 seconds. Role: Nick.
+2. Stretch. 2 leg down. Role: Nick.
+3. Stretch. standing quad leg to back stretch right. Role: Nick.
+4. Stretch. standing quad leg to back stretch left. Role: Nick.
+5. Stretch. Butterfly. Role: Nick.
+6. Stretch. 30 Hand Crushes Each Hand. Role: Nick.
+7. Stretch. 16 Right Hand 150lb Hand Squeeze. Role: Nick.
+8. Stretch. 10 Left Hand 150lb Hand Squeeze. Role: Nick.
+9. Stretch. Back twist left. Role: Nick.
+10. Stretch. Back twist right. Role: Nick.
+11. Stretch. Butterfly one leg right straight. Role: Nick.
+12. Stretch. Butterfly one leg left straight. Role: Nick.
+13. Stretch. Cobra. Role: Nick.
+14. Stretch. 2 leg down. Role: Nick.
+15. Stretch. 25 push ups. Role: Nick.
+16. Stretch. 25 squats. Role: Nick.
+</pre>
+        </section>
+        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+        <div class="tablist" role="tablist" aria-label="Checklist sections">
+            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
+            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
+            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
+        </div>
+        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
+            <h2>Questions</h2>
+            <form id="question-form" autocomplete="off">
+                <div id="questions-root"><fieldset class="question" data-testid="question-1"><legend>Test?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></fieldset></div>
+            </form>
+        </div>
+        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
+            <h2>Roles</h2>
+            <p>These are the applicable tasks for each role. Check them off on the Checklist tab.</p>
+            <div id="roles-root"><section aria-labelledby="role-nick"><h3 id="role-nick">Nick</h3><ul><li>Stretch. Set timer for 60 seconds</li><li>Stretch. 2 leg down</li><li>Stretch. standing quad leg to back stretch right</li><li>Stretch. standing quad leg to back stretch left</li><li>Stretch. Butterfly</li><li>Stretch. 30 Hand Crushes Each Hand</li><li>Stretch. 16 Right Hand 150lb Hand Squeeze</li><li>Stretch. 10 Left Hand 150lb Hand Squeeze</li><li>Stretch. Back twist left</li><li>Stretch. Back twist right</li><li>Stretch. Butterfly one leg right straight</li><li>Stretch. Butterfly one leg left straight</li><li>Stretch. Cobra</li><li>Stretch. 2 leg down</li><li>Stretch. 25 push ups</li><li>Stretch. 25 squats</li></ul></section></div>
+        </div>
+        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
+            <h2>Checklist</h2>
+            <p>Check an item when it is done. The item text stays on the page.</p>
+            <div id="tasks-root"><section class="task-group"><h3>Stretch</h3><ul class="task-list"><li data-task-index="0"><input type="checkbox" id="task-0" data-testid="task-0" data-task-index="0" data-task-text="Set timer for 60 seconds"><label for="task-0">Set timer for 60 seconds <span class="task-role">Role: Nick.</span></label></li><li data-task-index="1"><input type="checkbox" id="task-1" data-testid="task-1" data-task-index="1" data-task-text="2 leg down"><label for="task-1">2 leg down <span class="task-role">Role: Nick.</span></label></li><li data-task-index="2"><input type="checkbox" id="task-2" data-testid="task-2" data-task-index="2" data-task-text="standing quad leg to back stretch right"><label for="task-2">standing quad leg to back stretch right <span class="task-role">Role: Nick.</span></label></li><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="standing quad leg to back stretch left"><label for="task-3">standing quad leg to back stretch left <span class="task-role">Role: Nick.</span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Butterfly"><label for="task-4">Butterfly <span class="task-role">Role: Nick.</span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="30 Hand Crushes Each Hand"><label for="task-5">30 Hand Crushes Each Hand <span class="task-role">Role: Nick.</span></label></li><li data-task-index="6"><input type="checkbox" id="task-6" data-testid="task-6" data-task-index="6" data-task-text="16 Right Hand 150lb Hand Squeeze"><label for="task-6">16 Right Hand 150lb Hand Squeeze <span class="task-role">Role: Nick.</span></label></li><li data-task-index="7"><input type="checkbox" id="task-7" data-testid="task-7" data-task-index="7" data-task-text="10 Left Hand 150lb Hand Squeeze"><label for="task-7">10 Left Hand 150lb Hand Squeeze <span class="task-role">Role: Nick.</span></label></li><li data-task-index="8"><input type="checkbox" id="task-8" data-testid="task-8" data-task-index="8" data-task-text="Back twist left"><label for="task-8">Back twist left <span class="task-role">Role: Nick.</span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Back twist right"><label for="task-9">Back twist right <span class="task-role">Role: Nick.</span></label></li><li data-task-index="10"><input type="checkbox" id="task-10" data-testid="task-10" data-task-index="10" data-task-text="Butterfly one leg right straight"><label for="task-10">Butterfly one leg right straight <span class="task-role">Role: Nick.</span></label></li><li data-task-index="11"><input type="checkbox" id="task-11" data-testid="task-11" data-task-index="11" data-task-text="Butterfly one leg left straight"><label for="task-11">Butterfly one leg left straight <span class="task-role">Role: Nick.</span></label></li><li data-task-index="12"><input type="checkbox" id="task-12" data-testid="task-12" data-task-index="12" data-task-text="Cobra"><label for="task-12">Cobra <span class="task-role">Role: Nick.</span></label></li><li data-task-index="13"><input type="checkbox" id="task-13" data-testid="task-13" data-task-index="13" data-task-text="2 leg down"><label for="task-13">2 leg down <span class="task-role">Role: Nick.</span></label></li><li data-task-index="14"><input type="checkbox" id="task-14" data-testid="task-14" data-task-index="14" data-task-text="25 push ups"><label for="task-14">25 push ups <span class="task-role">Role: Nick.</span></label></li><li data-task-index="15"><input type="checkbox" id="task-15" data-testid="task-15" data-task-index="15" data-task-text="25 squats"><label for="task-15">25 squats <span class="task-role">Role: Nick.</span></label></li></ul></section></div>
+        </div>
+        <noscript>
+            <p>
+                JavaScript is off, so the applicable list uses No for every question that does not set a default.
+                Read checklist.txt for the conditional rules. Do not treat tasks.json as a list of things to do.
+            </p>
+        </noscript>
+    </main>
+    <script id="checklist-data" type="application/json">{"title":"Stretch checklist","questions":[{"id":1,"text":"Test?"}],"tasks":[{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Set timer for 60 seconds"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"2 leg down"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"standing quad leg to back stretch right"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"standing quad leg to back stretch left"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Butterfly"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"30 Hand Crushes Each Hand"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"16 Right Hand 150lb Hand Squeeze"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"10 Left Hand 150lb Hand Squeeze"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Back twist left"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Back twist right"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Butterfly one leg right straight"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Butterfly one leg left straight"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"Cobra"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"2 leg down"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"25 push ups"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Nick","type":"Stretch","task":"25 squats"}]}</script>
+    <script src="../../lib/js/checklist.js"></script>
+</body>
+</html>

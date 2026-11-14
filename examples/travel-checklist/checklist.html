@@ -1,225 +1,147 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
-    <!-- Needed for mobile to function (somewhat) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <ul class="nav nav-tabs">
-        <li class="nav-item" onclick="switchToQuestions()"><a class="nav-link active" data-toggle="tab"
-                aria-expanded="false">Questions</a></li>
-        <li class="nav-item"><a class="nav-link" href="#roles" data-toggle="tab" aria-expanded="false">Roles</a></li>
-        <li class="nav-item" onclick="switchToChecklist(true)"><a class="nav-link" data-toggle="tab"
-                aria-expanded="false">Checklist</a></li>
-    </ul>
-
-
-    <div id="tasks" style="visibility:hidden">
-    </div>
-
-    <table id="questions" class="table table-striped table-hover ">
-        <tbody>
-            <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Answer</th>
-                </tr>
-            </thead>
-        </tbody>
-    </table>
-
-    <style>
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        .completed {
-            background-color: green;
-            color: white;
-        }
-
-        input,
-        button {
-            background-color: rgb(58, 25, 25);
-            background: rgb(58, 25, 25);
-            color: white;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="../../lib/css/bootswatch.css">
-
-    <script>
-    const questions=[{"id": 1, "text": "Are you taking a plane?"}, {"id": 2, "text": "Are you taking a bus?"}, {"id": 3, "text": "Do you have bread?"}, {"id": 4, "text": "Is your destination cold?"}, {"id": 5, "text": "Is your destination sunny?"}, {"id": 6, "text": "Will there be any pets (Aside from your own)?"}, {"id": 7, "text": "Are you taking your pets?"}, {"id": 8, "text": "Is the house going to be empty?"}, {"id": 9, "text": "Are you travelling Internationally?"}, {"id": 10, "text": "Is anyone taking care of the pets?"}]
-    const tasks=[{"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Get A Hair Cut"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Notify Any Mail Service You Are Going Away"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Wash Any Clothes You Want To Wear"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Delete All Game Apps"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Download Apple Maps Offline"}, {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Download Flight App"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Before", "task": "Download Movies/Podcasts Offline"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack Suitcase"}, {"questionsRequiredYes": [], "questionsAnyYes": [1, 2], "role": "Me", "type": "Night Before", "task": "Check-in To Transportation"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Set an Alarm based on Itinerary app"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Set Alarm To Wake Up"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Set Alarm 5 Minutes Before Having To Leave"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Set Alarm At Time Have To Leave"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Set Alarm To Pack Retainer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Charge Phone"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Charge Computer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Charge Noise Cancelling Headphones"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Shave Face"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Shave Notrils"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Cut Fingernails"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Eat / Remove Perishable Refrigerator / Cupboard Items You Won\"t Eat Day Of Travel"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack 1 Garbage Bag Per 2 Days"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack One Pair Of Underwear Per Day"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack One T Shirt Per Day"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack One Pair Of Socks Per 2 Days"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack One Pair Of Pants Per 2 Days"}, {"questionsRequiredYes": [4], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack 1 Sweater For Every 3 Days Of Travel"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Pack Hankerchief"}, {"questionsRequiredYes": [9], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Check You Have Passport"}, {"questionsRequiredYes": [9], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Download airalo for sim card"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Clean pet bathroom"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Put toilet paper rack in downstairs bathroom"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Leave extra keys by door"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Make sure treats are in cupboard"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Make sure treats in cubby magnetized to door"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Unplug shade"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Shade remote in bowl"}, {"questionsRequiredYes": [], "questionsAnyYes": [10], "role": "Me", "type": "Night Before", "task": "Setup bed with blanket and pillow"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "All Task's Belows Are To Ensure Item(s) Are in Travel Bag"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Toothpaste"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Floss Picks"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Hairgel"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Deodorant"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Cologne"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Face Trimmer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Chap Stick"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Bandaids"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Sleep Mask"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "Bluelight Blocking Glasses"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Night Before", "task": "All Task's Above Are To Ensure Item(s) Are in Travel Bag"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Retainer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Retainer Cleaner"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Face Lotion Wash"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Face Lotion Serum"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Face Lotion Eye Cream"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Face Lotion Moisturizer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Vitamin E Cream"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Other", "type": "Day Of", "task": "Pack Makeup Remover"}, {"questionsRequiredYes": [5], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Sunscreen"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Computer"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Computer Charger"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Check You Have Drivers License"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Unplug Electronics"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Turn Off Air Conditioners / Heaters"}, {"questionsRequiredYes": [6], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Bring allergy medicine"}, {"questionsRequiredYes": [], "questionsAnyYes": [3, 8], "role": "Me", "type": "Day Of", "task": "Put Any Bread In Freezer"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Eat / Remove Perishable Refrigerator / Cupboard Items"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Take Out Trash"}, {"questionsRequiredYes": [8], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Clean Sink"}, {"questionsRequiredYes": [4], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Wear / Pack Hat And Gloves"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Everything Below Is For Everyone"}, {"questionsRequiredYes": [5], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Sunglasses"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Water Bottle"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Noise Cancelling Headphones"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Headphone Charger"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Phone Charger In Carry On"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Pack Phone Charger Cord In Carry On"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Go to Bathroom Before Leaving"}, {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Me", "type": "Day Of", "task": "Everything Above Is For Everyone"}]
-        const answers = {}
-
-        function generateTaskTableHtml() {
-            return `<table id="tasksTable" class="table table-striped table-hover ">
-            <tbody>
-                <thead>
-                    <tr>
-                        <th>Tasks</th>
-                    </tr>
-                </thead>
-            </tbody>
-        </table>`
-        }
-
-        function decodeQueryParam(p) {
-            return decodeURIComponent(p.replace(/\+/g, " "));
-        }
-
-        function loadJSONQueryParameter(data) {
-            return JSON.parse(decodeQueryParam(data));
-        }
-
-        function allRequired(arr) {
-            if (Array.isArray(arr) && arr.length) {
-                for (let aidx in arr) {
-                    if (!answers[arr[aidx]]) {
-                        return false
-                    }
-                }
-                return true
-            }
-            return false
-        }
-
-        function addTaskRow(task, idx) {
-            let tasksHTML = document.getElementById('tasksTable', idx)
-            let newHTML = tasksHTML.innerHTML + "<br>" + generateTaskRowHtml(task["task"], idx)
-            tasksHTML.innerHTML = newHTML
-        }
-
-        function generateTask(task, idx) {
-            let questionsRequiredYes = task["questionsRequiredYes"]
-            let questionsAnyYes = task["questionsAnyYes"]
-
-            if (questionsRequiredYes.length === 0 && questionsAnyYes.length === 0) {
-                addTaskRow(task, idx)
-                return
-            }
-
-            for (let aidx in questionsAnyYes) {
-                if (answers[questionsAnyYes[aidx]]) {
-                    addTaskRow(task, idx)
-                    return
-                }
-            }
-
-            if (allRequired(questionsRequiredYes)) {
-                addTaskRow(task, idx)
-                return
-            }
-        }
-
-        function generateTasks() {
-            let idx = 1;
-            for (let taskEl in tasks) {
-                let task = tasks[taskEl]
-                generateTask(task, idx)
-                idx += 1
-            }
-        }
-
-        function switchToChecklist(manual) {
-            document.getElementById("questions").style.visibility = "hidden";
-            document.getElementById("tasks").style.visibility = "visible";
-            document.getElementById("tasks").innerHTML = generateTaskTableHtml()
-            generateTasks()
-            document.getElementById('questions').innerHTML = ""; // TODO you can't go back
-
-            if (manual) {
-                const url = new URL(location.href);
-                url.searchParams.set('answers', JSON.stringify(answers));
-                url.searchParams.set('redirectToTasks', true);
-                reloadPage(url)
-            }
-        }
-
-        function switchToQuestions() {
-            document.getElementById("tasks").style.visibility = "hidden";
-            document.getElementById("questions").style.visibility = "visible";
-        }
-
-        function answerQuestion(idx) {
-            const answerButton = document.getElementById("answerQuestion" + idx)
-
-            if (answers[idx]) {
-                answerButton.classList.remove("btn-success")
-                answerButton.classList.add("btn-danger")
-                answerButton.innerText = "No"
-                answers[idx] = false
-            } else {
-                answerButton.classList.remove("btn-danger")
-                answerButton.classList.add("btn-success")
-                answerButton.innerText = "Yes"
-                answers[idx] = true
-            }
-        }
-
-        function reloadPage(url) {
-            location.href = url
-        }
-
-        function generateQuestionRowHtml(questionText, idx) {
-            return `<tr><td><h2>` + questionText + `</h2>
-            </td>
-            <td>
-                <button id=answerQuestion` + idx + ` v"
-                class="btn btn-danger"
-                onclick="answerQuestion(` + idx + `)">
-                No
-            </button>
-            </div>
-        </tr>`
-        }
-
-        function generateTaskRowHtml(taskText, idx) {
-            return `<tr><td onclick="this.classList.toggle('completed')"><h2>` + taskText + `</h2>
-            </td>
-        </tr>`
-        }
-
-        function loadConfig() {
-            const url = new URL(location.href);
-
-            let url_answers = {}
-            if (url.searchParams.get('answers')) {
-                url_answers = loadJSONQueryParameter(url.searchParams.get('answers'));
-            }
-
-            let idx = 1 // Start at 1
-            for (let question in questions) {
-                let questionsHTML = document.getElementById('questions')
-                let newHTML = questionsHTML.innerHTML + "<br>" + generateQuestionRowHtml(questions[question].text, idx)
-                questionsHTML.innerHTML = newHTML
-
-                // The opposite since answerQuestion will flip it
-                if (idx in url_answers && url_answers[idx] === true) {
-                    answers[idx] = false
-                } else {
-                    answers[idx] = true
-                }
-                answerQuestion(idx)
-
-                idx += 1
-            }
-
-            let redirectToTasks = url.searchParams.get('redirectToTasks');
-
-            if (redirectToTasks) {
-                switchToChecklist(false)
-            }
-
-            if (Object.keys(url_answers).length === 0) {
-                url.searchParams.set('answers', JSON.stringify(answers));
-                reloadPage(url)
-            }
-
-        }
-
-        loadConfig()
-
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travel checklist</title>
+    <meta name="description" content="Travel checklist: answer the questions and follow only the applicable items.">
+    <link rel="stylesheet" href="../../lib/css/bootswatch.css">
+    <link rel="stylesheet" href="../../lib/css/checklist.css">
+    <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
 </head>
+<body>
+    <a class="skip-link" href="#applicable">Skip to applicable items</a>
+    <header>
+        <h1>Travel checklist</h1>
+        <p id="safety-notice" role="note" data-testid="safety-notice">
+            Safety: leave smoke alarms and carbon monoxide alarms on and plugged in.
+            Do not turn them off or unplug them. This checklist does not ask you to disable them.
+        </p>
+    </header>
+    <main id="main">
+        <p class="howto">
+            Answer each question Yes or No. Follow only the applicable items.
+            Tasks that do not apply are left out of the page. Checked items are saved in this page's URL.
+        </p>
+        <nav class="file-links" aria-label="Checklist files">
+            <a href="checklist.txt" data-testid="rules-link">Machine-readable rules (plain text)</a>
+            <a href="questions.json">Questions (JSON)</a>
+            <a href="tasks.json">Conditional tasks (JSON, not a flat todo list)</a>
+            <a href="../../llms.txt">Notes for automated agents (llms.txt)</a>
+        </nav>
+        <section id="applicable" aria-labelledby="applicable-heading">
+            <h2 id="applicable-heading">Applicable items</h2>
+            <p id="applicable-summary" data-testid="applicable-summary">57 of 85 tasks apply. 28 tasks are hidden because their conditions are not met.</p>
+            <p>
+                <button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button>
+            </p>
+            <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Travel checklist
+Follow only the applicable items below. Items that do not apply are omitted from this list.
+Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
+
+Answers:
+- No. Are you taking a plane?
+- No. Are you taking a bus?
+- No. Do you have bread?
+- No. Is your destination cold?
+- No. Is your destination sunny?
+- No. Will there be any pets (Aside from your own)?
+- No. Are you taking your pets?
+- No. Is the house going to be empty?
+- No. Are you travelling Internationally?
+- No. Is anyone taking care of the pets?
+- No. Is this a business trip?
+
+Applicable items (57 of 85):
+1. Safety. Leave every smoke alarm and carbon monoxide alarm turned on and plugged in. Role: Me.
+2. Day Before. Get A Hair Cut. Role: Me.
+3. Day Before. Notify Any Mail Service You Are Going Away. Role: Me.
+4. Day Before. Wash Any Clothes You Want To Wear. Role: Me.
+5. Day Before. Delete All Game Apps. Role: Me.
+6. Day Before. Download Apple Maps Offline. Role: Me.
+7. Day Before. Download Movies/Podcasts Offline. Role: Me.
+8. Night Before. Pack Suitcase. Role: Me.
+9. Night Before. Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on. Role: Me.
+10. Night Before. Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on. Role: Me.
+11. Night Before. Set a phone alarm for 5 minutes before you have to leave. Role: Me.
+12. Night Before. Set a phone alarm for the time you have to leave. Role: Me.
+13. Night Before. Set a phone alarm as a reminder to pack your retainer. Role: Me.
+14. Night Before. Charge Phone. Role: Me.
+15. Night Before. Charge Computer. Role: Me.
+16. Night Before. Charge Noise Cancelling Headphones. Role: Me.
+17. Night Before. Shave Face. Role: Me.
+18. Night Before. Shave Notrils. Role: Me.
+19. Night Before. Cut Fingernails. Role: Me.
+20. Night Before. Eat / Remove Perishable Refrigerator / Cupboard Items You Won&quot;t Eat Day Of Travel. Role: Me.
+21. Night Before. Pack 1 Garbage Bag Per 2 Days. Role: Me.
+22. Night Before. Pack One Pair Of Underwear Per Day. Role: Me.
+23. Night Before. Pack One T Shirt Per Day. Role: Me.
+24. Night Before. Pack One Pair Of Socks Per 2 Days. Role: Me.
+25. Night Before. Pack One Pair Of Pants Per 2 Days. Role: Me.
+26. Night Before. Pack Hankerchief. Role: Me.
+27. Night Before. All Task&#x27;s Belows Are To Ensure Item(s) Are in Travel Bag. Role: Me.
+28. Night Before. Toothpaste. Role: Me.
+29. Night Before. Floss Picks. Role: Me.
+30. Night Before. Hairgel. Role: Me.
+31. Night Before. Deodorant. Role: Me.
+32. Night Before. Cologne. Role: Me.
+33. Night Before. Face Trimmer. Role: Me.
+34. Night Before. Chap Stick. Role: Me.
+35. Night Before. Bandaids. Role: Me.
+36. Night Before. Sleep Mask. Role: Me.
+37. Night Before. Bluelight Blocking Glasses. Role: Me.
+38. Night Before. All Task&#x27;s Above Are To Ensure Item(s) Are in Travel Bag. Role: Me.
+39. Day Of. Pack Retainer. Role: Me.
+40. Day Of. Pack Retainer Cleaner. Role: Me.
+41. Day Of. Pack Face Lotion Wash. Role: Me.
+42. Day Of. Pack Face Lotion Serum. Role: Me.
+43. Day Of. Pack Face Lotion Eye Cream. Role: Me.
+44. Day Of. Pack Face Lotion Moisturizer. Role: Me.
+45. Day Of. Pack Vitamin E Cream. Role: Me.
+46. Day Of. Pack Makeup Remover. Role: Other.
+47. Day Of. Pack Computer. Role: Me.
+48. Day Of. Pack Computer Charger. Role: Me.
+49. Day Of. Check You Have Drivers License. Role: Me.
+50. Day Of. Everything Below Is For Everyone. Role: Me.
+51. Day Of. Pack Water Bottle. Role: Me.
+52. Day Of. Pack Noise Cancelling Headphones. Role: Me.
+53. Day Of. Pack Headphone Charger. Role: Me.
+54. Day Of. Pack Phone Charger In Carry On. Role: Me.
+55. Day Of. Pack Phone Charger Cord In Carry On. Role: Me.
+56. Day Of. Go to Bathroom Before Leaving. Role: Me.
+57. Day Of. Everything Above Is For Everyone. Role: Me.
+</pre>
+        </section>
+        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+        <div class="tablist" role="tablist" aria-label="Checklist sections">
+            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
+            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
+            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
+        </div>
+        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
+            <h2>Questions</h2>
+            <form id="question-form" autocomplete="off">
+                <div id="questions-root"><fieldset class="question" data-testid="question-1"><legend>Are you taking a plane?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></fieldset><fieldset class="question" data-testid="question-2"><legend>Are you taking a bus?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></fieldset><fieldset class="question" data-testid="question-3"><legend>Do you have bread?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-3" id="question-3-yes" data-testid="answer-3-yes" data-question-id="3" value="yes"><label for="question-3-yes">Yes</label><input type="radio" autocomplete="off" name="question-3" id="question-3-no" data-testid="answer-3-no" data-question-id="3" value="no" checked><label for="question-3-no">No</label></div></fieldset><fieldset class="question" data-testid="question-4"><legend>Is your destination cold?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-4" id="question-4-yes" data-testid="answer-4-yes" data-question-id="4" value="yes"><label for="question-4-yes">Yes</label><input type="radio" autocomplete="off" name="question-4" id="question-4-no" data-testid="answer-4-no" data-question-id="4" value="no" checked><label for="question-4-no">No</label></div></fieldset><fieldset class="question" data-testid="question-5"><legend>Is your destination sunny?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-5" id="question-5-yes" data-testid="answer-5-yes" data-question-id="5" value="yes"><label for="question-5-yes">Yes</label><input type="radio" autocomplete="off" name="question-5" id="question-5-no" data-testid="answer-5-no" data-question-id="5" value="no" checked><label for="question-5-no">No</label></div></fieldset><fieldset class="question" data-testid="question-6"><legend>Will there be any pets (Aside from your own)?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-6" id="question-6-yes" data-testid="answer-6-yes" data-question-id="6" value="yes"><label for="question-6-yes">Yes</label><input type="radio" autocomplete="off" name="question-6" id="question-6-no" data-testid="answer-6-no" data-question-id="6" value="no" checked><label for="question-6-no">No</label></div></fieldset><fieldset class="question" data-testid="question-7"><legend>Are you taking your pets?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-7" id="question-7-yes" data-testid="answer-7-yes" data-question-id="7" value="yes"><label for="question-7-yes">Yes</label><input type="radio" autocomplete="off" name="question-7" id="question-7-no" data-testid="answer-7-no" data-question-id="7" value="no" checked><label for="question-7-no">No</label></div></fieldset><fieldset class="question" data-testid="question-8"><legend>Is the house going to be empty?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-8" id="question-8-yes" data-testid="answer-8-yes" data-question-id="8" value="yes"><label for="question-8-yes">Yes</label><input type="radio" autocomplete="off" name="question-8" id="question-8-no" data-testid="answer-8-no" data-question-id="8" value="no" checked><label for="question-8-no">No</label></div></fieldset><fieldset class="question" data-testid="question-9"><legend>Are you travelling Internationally?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-9" id="question-9-yes" data-testid="answer-9-yes" data-question-id="9" value="yes"><label for="question-9-yes">Yes</label><input type="radio" autocomplete="off" name="question-9" id="question-9-no" data-testid="answer-9-no" data-question-id="9" value="no" checked><label for="question-9-no">No</label></div></fieldset><fieldset class="question" data-testid="question-10"><legend>Is anyone taking care of the pets?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-10" id="question-10-yes" data-testid="answer-10-yes" data-question-id="10" value="yes"><label for="question-10-yes">Yes</label><input type="radio" autocomplete="off" name="question-10" id="question-10-no" data-testid="answer-10-no" data-question-id="10" value="no" checked><label for="question-10-no">No</label></div></fieldset><fieldset class="question" data-testid="question-11"><legend>Is this a business trip?</legend><div class="answer-choices"><input type="radio" autocomplete="off" name="question-11" id="question-11-yes" data-testid="answer-11-yes" data-question-id="11" value="yes"><label for="question-11-yes">Yes</label><input type="radio" autocomplete="off" name="question-11" id="question-11-no" data-testid="answer-11-no" data-question-id="11" value="no" checked><label for="question-11-no">No</label></div></fieldset></div>
+            </form>
+        </div>
+        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
+            <h2>Roles</h2>
+            <p>These are the applicable tasks for each role. Check them off on the Checklist tab.</p>
+            <div id="roles-root"><section aria-labelledby="role-me"><h3 id="role-me">Me</h3><ul><li>Safety. Leave every smoke alarm and carbon monoxide alarm turned on and plugged in.</li><li>Day Before. Get A Hair Cut</li><li>Day Before. Notify Any Mail Service You Are Going Away</li><li>Day Before. Wash Any Clothes You Want To Wear</li><li>Day Before. Delete All Game Apps</li><li>Day Before. Download Apple Maps Offline</li><li>Day Before. Download Movies/Podcasts Offline</li><li>Night Before. Pack Suitcase</li><li>Night Before. Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on.</li><li>Night Before. Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on.</li><li>Night Before. Set a phone alarm for 5 minutes before you have to leave.</li><li>Night Before. Set a phone alarm for the time you have to leave.</li><li>Night Before. Set a phone alarm as a reminder to pack your retainer.</li><li>Night Before. Charge Phone</li><li>Night Before. Charge Computer</li><li>Night Before. Charge Noise Cancelling Headphones</li><li>Night Before. Shave Face</li><li>Night Before. Shave Notrils</li><li>Night Before. Cut Fingernails</li><li>Night Before. Eat / Remove Perishable Refrigerator / Cupboard Items You Won&quot;t Eat Day Of Travel</li><li>Night Before. Pack 1 Garbage Bag Per 2 Days</li><li>Night Before. Pack One Pair Of Underwear Per Day</li><li>Night Before. Pack One T Shirt Per Day</li><li>Night Before. Pack One Pair Of Socks Per 2 Days</li><li>Night Before. Pack One Pair Of Pants Per 2 Days</li><li>Night Before. Pack Hankerchief</li><li>Night Before. All Task&#39;s Belows Are To Ensure Item(s) Are in Travel Bag</li><li>Night Before. Toothpaste</li><li>Night Before. Floss Picks</li><li>Night Before. Hairgel</li><li>Night Before. Deodorant</li><li>Night Before. Cologne</li><li>Night Before. Face Trimmer</li><li>Night Before. Chap Stick</li><li>Night Before. Bandaids</li><li>Night Before. Sleep Mask</li><li>Night Before. Bluelight Blocking Glasses</li><li>Night Before. All Task&#39;s Above Are To Ensure Item(s) Are in Travel Bag</li><li>Day Of. Pack Retainer</li><li>Day Of. Pack Retainer Cleaner</li><li>Day Of. Pack Face Lotion Wash</li><li>Day Of. Pack Face Lotion Serum</li><li>Day Of. Pack Face Lotion Eye Cream</li><li>Day Of. Pack Face Lotion Moisturizer</li><li>Day Of. Pack Vitamin E Cream</li><li>Day Of. Pack Computer</li><li>Day Of. Pack Computer Charger</li><li>Day Of. Check You Have Drivers License</li><li>Day Of. Everything Below Is For Everyone</li><li>Day Of. Pack Water Bottle</li><li>Day Of. Pack Noise Cancelling Headphones</li><li>Day Of. Pack Headphone Charger</li><li>Day Of. Pack Phone Charger In Carry On</li><li>Day Of. Pack Phone Charger Cord In Carry On</li><li>Day Of. Go to Bathroom Before Leaving</li><li>Day Of. Everything Above Is For Everyone</li></ul></section><section aria-labelledby="role-other"><h3 id="role-other">Other</h3><ul><li>Day Of. Pack Makeup Remover</li></ul></section></div>
+        </div>
+        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
+            <h2>Checklist</h2>
+            <p>Check an item when it is done. The item text stays on the page.</p>
+            <div id="tasks-root"><section class="task-group"><h3>Safety</h3><ul class="task-list"><li data-task-index="0"><input type="checkbox" id="task-0" data-testid="task-0" data-task-index="0" data-task-text="Leave every smoke alarm and carbon monoxide alarm turned on and plugged in."><label for="task-0">Leave every smoke alarm and carbon monoxide alarm turned on and plugged in. <span class="task-role">Role: Me.</span></label></li></ul></section><section class="task-group"><h3>Day Before</h3><ul class="task-list"><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="Get A Hair Cut"><label for="task-3">Get A Hair Cut <span class="task-role">Role: Me.</span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Notify Any Mail Service You Are Going Away"><label for="task-4">Notify Any Mail Service You Are Going Away <span class="task-role">Role: Me.</span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="Wash Any Clothes You Want To Wear"><label for="task-5">Wash Any Clothes You Want To Wear <span class="task-role">Role: Me.</span></label></li><li data-task-index="8"><input type="checkbox" id="task-8" data-testid="task-8" data-task-index="8" data-task-text="Delete All Game Apps"><label for="task-8">Delete All Game Apps <span class="task-role">Role: Me.</span></label></li><li data-task-index="9"><input type="checkbox" id="task-9" data-testid="task-9" data-task-index="9" data-task-text="Download Apple Maps Offline"><label for="task-9">Download Apple Maps Offline <span class="task-role">Role: Me.</span></label></li><li data-task-index="11"><input type="checkbox" id="task-11" data-testid="task-11" data-task-index="11" data-task-text="Download Movies/Podcasts Offline"><label for="task-11">Download Movies/Podcasts Offline <span class="task-role">Role: Me.</span></label></li></ul></section><section class="task-group"><h3>Night Before</h3><ul class="task-list"><li data-task-index="12"><input type="checkbox" id="task-12" data-testid="task-12" data-task-index="12" data-task-text="Pack Suitcase"><label for="task-12">Pack Suitcase <span class="task-role">Role: Me.</span></label></li><li data-task-index="14"><input type="checkbox" id="task-14" data-testid="task-14" data-task-index="14" data-task-text="Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on."><label for="task-14">Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on. <span class="task-role">Role: Me.</span></label></li><li data-task-index="15"><input type="checkbox" id="task-15" data-testid="task-15" data-task-index="15" data-task-text="Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on."><label for="task-15">Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on. <span class="task-role">Role: Me.</span></label></li><li data-task-index="16"><input type="checkbox" id="task-16" data-testid="task-16" data-task-index="16" data-task-text="Set a phone alarm for 5 minutes before you have to leave."><label for="task-16">Set a phone alarm for 5 minutes before you have to leave. <span class="task-role">Role: Me.</span></label></li><li data-task-index="17"><input type="checkbox" id="task-17" data-testid="task-17" data-task-index="17" data-task-text="Set a phone alarm for the time you have to leave."><label for="task-17">Set a phone alarm for the time you have to leave. <span class="task-role">Role: Me.</span></label></li><li data-task-index="18"><input type="checkbox" id="task-18" data-testid="task-18" data-task-index="18" data-task-text="Set a phone alarm as a reminder to pack your retainer."><label for="task-18">Set a phone alarm as a reminder to pack your retainer. <span class="task-role">Role: Me.</span></label></li><li data-task-index="19"><input type="checkbox" id="task-19" data-testid="task-19" data-task-index="19" data-task-text="Charge Phone"><label for="task-19">Charge Phone <span class="task-role">Role: Me.</span></label></li><li data-task-index="20"><input type="checkbox" id="task-20" data-testid="task-20" data-task-index="20" data-task-text="Charge Computer"><label for="task-20">Charge Computer <span class="task-role">Role: Me.</span></label></li><li data-task-index="21"><input type="checkbox" id="task-21" data-testid="task-21" data-task-index="21" data-task-text="Charge Noise Cancelling Headphones"><label for="task-21">Charge Noise Cancelling Headphones <span class="task-role">Role: Me.</span></label></li><li data-task-index="22"><input type="checkbox" id="task-22" data-testid="task-22" data-task-index="22" data-task-text="Shave Face"><label for="task-22">Shave Face <span class="task-role">Role: Me.</span></label></li><li data-task-index="23"><input type="checkbox" id="task-23" data-testid="task-23" data-task-index="23" data-task-text="Shave Notrils"><label for="task-23">Shave Notrils <span class="task-role">Role: Me.</span></label></li><li data-task-index="24"><input type="checkbox" id="task-24" data-testid="task-24" data-task-index="24" data-task-text="Cut Fingernails"><label for="task-24">Cut Fingernails <span class="task-role">Role: Me.</span></label></li><li data-task-index="25"><input type="checkbox" id="task-25" data-testid="task-25" data-task-index="25" data-task-text="Eat / Remove Perishable Refrigerator / Cupboard Items You Won&quot;t Eat Day Of Travel"><label for="task-25">Eat / Remove Perishable Refrigerator / Cupboard Items You Won&quot;t Eat Day Of Travel <span class="task-role">Role: Me.</span></label></li><li data-task-index="26"><input type="checkbox" id="task-26" data-testid="task-26" data-task-index="26" data-task-text="Pack 1 Garbage Bag Per 2 Days"><label for="task-26">Pack 1 Garbage Bag Per 2 Days <span class="task-role">Role: Me.</span></label></li><li data-task-index="27"><input type="checkbox" id="task-27" data-testid="task-27" data-task-index="27" data-task-text="Pack One Pair Of Underwear Per Day"><label for="task-27">Pack One Pair Of Underwear Per Day <span class="task-role">Role: Me.</span></label></li><li data-task-index="28"><input type="checkbox" id="task-28" data-testid="task-28" data-task-index="28" data-task-text="Pack One T Shirt Per Day"><label for="task-28">Pack One T Shirt Per Day <span class="task-role">Role: Me.</span></label></li><li data-task-index="29"><input type="checkbox" id="task-29" data-testid="task-29" data-task-index="29" data-task-text="Pack One Pair Of Socks Per 2 Days"><label for="task-29">Pack One Pair Of Socks Per 2 Days <span class="task-role">Role: Me.</span></label></li><li data-task-index="30"><input type="checkbox" id="task-30" data-testid="task-30" data-task-index="30" data-task-text="Pack One Pair Of Pants Per 2 Days"><label for="task-30">Pack One Pair Of Pants Per 2 Days <span class="task-role">Role: Me.</span></label></li><li data-task-index="32"><input type="checkbox" id="task-32" data-testid="task-32" data-task-index="32" data-task-text="Pack Hankerchief"><label for="task-32">Pack Hankerchief <span class="task-role">Role: Me.</span></label></li><li data-task-index="44"><input type="checkbox" id="task-44" data-testid="task-44" data-task-index="44" data-task-text="All Task&#39;s Belows Are To Ensure Item(s) Are in Travel Bag"><label for="task-44">All Task&#39;s Belows Are To Ensure Item(s) Are in Travel Bag <span class="task-role">Role: Me.</span></label></li><li data-task-index="45"><input type="checkbox" id="task-45" data-testid="task-45" data-task-index="45" data-task-text="Toothpaste"><label for="task-45">Toothpaste <span class="task-role">Role: Me.</span></label></li><li data-task-index="46"><input type="checkbox" id="task-46" data-testid="task-46" data-task-index="46" data-task-text="Floss Picks"><label for="task-46">Floss Picks <span class="task-role">Role: Me.</span></label></li><li data-task-index="47"><input type="checkbox" id="task-47" data-testid="task-47" data-task-index="47" data-task-text="Hairgel"><label for="task-47">Hairgel <span class="task-role">Role: Me.</span></label></li><li data-task-index="48"><input type="checkbox" id="task-48" data-testid="task-48" data-task-index="48" data-task-text="Deodorant"><label for="task-48">Deodorant <span class="task-role">Role: Me.</span></label></li><li data-task-index="49"><input type="checkbox" id="task-49" data-testid="task-49" data-task-index="49" data-task-text="Cologne"><label for="task-49">Cologne <span class="task-role">Role: Me.</span></label></li><li data-task-index="50"><input type="checkbox" id="task-50" data-testid="task-50" data-task-index="50" data-task-text="Face Trimmer"><label for="task-50">Face Trimmer <span class="task-role">Role: Me.</span></label></li><li data-task-index="51"><input type="checkbox" id="task-51" data-testid="task-51" data-task-index="51" data-task-text="Chap Stick"><label for="task-51">Chap Stick <span class="task-role">Role: Me.</span></label></li><li data-task-index="52"><input type="checkbox" id="task-52" data-testid="task-52" data-task-index="52" data-task-text="Bandaids"><label for="task-52">Bandaids <span class="task-role">Role: Me.</span></label></li><li data-task-index="53"><input type="checkbox" id="task-53" data-testid="task-53" data-task-index="53" data-task-text="Sleep Mask"><label for="task-53">Sleep Mask <span class="task-role">Role: Me.</span></label></li><li data-task-index="54"><input type="checkbox" id="task-54" data-testid="task-54" data-task-index="54" data-task-text="Bluelight Blocking Glasses"><label for="task-54">Bluelight Blocking Glasses <span class="task-role">Role: Me.</span></label></li><li data-task-index="55"><input type="checkbox" id="task-55" data-testid="task-55" data-task-index="55" data-task-text="All Task&#39;s Above Are To Ensure Item(s) Are in Travel Bag"><label for="task-55">All Task&#39;s Above Are To Ensure Item(s) Are in Travel Bag <span class="task-role">Role: Me.</span></label></li></ul></section><section class="task-group"><h3>Day Of</h3><ul class="task-list"><li data-task-index="56"><input type="checkbox" id="task-56" data-testid="task-56" data-task-index="56" data-task-text="Pack Retainer"><label for="task-56">Pack Retainer <span class="task-role">Role: Me.</span></label></li><li data-task-index="57"><input type="checkbox" id="task-57" data-testid="task-57" data-task-index="57" data-task-text="Pack Retainer Cleaner"><label for="task-57">Pack Retainer Cleaner <span class="task-role">Role: Me.</span></label></li><li data-task-index="58"><input type="checkbox" id="task-58" data-testid="task-58" data-task-index="58" data-task-text="Pack Face Lotion Wash"><label for="task-58">Pack Face Lotion Wash <span class="task-role">Role: Me.</span></label></li><li data-task-index="59"><input type="checkbox" id="task-59" data-testid="task-59" data-task-index="59" data-task-text="Pack Face Lotion Serum"><label for="task-59">Pack Face Lotion Serum <span class="task-role">Role: Me.</span></label></li><li data-task-index="60"><input type="checkbox" id="task-60" data-testid="task-60" data-task-index="60" data-task-text="Pack Face Lotion Eye Cream"><label for="task-60">Pack Face Lotion Eye Cream <span class="task-role">Role: Me.</span></label></li><li data-task-index="61"><input type="checkbox" id="task-61" data-testid="task-61" data-task-index="61" data-task-text="Pack Face Lotion Moisturizer"><label for="task-61">Pack Face Lotion Moisturizer <span class="task-role">Role: Me.</span></label></li><li data-task-index="62"><input type="checkbox" id="task-62" data-testid="task-62" data-task-index="62" data-task-text="Pack Vitamin E Cream"><label for="task-62">Pack Vitamin E Cream <span class="task-role">Role: Me.</span></label></li><li data-task-index="63"><input type="checkbox" id="task-63" data-testid="task-63" data-task-index="63" data-task-text="Pack Makeup Remover"><label for="task-63">Pack Makeup Remover <span class="task-role">Role: Other.</span></label></li><li data-task-index="65"><input type="checkbox" id="task-65" data-testid="task-65" data-task-index="65" data-task-text="Pack Computer"><label for="task-65">Pack Computer <span class="task-role">Role: Me.</span></label></li><li data-task-index="66"><input type="checkbox" id="task-66" data-testid="task-66" data-task-index="66" data-task-text="Pack Computer Charger"><label for="task-66">Pack Computer Charger <span class="task-role">Role: Me.</span></label></li><li data-task-index="67"><input type="checkbox" id="task-67" data-testid="task-67" data-task-index="67" data-task-text="Check You Have Drivers License"><label for="task-67">Check You Have Drivers License <span class="task-role">Role: Me.</span></label></li><li data-task-index="76"><input type="checkbox" id="task-76" data-testid="task-76" data-task-index="76" data-task-text="Everything Below Is For Everyone"><label for="task-76">Everything Below Is For Everyone <span class="task-role">Role: Me.</span></label></li><li data-task-index="78"><input type="checkbox" id="task-78" data-testid="task-78" data-task-index="78" data-task-text="Pack Water Bottle"><label for="task-78">Pack Water Bottle <span class="task-role">Role: Me.</span></label></li><li data-task-index="79"><input type="checkbox" id="task-79" data-testid="task-79" data-task-index="79" data-task-text="Pack Noise Cancelling Headphones"><label for="task-79">Pack Noise Cancelling Headphones <span class="task-role">Role: Me.</span></label></li><li data-task-index="80"><input type="checkbox" id="task-80" data-testid="task-80" data-task-index="80" data-task-text="Pack Headphone Charger"><label for="task-80">Pack Headphone Charger <span class="task-role">Role: Me.</span></label></li><li data-task-index="81"><input type="checkbox" id="task-81" data-testid="task-81" data-task-index="81" data-task-text="Pack Phone Charger In Carry On"><label for="task-81">Pack Phone Charger In Carry On <span class="task-role">Role: Me.</span></label></li><li data-task-index="82"><input type="checkbox" id="task-82" data-testid="task-82" data-task-index="82" data-task-text="Pack Phone Charger Cord In Carry On"><label for="task-82">Pack Phone Charger Cord In Carry On <span class="task-role">Role: Me.</span></label></li><li data-task-index="83"><input type="checkbox" id="task-83" data-testid="task-83" data-task-index="83" data-task-text="Go to Bathroom Before Leaving"><label for="task-83">Go to Bathroom Before Leaving <span class="task-role">Role: Me.</span></label></li><li data-task-index="84"><input type="checkbox" id="task-84" data-testid="task-84" data-task-index="84" data-task-text="Everything Above Is For Everyone"><label for="task-84">Everything Above Is For Everyone <span class="task-role">Role: Me.</span></label></li></ul></section></div>
+        </div>
+        <noscript>
+            <p>
+                JavaScript is off, so the applicable list uses No for every question that does not set a default.
+                Read checklist.txt for the conditional rules. Do not treat tasks.json as a list of things to do.
+            </p>
+        </noscript>
+    </main>
+    <script id="checklist-data" type="application/json">{"title":"Travel checklist","questions":[{"id":1,"text":"Are you taking a plane?"},{"id":2,"text":"Are you taking a bus?"},{"id":3,"text":"Do you have bread?"},{"id":4,"text":"Is your destination cold?"},{"id":5,"text":"Is your destination sunny?"},{"id":6,"text":"Will there be any pets (Aside from your own)?"},{"id":7,"text":"Are you taking your pets?"},{"id":8,"text":"Is the house going to be empty?"},{"id":9,"text":"Are you travelling Internationally?"},{"id":10,"text":"Is anyone taking care of the pets?"},{"id":11,"text":"Is this a business trip?"}],"tasks":[{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Safety","task":"Leave every smoke alarm and carbon monoxide alarm turned on and plugged in."},{"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Card"},{"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Obtain Corporate Badge"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Get A Hair Cut"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Notify Any Mail Service You Are Going Away"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Wash Any Clothes You Want To Wear"},{"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Corporate Card App"},{"questionsRequiredYes":[11],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Put Corporate Card On Apple Pay"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Delete All Game Apps"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Apple Maps Offline"},{"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Flight App"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Before","task":"Download Movies/Podcasts Offline"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack Suitcase"},{"questionsRequiredYes":[],"questionsAnyYes":[1,2],"role":"Me","type":"Night Before","task":"Check-in To Transportation"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm based on the itinerary app. This is a phone reminder, not a smoke or carbon monoxide alarm. Leave those alarms on."},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm to wake up. Leave smoke alarms and carbon monoxide alarms on."},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm for 5 minutes before you have to leave."},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm for the time you have to leave."},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Set a phone alarm as a reminder to pack your retainer."},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Phone"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Computer"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Charge Noise Cancelling Headphones"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Shave Face"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Shave Notrils"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Cut Fingernails"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Eat / Remove Perishable Refrigerator / Cupboard Items You Won\"t Eat Day Of Travel"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack 1 Garbage Bag Per 2 Days"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Underwear Per Day"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One T Shirt Per Day"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Socks Per 2 Days"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack One Pair Of Pants Per 2 Days"},{"questionsRequiredYes":[4],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack 1 Sweater For Every 3 Days Of Travel"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Pack Hankerchief"},{"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Check You Have Passport"},{"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Download airalo for sim card"},{"questionsRequiredYes":[9],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bring International Power Cord Plugs"},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Clean pet bathroom"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Put toilet paper rack in downstairs bathroom"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Leave extra keys by door"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats are in cupboard"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Make sure treats in cubby magnetized to door"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Unplug the window shade"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Shade remote in bowl"},{"questionsRequiredYes":[],"questionsAnyYes":[10],"role":"Me","type":"Night Before","task":"Setup bed with blanket and pillow"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"All Task's Belows Are To Ensure Item(s) Are in Travel Bag"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Toothpaste"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Floss Picks"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Hairgel"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Deodorant"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Cologne"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Face Trimmer"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Chap Stick"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bandaids"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Sleep Mask"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"Bluelight Blocking Glasses"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Night Before","task":"All Task's Above Are To Ensure Item(s) Are in Travel Bag"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Retainer"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Retainer Cleaner"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Wash"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Serum"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Eye Cream"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Face Lotion Moisturizer"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Vitamin E Cream"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Other","type":"Day Of","task":"Pack Makeup Remover"},{"questionsRequiredYes":[5],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Sunscreen"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Computer Charger"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Check You Have Drivers License"},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Unplug nonessential electronics such as televisions and chargers. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator."},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in."},{"questionsRequiredYes":[6],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Bring allergy medicine"},{"questionsRequiredYes":[],"questionsAnyYes":[3,8],"role":"Me","type":"Day Of","task":"Put Any Bread In Freezer"},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Eat / Remove Perishable Refrigerator / Cupboard Items"},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Take Out Trash"},{"questionsRequiredYes":[8],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Clean Sink"},{"questionsRequiredYes":[4],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Wear / Pack Hat And Gloves"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Everything Below Is For Everyone"},{"questionsRequiredYes":[5],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Sunglasses"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Water Bottle"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Noise Cancelling Headphones"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Headphone Charger"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger In Carry On"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Pack Phone Charger Cord In Carry On"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Go to Bathroom Before Leaving"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Me","type":"Day Of","task":"Everything Above Is For Everyone"}]}</script>
+    <script src="../../lib/js/checklist.js"></script>
+</body>
+</html>
