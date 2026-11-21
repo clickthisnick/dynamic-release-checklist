@@ -1,5 +1,5 @@
-import { spawn } from "node:child_process";
-import { mkdtempSync } from "node:fs";
+import { execFileSync, spawn } from "node:child_process";
+import { existsSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
@@ -27,8 +27,52 @@ async function waitFor(url, attempts = 40) {
   throw new Error(`Timed out waiting for ${url}`);
 }
 
+function chromeBinary() {
+  if (process.env.CHROME_BIN && existsSync(process.env.CHROME_BIN)) {
+    return process.env.CHROME_BIN;
+  }
+  const names = ["google-chrome", "google-chrome-stable", "chrome", "chromium", "chromium-browser"];
+  for (const name of names) {
+    try {
+      const found = execFileSync("which", [name], { encoding: "utf8" }).trim();
+      if (found) {
+        return found;
+      }
+    } catch {
+      // This name is not on PATH.
+    }
+  }
+  throw new Error("Chrome was not found. Install it or set CHROME_BIN.");
+}
+
 function start(command, args, extra = {}) {
   const child = spawn(command, args, { stdio: "ignore", ...extra });
+  return child;
+}
+
+function startChrome(binary, profile) {
+  const logs = [];
+  const child = spawn(
+    binary,
+    [
+      "--headless=new",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--remote-debugging-address=127.0.0.1",
+      "--remote-allow-origins=*",
+      "--window-size=1280,900",
+      "--remote-debugging-port=" + debugPort,
+      "--user-data-dir=" + profile,
+      "about:blank",
+    ],
+    { stdio: ["ignore", "ignore", "pipe"] },
+  );
+  child.stderr.setEncoding("utf8");
+  child.stderr.on("data", (chunk) => {
+    logs.push(chunk);
+  });
+  child.output = () => logs.join("").slice(-2000);
   return child;
 }
 
@@ -103,19 +147,19 @@ function assertCheck(name, value, details) {
 async function main() {
   const profile = mkdtempSync(path.join(tmpdir(), "checklist-chrome-"));
   const server = start("node", ["scripts/serve.js", String(port)], { cwd: root });
-  const chrome = start("google-chrome", [
-    "--headless=new",
-    "--disable-gpu",
-    "--no-sandbox",
-    "--window-size=1280,900",
-    "--remote-debugging-port=" + debugPort,
-    "--user-data-dir=" + profile,
-    "about:blank",
-  ]);
+  const binary = chromeBinary();
+  const chrome = startChrome(binary, profile);
 
   try {
     await waitFor(`http://127.0.0.1:${port}/examples/travel-checklist/checklist.html`);
-    await waitFor(`http://127.0.0.1:${debugPort}/json/version`);
+    try {
+      await waitFor(`http://127.0.0.1:${debugPort}/json/version`, 80);
+    } catch (error) {
+      const detail = chrome.output ? chrome.output() : "";
+      throw new Error(error.message + (detail ? "\n" + detail : "") + "\nchrome: " + binary, {
+        cause: error,
+      });
+    }
     const targets = await fetch(`http://127.0.0.1:${debugPort}/json/list`).then((response) =>
       response.json(),
     );
