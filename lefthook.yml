@@ -1,0 +1,21 @@
+pre-commit:
+  commands:
+    prettier:
+      glob: "*.{js,mjs,cjs,css,html,md,yml,yaml,json}"
+      exclude: "lib/css/bootswatch.css|examples/.*/checklist.html|examples/.*/.*\\.json|examples/.*/checklist.txt|package-lock.json"
+      run: npx prettier --check {staged_files}
+    eslint:
+      glob: "*.{js,mjs}"
+      run: npx eslint {staged_files}
+    stylelint:
+      glob: "*.css"
+      exclude: "lib/css/bootswatch.css"
+      run: npx stylelint {staged_files}
+    html:
+      glob: "*.html"
+      exclude: "examples/.*/checklist.html"
+      run: npx html-validate {staged_files}
+    typecheck:
+      run: npx tsc --noEmit
+    codespell:
+      run: PATH="$HOME/.local/bin:$PATH" codespell

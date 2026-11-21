@@ -1,0 +1,3 @@
+[codespell]
+skip = ./examples,./node_modules,./.cache,./lib/css/bootswatch.css,./package-lock.json
+ignore-words-list = bu

@@ -1,0 +1,11 @@
+{
+  "extends": ["html-validate:recommended"],
+  "elements": ["html5"],
+  "rules": {
+    "wcag/h32": "off",
+    "input-attributes": "off",
+    "valid-autocomplete": "off",
+    "doctype-style": ["error", { "style": "lowercase" }],
+    "void-style": "off"
+  }
+}

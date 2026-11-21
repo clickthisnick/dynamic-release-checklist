@@ -19,12 +19,14 @@ const TOKENS = [
 
 function stripRelaxedJson(text) {
   const kept = [];
-  String(text).split(/\r?\n/).forEach(function (line) {
-    if (line.trim().startsWith("//")) {
-      return;
-    }
-    kept.push(line);
-  });
+  String(text)
+    .split(/\r?\n/)
+    .forEach(function (line) {
+      if (line.trim().startsWith("//")) {
+        return;
+      }
+      kept.push(line);
+    });
   return kept.join("\n").replace(/,(\s*[\]}])/g, "$1");
 }
 
@@ -86,7 +88,7 @@ function validate(name, questions, tasks) {
           seen.get(question.id) +
           " and " +
           index +
-          ")"
+          ")",
       );
     }
     seen.set(question.id, index);
@@ -120,7 +122,11 @@ function validate(name, questions, tasks) {
 function questionLookup(questions) {
   const found = new Map();
   questions.forEach(function (question) {
-    if (question && typeof question === "object" && Object.prototype.hasOwnProperty.call(question, "id")) {
+    if (
+      question &&
+      typeof question === "object" &&
+      Object.prototype.hasOwnProperty.call(question, "id")
+    ) {
       found.set(question.id, question.text || "");
     }
   });
@@ -201,15 +207,6 @@ function rulesText(title, questions, tasks) {
     lines.push("");
   });
   return lines.join("\n").replace(/\s+$/g, "") + "\n";
-}
-
-function escapeHtmlStatic(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#x27;");
 }
 
 function renderStatic(title, questions, tasks) {
@@ -306,13 +303,13 @@ function buildAll(examplesDir, templatePath) {
       }
     }
     const page = fillTemplate(template, {
-      "___TITLE___": escapeHtmlStatic(title),
-      "___SUMMARY___": escapeHtmlStatic(rendered.summary),
-      "___APPLICABLE_TEXT___": escapeHtmlStatic(rendered.text),
-      "___QUESTIONS_HTML___": rendered.questionsHtml,
-      "___TASKS_HTML___": rendered.tasksHtml,
-      "___ROLES_HTML___": rendered.rolesHtml,
-      "___DATA_JSON___": scriptJson({ title: title, questions: questions, tasks: tasks }),
+      ___TITLE___: app.escapeHtml(title),
+      ___SUMMARY___: app.escapeHtml(rendered.summary),
+      ___APPLICABLE_TEXT___: app.escapeHtml(rendered.text),
+      ___QUESTIONS_HTML___: rendered.questionsHtml,
+      ___TASKS_HTML___: rendered.tasksHtml,
+      ___ROLES_HTML___: rendered.rolesHtml,
+      ___DATA_JSON___: scriptJson({ title: title, questions: questions, tasks: tasks }),
     });
     writeText(path.join(directory, "checklist.html"), page);
     writeText(path.join(directory, "checklist.txt"), rulesText(title, questions, tasks));
@@ -320,14 +317,18 @@ function buildAll(examplesDir, templatePath) {
   return [];
 }
 
-function main() {
-  const errors = buildAll(path.join(ROOT, "examples"), path.join(ROOT, "src", "checklist.template.html"));
+function main(examplesDir, templatePath) {
+  const errors = buildAll(
+    examplesDir || path.join(ROOT, "examples"),
+    templatePath || path.join(ROOT, "src", "checklist.template.html"),
+  );
   if (errors.length) {
     errors.forEach(function (error) {
       console.error(error);
     });
     process.exitCode = 1;
   }
+  return errors;
 }
 
 module.exports = {
@@ -337,6 +338,7 @@ module.exports = {
   rulesText: rulesText,
   buildAll: buildAll,
   titleFromSlug: titleFromSlug,
+  main: main,
 };
 
 if (require.main === module) {

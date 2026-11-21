@@ -1,5 +1,5 @@
-import { spawn } from "node:child_process";
-import { mkdtempSync } from "node:fs";
+import { execFileSync, spawn } from "node:child_process";
+import { existsSync, mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
@@ -27,8 +27,52 @@ async function waitFor(url, attempts = 40) {
   throw new Error(`Timed out waiting for ${url}`);
 }
 
+function chromeBinary() {
+  if (process.env.CHROME_BIN && existsSync(process.env.CHROME_BIN)) {
+    return process.env.CHROME_BIN;
+  }
+  const names = ["google-chrome", "google-chrome-stable", "chrome", "chromium", "chromium-browser"];
+  for (const name of names) {
+    try {
+      const found = execFileSync("which", [name], { encoding: "utf8" }).trim();
+      if (found) {
+        return found;
+      }
+    } catch {
+      // This name is not on PATH.
+    }
+  }
+  throw new Error("Chrome was not found. Install it or set CHROME_BIN.");
+}
+
 function start(command, args, extra = {}) {
   const child = spawn(command, args, { stdio: "ignore", ...extra });
+  return child;
+}
+
+function startChrome(binary, profile) {
+  const logs = [];
+  const child = spawn(
+    binary,
+    [
+      "--headless=new",
+      "--disable-gpu",
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--remote-debugging-address=127.0.0.1",
+      "--remote-allow-origins=*",
+      "--window-size=1280,900",
+      "--remote-debugging-port=" + debugPort,
+      "--user-data-dir=" + profile,
+      "about:blank",
+    ],
+    { stdio: ["ignore", "ignore", "pipe"] },
+  );
+  child.stderr.setEncoding("utf8");
+  child.stderr.on("data", (chunk) => {
+    logs.push(chunk);
+  });
+  child.output = () => logs.join("").slice(-2000);
   return child;
 }
 
@@ -103,21 +147,21 @@ function assertCheck(name, value, details) {
 async function main() {
   const profile = mkdtempSync(path.join(tmpdir(), "checklist-chrome-"));
   const server = start("node", ["scripts/serve.js", String(port)], { cwd: root });
-  const chrome = start("google-chrome", [
-    "--headless=new",
-    "--disable-gpu",
-    "--no-sandbox",
-    "--window-size=1280,900",
-    "--remote-debugging-port=" + debugPort,
-    "--user-data-dir=" + profile,
-    "about:blank",
-  ]);
+  const binary = chromeBinary();
+  const chrome = startChrome(binary, profile);
 
   try {
     await waitFor(`http://127.0.0.1:${port}/examples/travel-checklist/checklist.html`);
-    await waitFor(`http://127.0.0.1:${debugPort}/json/version`);
+    try {
+      await waitFor(`http://127.0.0.1:${debugPort}/json/version`, 80);
+    } catch (error) {
+      const detail = chrome.output ? chrome.output() : "";
+      throw new Error(error.message + (detail ? "\n" + detail : "") + "\nchrome: " + binary, {
+        cause: error,
+      });
+    }
     const targets = await fetch(`http://127.0.0.1:${debugPort}/json/list`).then((response) =>
-      response.json()
+      response.json(),
     );
     const page = targets.find((target) => target.type === "page");
     const cdp = new Cdp(new WebSocket(page.webSocketDebuggerUrl));
@@ -133,7 +177,9 @@ async function main() {
     });
     await loaded;
 
-    const initial = await evaluate(cdp, `(() => {
+    const initial = await evaluate(
+      cdp,
+      `(() => {
       const pre = document.getElementById("applicable-checklist-text").textContent;
       const task = document.getElementById("task-0");
       const label = document.querySelector("label[for='task-0']");
@@ -157,26 +203,49 @@ async function main() {
         status: document.getElementById("status").textContent,
         corporate: pre.includes("Obtain Corporate Card")
       };
-    })()`);
+    })()`,
+    );
     assertCheck("title", initial.title === "Travel checklist", initial.title);
     assertCheck("heading", initial.h1 === "Travel checklist", initial.h1);
-    assertCheck("safety banner", initial.safety.includes("Leave smoke and CO alarms"), initial.safety);
+    assertCheck(
+      "safety banner",
+      initial.safety.includes("Leave smoke and CO alarms"),
+      initial.safety,
+    );
     assertCheck("phone alarm in applicable list", initial.phoneAlarm, initial.pre);
     assertCheck("safety item in applicable list", initial.safetyInPre, initial.pre);
     assertCheck("agent list collapsed", initial.detailsOpen === false, String(initial.detailsOpen));
     assertCheck("heater hidden by default", !initial.heaterInPre, initial.pre);
     assertCheck("old alarm wording gone", !initial.oldAlarm, "old text still visible");
     assertCheck("old turn-off wording gone", !initial.oldTurnOff, "old text still visible");
-    assertCheck("checkbox label", initial.labelFor === "task-0" && initial.taskType === "checkbox", JSON.stringify(initial));
-    assertCheck("question labels", initial.yesLabel === "Yes" && initial.noChecked, JSON.stringify(initial));
-    assertCheck("checklist panel hidden", initial.checklistHidden && initial.rolesHidden, JSON.stringify(initial));
-    assertCheck("summary loaded", initial.pre.includes("Applicable items ("), initial.pre.slice(0, 180));
+    assertCheck(
+      "checkbox label",
+      initial.labelFor === "task-0" && initial.taskType === "checkbox",
+      JSON.stringify(initial),
+    );
+    assertCheck(
+      "question labels",
+      initial.yesLabel === "Yes" && initial.noChecked,
+      JSON.stringify(initial),
+    );
+    assertCheck(
+      "checklist panel hidden",
+      initial.checklistHidden && initial.rolesHidden,
+      JSON.stringify(initial),
+    );
+    assertCheck(
+      "summary loaded",
+      initial.pre.includes("Applicable items ("),
+      initial.pre.slice(0, 180),
+    );
     assertCheck("corporate card hidden", !initial.corporate, initial.pre);
     await saveShot(cdp, "/tmp/travel-default.png");
 
     await evaluate(cdp, `document.querySelector("[data-testid='answer-8-yes']").click()`);
     await sleep(100);
-    const afterYes = await evaluate(cdp, `(() => {
+    const afterYes = await evaluate(
+      cdp,
+      `(() => {
       const pre = document.getElementById("applicable-checklist-text").textContent;
       return {
         pre,
@@ -184,14 +253,17 @@ async function main() {
         heater: pre.includes("Turn off air conditioners and heaters. Leave smoke alarms and carbon monoxide alarms on and plugged in."),
         unplug: pre.includes("Unplug nonessential electronics. Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator.")
       };
-    })()`);
+    })()`,
+    );
     assertCheck("heater shown with warning", afterYes.heater, afterYes.pre);
     assertCheck("unplug warning", afterYes.unplug, afterYes.pre);
     assertCheck("answer status", afterYes.status.includes("Saved answer. Yes."), afterYes.status);
 
     await evaluate(cdp, `document.getElementById("tab-checklist").click()`);
     await sleep(50);
-    const checked = await evaluate(cdp, `(() => {
+    const checked = await evaluate(
+      cdp,
+      `(() => {
       const boxes = [...document.querySelectorAll("#tasks-root input[type=checkbox]")];
       const heater = boxes.find((box) => (box.getAttribute("data-task-text") || "").includes("Turn off air conditioners"));
       const label = heater ? document.querySelector("label[for='" + heater.id + "']") : null;
@@ -213,19 +285,28 @@ async function main() {
         status: document.getElementById("status").textContent,
         url: location.search
       };
-    })()`);
+    })()`,
+    );
     assertCheck("checklist visible", !checked.panelHidden, "panel stayed hidden");
-    assertCheck("heater label stays short", checked.visible === "Turn off air conditioners and heaters", checked.visible);
+    assertCheck(
+      "heater label stays short",
+      checked.visible === "Turn off air conditioners and heaters",
+      checked.visible,
+    );
     assertCheck(
       "completed text is hidden",
       checked.state === "Completed." && checked.noteHidden && checked.stateHidden,
-      JSON.stringify(checked)
+      JSON.stringify(checked),
     );
     assertCheck("complete status", checked.status.startsWith("Marked complete:"), checked.status);
-    assertCheck("url saved", checked.url.includes("redirectToTasks=true") && checked.url.includes("answers="), checked.url);
+    assertCheck(
+      "url saved",
+      checked.url.includes("redirectToTasks=true") && checked.url.includes("answers="),
+      checked.url,
+    );
     await evaluate(
       cdp,
-      `document.querySelector("#tasks-root input[data-task-text*='Turn off air conditioners']")?.scrollIntoView({block:"center"})`
+      `document.querySelector("#tasks-root input[data-task-text*='Turn off air conditioners']")?.scrollIntoView({block:"center"})`,
     );
     await saveShot(cdp, "/tmp/travel-heater-checked.png");
 
@@ -236,7 +317,9 @@ async function main() {
     });
     await deepLink;
     await sleep(100);
-    const deep = await evaluate(cdp, `(() => {
+    const deep = await evaluate(
+      cdp,
+      `(() => {
       const pre = document.getElementById("applicable-checklist-text").textContent;
       return {
         checklistHidden: document.getElementById("panel-checklist").hidden,
@@ -245,7 +328,8 @@ async function main() {
         firstChecked: document.getElementById("task-0")?.checked || false,
         houseYes: document.getElementById("question-8-yes")?.checked || false
       };
-    })()`);
+    })()`,
+    );
     assertCheck("deep link opens checklist", !deep.checklistHidden, JSON.stringify(deep));
     assertCheck("deep link corporate card", deep.corporate, "missing corporate card");
     assertCheck("deep link heater warning", deep.heater, "missing heater warning");

@@ -1,67 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>___TITLE___</title>
-    <meta name="description" content="___TITLE___: answer the questions and follow only the applicable items.">
-    <link rel="stylesheet" href="../../lib/css/bootswatch.css">
-    <link rel="stylesheet" href="../../lib/css/checklist.css">
-    <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
-</head>
-<body>
+    <meta
+      name="description"
+      content="___TITLE___: answer the questions and follow only the applicable items."
+    />
+    <link rel="stylesheet" href="../../lib/css/bootswatch.css" />
+    <link rel="stylesheet" href="../../lib/css/checklist.css" />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="checklist.txt"
+      title="Conditional checklist rules"
+    />
+  </head>
+  <body>
     <a class="skip-link" href="#panel-questions">Skip to questions</a>
     <header>
-        <h1>___TITLE___</h1>
-        <p id="safety-notice" role="note" data-testid="safety-notice">
-            Leave smoke and CO alarms on and plugged in.
-            Do not turn them off or unplug them.
-            A phone alarm is only a reminder on your phone.
-        </p>
+      <h1>___TITLE___</h1>
+      <p id="safety-notice" role="note" data-testid="safety-notice">
+        Leave smoke and CO alarms on and plugged in. Do not turn them off or unplug them. A phone
+        alarm is only a reminder on your phone.
+      </p>
     </header>
     <main id="main">
-        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
-        <div class="tablist" role="tablist" aria-label="Checklist sections">
-            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
-            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
-            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
-        </div>
-        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
-            <h2>Questions</h2>
-            <form id="question-form" autocomplete="off">
-                <div id="questions-root">___QUESTIONS_HTML___</div>
-            </form>
-        </div>
-        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
-            <h2>Roles</h2>
-            <div id="roles-root">___ROLES_HTML___</div>
-        </div>
-        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
-            <h2>Checklist</h2>
-            <div id="tasks-root">___TASKS_HTML___</div>
-        </div>
-        <details id="applicable">
-            <summary>
-                <span id="applicable-heading">Applicable items</span>
-                <span id="applicable-summary" data-testid="applicable-summary">___SUMMARY___</span>
-            </summary>
-            <nav class="file-links" aria-label="Checklist files">
-                <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
-                <a href="questions.json">Questions</a>
-                <a href="tasks.json">Conditional tasks</a>
-                <a href="../../llms.txt">Agent notes</a>
-            </nav>
-            <p><button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button></p>
-            <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">___APPLICABLE_TEXT___</pre>
-        </details>
-        <noscript>
-            <p>
-                JavaScript is off, so the applicable list uses No for every question that does not set a default.
-                Read checklist.txt for the conditional rules. Do not treat tasks.json as a list of things to do.
-            </p>
-        </noscript>
+      <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+      <div class="tablist" role="tablist" aria-label="Checklist sections">
+        <button
+          type="button"
+          role="tab"
+          id="tab-questions"
+          aria-controls="panel-questions"
+          aria-selected="true"
+          tabindex="0"
+          data-testid="tab-questions"
+        >
+          Questions
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-roles"
+          aria-controls="panel-roles"
+          aria-selected="false"
+          tabindex="-1"
+          data-testid="tab-roles"
+        >
+          Roles
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-checklist"
+          aria-controls="panel-checklist"
+          aria-selected="false"
+          tabindex="-1"
+          data-testid="tab-checklist"
+        >
+          Checklist
+        </button>
+      </div>
+      <div
+        id="panel-questions"
+        role="tabpanel"
+        aria-labelledby="tab-questions"
+        data-testid="panel-questions"
+      >
+        <h2>Questions</h2>
+        <form id="question-form" autocomplete="off">
+          <div id="questions-root">___QUESTIONS_HTML___</div>
+        </form>
+      </div>
+      <div
+        id="panel-roles"
+        role="tabpanel"
+        hidden
+        aria-labelledby="tab-roles"
+        data-testid="panel-roles"
+      >
+        <h2>Roles</h2>
+        <div id="roles-root">___ROLES_HTML___</div>
+      </div>
+      <div
+        id="panel-checklist"
+        role="tabpanel"
+        hidden
+        aria-labelledby="tab-checklist"
+        data-testid="panel-checklist"
+      >
+        <h2>Checklist</h2>
+        <div id="tasks-root">___TASKS_HTML___</div>
+      </div>
+      <details id="applicable">
+        <summary>
+          <span id="applicable-heading">Applicable items</span>
+          <span id="applicable-summary" data-testid="applicable-summary">___SUMMARY___</span>
+        </summary>
+        <nav class="file-links" aria-label="Checklist files">
+          <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
+          <a href="questions.json">Questions</a>
+          <a href="tasks.json">Conditional tasks</a>
+          <a href="../../llms.txt">Agent notes</a>
+        </nav>
+        <p>
+          <button type="button" id="copy-applicable" data-testid="copy-applicable">
+            Copy applicable items
+          </button>
+        </p>
+        <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">
+___APPLICABLE_TEXT___</pre>
+      </details>
+      <noscript>
+        <p>
+          JavaScript is off, so the applicable list uses No for every question that does not set a
+          default. Read checklist.txt for the conditional rules. Do not treat tasks.json as a list
+          of things to do.
+        </p>
+      </noscript>
     </main>
-    <script id="checklist-data" type="application/json">___DATA_JSON___</script>
+    <script id="checklist-data" type="application/json">
+      ___DATA_JSON___
+    </script>
     <script src="../../lib/js/checklist.js"></script>
-</body>
+  </body>
 </html>

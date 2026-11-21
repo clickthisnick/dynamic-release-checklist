@@ -47,7 +47,7 @@ test("default answers omit empty-house tasks and keep the safety line", () => {
     "Travel checklist",
     travelLike.questions,
     travelLike.tasks,
-    answers
+    answers,
   );
   const html = app.renderTasks(travelLike.tasks, answers, {});
   assert.match(text, /Leave every smoke alarm and carbon monoxide alarm turned on/);
@@ -65,16 +65,22 @@ test("answering the house question shows the heater item with the alarm warning"
     "Travel checklist",
     travelLike.questions,
     travelLike.tasks,
-    answers
+    answers,
   );
   const html = app.renderTasks(travelLike.tasks, answers, {});
   assert.match(
     text,
-    /Turn off air conditioners and heaters\. Leave smoke alarms and carbon monoxide alarms on and plugged in\./
+    /Turn off air conditioners and heaters\. Leave smoke alarms and carbon monoxide alarms on and plugged in\./,
   );
   assert.match(html, /<span class="task-text">Turn off air conditioners and heaters<\/span>/);
-  assert.match(html, /class="visually-hidden"> Leave smoke alarms and carbon monoxide alarms on and plugged in\./);
-  assert.match(html, /class="visually-hidden"> Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator\./);
+  assert.match(
+    html,
+    /class="visually-hidden"> Leave smoke alarms and carbon monoxide alarms on and plugged in\./,
+  );
+  assert.match(
+    html,
+    /class="visually-hidden"> Do not unplug smoke alarms, carbon monoxide alarms, or the refrigerator\./,
+  );
 });
 
 test("question ids are not array positions", () => {
@@ -99,38 +105,38 @@ test("any-yes, all-required, always, and missing fields", () => {
   assert.equal(
     app.taskApplies(
       { questionsRequiredYes: [], questionsAnyYes: [1, 2], task: "Check in" },
-      { 1: false, 2: true }
+      { 1: false, 2: true },
     ),
-    true
+    true,
   );
   assert.equal(
     app.taskApplies(
       { questionsRequiredYes: [], questionsAnyYes: [1, 2], task: "Check in" },
-      { 1: false, 2: false }
+      { 1: false, 2: false },
     ),
-    false
+    false,
   );
   assert.equal(
     app.taskApplies(
       { questionsRequiredYes: [1, 2], questionsAnyYes: [], task: "Both" },
-      { 1: true, 2: true }
+      { 1: true, 2: true },
     ),
-    true
+    true,
   );
   assert.equal(
     app.taskApplies(
       { questionsRequiredYes: [1, 2], questionsAnyYes: [], task: "Both" },
-      { 1: true, 2: false }
+      { 1: true, 2: false },
     ),
-    false
+    false,
   );
   assert.equal(app.taskApplies({ task: "Always" }, {}), true);
   assert.equal(
     app.taskApplies(
       { questionsRequiredYes: [1], questionsAnyYes: [2], task: "Either group" },
-      { 1: false, 2: true }
+      { 1: false, 2: true },
     ),
-    true
+    true,
   );
 });
 
@@ -156,7 +162,7 @@ test("question and task text cannot inject HTML", () => {
     {
       questionsRequiredYes: [],
       questionsAnyYes: [],
-      task: '</script><script>alert(1)</script>',
+      task: "</script><script>alert(1)</script>",
       role: "<b>Me</b>",
       type: "Day",
     },
@@ -174,6 +180,56 @@ test("summary counts hidden tasks", () => {
   const answers = app.defaultAnswers(travelLike.questions);
   assert.equal(
     app.summaryText(travelLike.tasks, answers),
-    "2 of 4 tasks apply. 2 tasks are hidden because their conditions are not met."
+    "2 of 4 tasks apply. 2 tasks are hidden because their conditions are not met.",
   );
+});
+
+test("answer lookup ignores bad values and accepts string keys", () => {
+  assert.equal(app.answerIsYes(null, 1), false);
+  assert.equal(app.answerIsYes([], 1), false);
+  assert.equal(app.answerIsYes({ 1: "yes" }, 1), false);
+  assert.equal(app.answerIsYes({ 8: true }, "8"), true);
+  assert.equal(app.taskApplies(null, {}), false);
+  assert.equal(app.taskApplies("nope", {}), false);
+  assert.deepEqual(app.defaultAnswers([null, { text: "Missing id" }, { id: 3, default: true }]), {
+    3: true,
+  });
+  assert.equal(app.resolveAnswers([{ id: 4, default: false }], { 4: "no" })[4], false);
+  assert.equal(app.resolveAnswers([null, { id: null }, { id: 4 }], { 4: true })[4], true);
+  assert.equal(app.parseAnswersParam("%").error.includes("Could not read"), true);
+  assert.deepEqual(app.parseDoneParam(null), {});
+  assert.deepEqual(app.parseDoneParam(""), {});
+  assert.deepEqual(app.parseDoneParam('[0,-1,1.5,"2"]').value, { 0: true });
+  assert.equal(app.parseDoneParam("%").error.includes("Could not read"), true);
+  assert.deepEqual(app.answersForUrl([null, { id: 2 }], { 2: true }), { 2: true });
+});
+
+test("empty questions, tasks, and roles have plain empty states", () => {
+  assert.match(app.renderQuestions([], {}), /There are no questions/);
+  assert.match(app.renderQuestions([{ text: "No id" }, null], {}), /There are no questions/);
+  const described = app.renderQuestions(
+    [{ id: 1, text: "<b>Go?</b>", description: "<i>more</i>" }],
+    { 1: false },
+  );
+  assert.match(described, /question-description/);
+  assert.equal(described.includes("<i>"), false);
+  assert.match(app.renderTasks([], {}, {}), /No tasks apply/);
+  assert.match(app.renderTasks(null, {}, {}), /No tasks apply/);
+  const unlabeled = app.renderTasks(
+    [{ questionsRequiredYes: [], questionsAnyYes: [], task: "Just do it" }],
+    {},
+    {},
+  );
+  assert.equal(unlabeled.includes("task-role"), false);
+  assert.match(unlabeled, /<h3>Tasks<\/h3>/);
+  assert.match(app.renderRoles([], {}), /No applicable tasks/);
+  const roles = app.renderRoles(
+    [{ questionsRequiredYes: [], questionsAnyYes: [], task: "Just do it", type: "Day" }],
+    {},
+  );
+  assert.match(roles, /id="role-unassigned"/);
+  assert.match(roles, /Day\. Just do it/);
+  const text = app.formatApplicableText("Sample", [null, { id: 1 }], [], {});
+  assert.match(text, /\(none\)/);
+  assert.match(text, /No\. \n/);
 });
