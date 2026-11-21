@@ -43,7 +43,7 @@ a {
 }
 
 .skip-link:not(:focus) {
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
@@ -130,6 +130,15 @@ button,
   padding: 0 0.55rem;
 }
 
+.task-list label {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.example-list li {
+  margin: 0.4rem 0;
+}
+
 .answer-choices input:checked + label {
   background: #3a1919;
   border-color: #ffbf47;
@@ -164,11 +173,6 @@ button,
   width: 1.15rem;
 }
 
-.task-list label {
-  font-size: 1rem;
-  margin: 0;
-}
-
 .task-role {
   color: #bdbdbd;
   font-size: 0.8rem;
@@ -181,7 +185,7 @@ button,
 
 .visually-hidden {
   border: 0;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -231,8 +235,4 @@ details#applicable summary {
 
 #panel-roles li {
   margin: 0.35rem 0;
-}
-
-.example-list li {
-  margin: 0.4rem 0;
 }

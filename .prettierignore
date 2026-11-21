@@ -1,0 +1,7 @@
+node_modules
+.cache
+package-lock.json
+lib/css/bootswatch.css
+examples/**/checklist.html
+examples/**/*.json
+examples/**/*.txt

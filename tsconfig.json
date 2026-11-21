@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "ES2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["ES2022", "DOM"],
+    "strict": false,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["lib/**/*.js", "scripts/**/*.js", "tests/**/*.js"]
+}

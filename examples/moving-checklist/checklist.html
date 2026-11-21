@@ -1,58 +1,117 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Moving checklist</title>
-    <meta name="description" content="Moving checklist: answer the questions and follow only the applicable items.">
-    <link rel="stylesheet" href="../../lib/css/bootswatch.css">
-    <link rel="stylesheet" href="../../lib/css/checklist.css">
-    <link rel="alternate" type="text/plain" href="checklist.txt" title="Conditional checklist rules">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Moving checklist: answer the questions and follow only the applicable items."
+    />
+    <link rel="stylesheet" href="../../lib/css/bootswatch.css" />
+    <link rel="stylesheet" href="../../lib/css/checklist.css" />
+    <link
+      rel="alternate"
+      type="text/plain"
+      href="checklist.txt"
+      title="Conditional checklist rules"
+    />
+  </head>
+  <body>
     <a class="skip-link" href="#panel-questions">Skip to questions</a>
     <header>
-        <h1>Moving checklist</h1>
-        <p id="safety-notice" role="note" data-testid="safety-notice">
-            Leave smoke and CO alarms on and plugged in.
-            Do not turn them off or unplug them.
-            A phone alarm is only a reminder on your phone.
-        </p>
+      <h1>Moving checklist</h1>
+      <p id="safety-notice" role="note" data-testid="safety-notice">
+        Leave smoke and CO alarms on and plugged in. Do not turn them off or unplug them. A phone
+        alarm is only a reminder on your phone.
+      </p>
     </header>
     <main id="main">
-        <div id="status" role="status" aria-live="polite" data-testid="status"></div>
-        <div class="tablist" role="tablist" aria-label="Checklist sections">
-            <button type="button" role="tab" id="tab-questions" aria-controls="panel-questions" aria-selected="true" tabindex="0" data-testid="tab-questions">Questions</button>
-            <button type="button" role="tab" id="tab-roles" aria-controls="panel-roles" aria-selected="false" tabindex="-1" data-testid="tab-roles">Roles</button>
-            <button type="button" role="tab" id="tab-checklist" aria-controls="panel-checklist" aria-selected="false" tabindex="-1" data-testid="tab-checklist">Checklist</button>
-        </div>
-        <div id="panel-questions" role="tabpanel" aria-labelledby="tab-questions" data-testid="panel-questions">
-            <h2>Questions</h2>
-            <form id="question-form" autocomplete="off">
-                <div id="questions-root"><div class="question" role="group" aria-labelledby="question-1-text" data-testid="question-1"><p class="question-text" id="question-1-text">Do you have lamps</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></div><div class="question" role="group" aria-labelledby="question-2-text" data-testid="question-2"><p class="question-text" id="question-2-text">Do you have a metal bed frame</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></div><div class="question" role="group" aria-labelledby="question-3-text" data-testid="question-3"><p class="question-text" id="question-3-text">Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-3" id="question-3-yes" data-testid="answer-3-yes" data-question-id="3" value="yes"><label for="question-3-yes">Yes</label><input type="radio" autocomplete="off" name="question-3" id="question-3-no" data-testid="answer-3-no" data-question-id="3" value="no" checked><label for="question-3-no">No</label></div></div></div>
-            </form>
-        </div>
-        <div id="panel-roles" role="tabpanel" hidden aria-labelledby="tab-roles" data-testid="panel-roles">
-            <h2>Roles</h2>
-            <div id="roles-root"><section aria-labelledby="role-movee"><h3 id="role-movee">Movee</h3><ul><li>Pre Move. Purchase boxes, around 38 medium for a 1 bedroom</li><li>Pre Move. Purchase mattress cover</li><li>Pre Move. Confirm move with both places</li></ul></section></div>
-        </div>
-        <div id="panel-checklist" role="tabpanel" hidden aria-labelledby="tab-checklist" data-testid="panel-checklist">
-            <h2>Checklist</h2>
-            <div id="tasks-root"><section class="task-group"><h3>Pre Move</h3><ul class="task-list"><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="Purchase boxes, around 38 medium for a 1 bedroom"><label for="task-3"><span class="task-text">Purchase boxes, around 38 medium for a 1 bedroom</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Purchase mattress cover"><label for="task-4"><span class="task-text">Purchase mattress cover</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="Confirm move with both places"><label for="task-5"><span class="task-text">Confirm move with both places</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li></ul></section></div>
-        </div>
-        <details id="applicable">
-            <summary>
-                <span id="applicable-heading">Applicable items</span>
-                <span id="applicable-summary" data-testid="applicable-summary">3 of 6 tasks apply. 3 tasks are hidden because their conditions are not met.</span>
-            </summary>
-            <nav class="file-links" aria-label="Checklist files">
-                <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
-                <a href="questions.json">Questions</a>
-                <a href="tasks.json">Conditional tasks</a>
-                <a href="../../llms.txt">Agent notes</a>
-            </nav>
-            <p><button type="button" id="copy-applicable" data-testid="copy-applicable">Copy applicable items</button></p>
-            <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">Moving checklist
+      <div id="status" role="status" aria-live="polite" data-testid="status"></div>
+      <div class="tablist" role="tablist" aria-label="Checklist sections">
+        <button
+          type="button"
+          role="tab"
+          id="tab-questions"
+          aria-controls="panel-questions"
+          aria-selected="true"
+          tabindex="0"
+          data-testid="tab-questions"
+        >
+          Questions
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-roles"
+          aria-controls="panel-roles"
+          aria-selected="false"
+          tabindex="-1"
+          data-testid="tab-roles"
+        >
+          Roles
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="tab-checklist"
+          aria-controls="panel-checklist"
+          aria-selected="false"
+          tabindex="-1"
+          data-testid="tab-checklist"
+        >
+          Checklist
+        </button>
+      </div>
+      <div
+        id="panel-questions"
+        role="tabpanel"
+        aria-labelledby="tab-questions"
+        data-testid="panel-questions"
+      >
+        <h2>Questions</h2>
+        <form id="question-form" autocomplete="off">
+          <div id="questions-root"><div class="question" role="group" aria-labelledby="question-1-text" data-testid="question-1"><p class="question-text" id="question-1-text">Do you have lamps</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-1" id="question-1-yes" data-testid="answer-1-yes" data-question-id="1" value="yes"><label for="question-1-yes">Yes</label><input type="radio" autocomplete="off" name="question-1" id="question-1-no" data-testid="answer-1-no" data-question-id="1" value="no" checked><label for="question-1-no">No</label></div></div><div class="question" role="group" aria-labelledby="question-2-text" data-testid="question-2"><p class="question-text" id="question-2-text">Do you have a metal bed frame</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-2" id="question-2-yes" data-testid="answer-2-yes" data-question-id="2" value="yes"><label for="question-2-yes">Yes</label><input type="radio" autocomplete="off" name="question-2" id="question-2-no" data-testid="answer-2-no" data-question-id="2" value="no" checked><label for="question-2-no">No</label></div></div><div class="question" role="group" aria-labelledby="question-3-text" data-testid="question-3"><p class="question-text" id="question-3-text">Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws</p><div class="answer-choices"><input type="radio" autocomplete="off" name="question-3" id="question-3-yes" data-testid="answer-3-yes" data-question-id="3" value="yes"><label for="question-3-yes">Yes</label><input type="radio" autocomplete="off" name="question-3" id="question-3-no" data-testid="answer-3-no" data-question-id="3" value="no" checked><label for="question-3-no">No</label></div></div></div>
+        </form>
+      </div>
+      <div
+        id="panel-roles"
+        role="tabpanel"
+        hidden
+        aria-labelledby="tab-roles"
+        data-testid="panel-roles"
+      >
+        <h2>Roles</h2>
+        <div id="roles-root"><section aria-labelledby="role-movee"><h3 id="role-movee">Movee</h3><ul><li>Pre Move. Purchase boxes, around 38 medium for a 1 bedroom</li><li>Pre Move. Purchase mattress cover</li><li>Pre Move. Confirm move with both places</li></ul></section></div>
+      </div>
+      <div
+        id="panel-checklist"
+        role="tabpanel"
+        hidden
+        aria-labelledby="tab-checklist"
+        data-testid="panel-checklist"
+      >
+        <h2>Checklist</h2>
+        <div id="tasks-root"><section class="task-group"><h3>Pre Move</h3><ul class="task-list"><li data-task-index="3"><input type="checkbox" id="task-3" data-testid="task-3" data-task-index="3" data-task-text="Purchase boxes, around 38 medium for a 1 bedroom"><label for="task-3"><span class="task-text">Purchase boxes, around 38 medium for a 1 bedroom</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="4"><input type="checkbox" id="task-4" data-testid="task-4" data-task-index="4" data-task-text="Purchase mattress cover"><label for="task-4"><span class="task-text">Purchase mattress cover</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li><li data-task-index="5"><input type="checkbox" id="task-5" data-testid="task-5" data-task-index="5" data-task-text="Confirm move with both places"><label for="task-5"><span class="task-text">Confirm move with both places</span><span class="task-role">Movee</span><span class="visually-hidden task-state"></span></label></li></ul></section></div>
+      </div>
+      <details id="applicable">
+        <summary>
+          <span id="applicable-heading">Applicable items</span>
+          <span id="applicable-summary" data-testid="applicable-summary">3 of 6 tasks apply. 3 tasks are hidden because their conditions are not met.</span>
+        </summary>
+        <nav class="file-links" aria-label="Checklist files">
+          <a href="checklist.txt" data-testid="rules-link">Plain-text rules</a>
+          <a href="questions.json">Questions</a>
+          <a href="tasks.json">Conditional tasks</a>
+          <a href="../../llms.txt">Agent notes</a>
+        </nav>
+        <p>
+          <button type="button" id="copy-applicable" data-testid="copy-applicable">
+            Copy applicable items
+          </button>
+        </p>
+        <pre id="applicable-checklist-text" data-testid="applicable-checklist-text">
+Moving checklist
 Follow only the applicable items below. Items that do not apply are omitted from this list.
 Do not turn off, unplug, or disable smoke alarms or carbon monoxide alarms.
 A phone alarm is a reminder on a phone, not a smoke or carbon monoxide alarm.
@@ -67,15 +126,18 @@ Applicable items (3 of 6):
 2. Pre Move. Purchase mattress cover. Role: Movee.
 3. Pre Move. Confirm move with both places. Role: Movee.
 </pre>
-        </details>
-        <noscript>
-            <p>
-                JavaScript is off, so the applicable list uses No for every question that does not set a default.
-                Read checklist.txt for the conditional rules. Do not treat tasks.json as a list of things to do.
-            </p>
-        </noscript>
+      </details>
+      <noscript>
+        <p>
+          JavaScript is off, so the applicable list uses No for every question that does not set a
+          default. Read checklist.txt for the conditional rules. Do not treat tasks.json as a list
+          of things to do.
+        </p>
+      </noscript>
     </main>
-    <script id="checklist-data" type="application/json">{"title":"Moving checklist","questions":[{"id":1,"text":"Do you have lamps"},{"id":2,"text":"Do you have a metal bed frame"},{"id":3,"text":"Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws"}],"tasks":[{"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"Movee","type":"Moving Day","task":"Unscrew Lightbulbs and Pack. (Movers won\"t move with lightbulbs in)"},{"questionsRequiredYes":[2],"questionsAnyYes":[],"role":"Movee","type":"Moving Day","task":"Fold metal bed frame, leaving screws in frame"},{"questionsRequiredYes":[3],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Purchase boxes, around 38 medium for a 1 bedroom"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Purchase mattress cover"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Confirm move with both places"}]}</script>
+    <script id="checklist-data" type="application/json">
+      {"title":"Moving checklist","questions":[{"id":1,"text":"Do you have lamps"},{"id":2,"text":"Do you have a metal bed frame"},{"id":3,"text":"Do you have furniture like a dresser or tv stand with removable pieces like shelves/screws"}],"tasks":[{"questionsRequiredYes":[1],"questionsAnyYes":[],"role":"Movee","type":"Moving Day","task":"Unscrew Lightbulbs and Pack. (Movers won\"t move with lightbulbs in)"},{"questionsRequiredYes":[2],"questionsAnyYes":[],"role":"Movee","type":"Moving Day","task":"Fold metal bed frame, leaving screws in frame"},{"questionsRequiredYes":[3],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Put all removable screws/attachments/shelves etc from tv stands/shelves in a ziplock bag and label so they dont get lost"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Purchase boxes, around 38 medium for a 1 bedroom"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Purchase mattress cover"},{"questionsRequiredYes":[],"questionsAnyYes":[],"role":"Movee","type":"Pre Move","task":"Confirm move with both places"}]}
+    </script>
     <script src="../../lib/js/checklist.js"></script>
-</body>
+  </body>
 </html>

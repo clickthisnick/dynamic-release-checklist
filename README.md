@@ -4,7 +4,7 @@
 
 Only have **_relevant_** items in your checklist.
 
-------
+---
 
 ## Demo
 
@@ -22,15 +22,15 @@ This teaches and reinforces people to gloss over items, sometimes missing crucia
 
 Imagine the checklist below with **no downpage**
 
-| Task                   | Needed With This Release?  |
-| -------------| :-----:|
-| Create Downpage     | *No* |
-| Push Code      |    Yes |
-| Remove Downpage |     *No* |
+| Task            | Needed With This Release? |
+| --------------- | :-----------------------: |
+| Create Downpage |           _No_            |
+| Push Code       |            Yes            |
+| Remove Downpage |           _No_            |
 
 You now have two items ( Create Downpage and Remove Downpage ) that are no longer needed on your checklist.
 
------
+---
 
 # The Solution
 
@@ -39,9 +39,7 @@ You now have two items ( Create Downpage and Remove Downpage ) that are no longe
 Each example is a folder with `questions.json` and `tasks.json`. `node scripts/build.js` writes `checklist.html` and `checklist.txt`. The browser then filters those pages. Python is not used.
 
 ```json
-[
-  {"id": 1, "text": "Is there a downpage?", "default": false}
-]
+[{ "id": 1, "text": "Is there a downpage?", "default": false }]
 ```
 
 `questions.json` may use full-line `//` comments and a trailing comma. The `id` is the value tasks refer to. It is not the row number. `default` is optional and is `false` when omitted.
@@ -52,9 +50,27 @@ Create Downpage and Remove Downpage show when question 1 is Yes.
 
 ```json
 [
-  {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Create Downpage"},
-  {"questionsRequiredYes": [], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Push Code"},
-  {"questionsRequiredYes": [1], "questionsAnyYes": [], "role": "Developer", "type": "Release", "task": "Remove Downpage"}
+  {
+    "questionsRequiredYes": [1],
+    "questionsAnyYes": [],
+    "role": "Developer",
+    "type": "Release",
+    "task": "Create Downpage"
+  },
+  {
+    "questionsRequiredYes": [],
+    "questionsAnyYes": [],
+    "role": "Developer",
+    "type": "Release",
+    "task": "Push Code"
+  },
+  {
+    "questionsRequiredYes": [1],
+    "questionsAnyYes": [],
+    "role": "Developer",
+    "type": "Release",
+    "task": "Remove Downpage"
+  }
 ]
 ```
 
@@ -71,7 +87,7 @@ The page shows only the applicable tasks, with short labels and Yes or No choice
 
 ## Run locally
 
-Node.js 18 or newer:
+Node.js 18 or newer builds and serves the pages. The check command needs Node.js 22 or newer.
 
 ```bash
 node scripts/build.js
@@ -82,10 +98,11 @@ Open http://127.0.0.1:8000/
 
 The build writes the same static files the site publishes. It does not run when someone opens a checklist. `src/checklist.template.html` is the page shell.
 
-Tests:
+Checks:
 
 ```bash
-node --test tests/checklist.test.js tests/build.test.js
+npm install
+npm run check
 ```
 
 ## Safety

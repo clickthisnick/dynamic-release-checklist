@@ -1,46 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dynamic Release Checklist</title>
-    <meta name="description" content="Answer a few questions and keep only the checklist items that apply.">
-    <link rel="stylesheet" href="lib/css/bootswatch.css">
-    <link rel="stylesheet" href="lib/css/checklist.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Answer a few questions and keep only the checklist items that apply."
+    />
+    <link rel="stylesheet" href="lib/css/bootswatch.css" />
+    <link rel="stylesheet" href="lib/css/checklist.css" />
+  </head>
+  <body>
     <header>
-        <h1>Dynamic Release Checklist</h1>
-        <p id="safety-notice" role="note">
-            Leave smoke and CO alarms on and plugged in.
-            Do not turn them off or unplug them. A phone alarm is only a reminder on your phone.
-        </p>
+      <h1>Dynamic Release Checklist</h1>
+      <p id="safety-notice" role="note">
+        Leave smoke and CO alarms on and plugged in. Do not turn them off or unplug them. A phone
+        alarm is only a reminder on your phone.
+      </p>
     </header>
     <main>
-        <p>
-            Answer the questions on a checklist. The page drops tasks that do not apply
-            and lists the remaining items in plain language.
-        </p>
-        <p>
-            <a href="llms.txt">Notes for automated agents (llms.txt)</a>
-            <a href="README.md">Readme</a>
-        </p>
-        <h2>Examples</h2>
-        <ul class="example-list">
-            <li><a href="examples/travel-checklist/checklist.html">Travel checklist</a> (<a href="examples/travel-checklist/checklist.txt">plain-text rules</a>)</li>
-            <li><a href="examples/cleaning-checklist/checklist.html">Cleaning checklist</a> (<a href="examples/cleaning-checklist/checklist.txt">plain-text rules</a>)</li>
-            <li><a href="examples/hotel-checkout-checklist/checklist.html">Hotel checkout checklist</a> (<a href="examples/hotel-checkout-checklist/checklist.txt">plain-text rules</a>)</li>
-            <li><a href="examples/jira-release-checklist/checklist.html">Jira release checklist</a> (<a href="examples/jira-release-checklist/checklist.txt">plain-text rules</a>)</li>
-            <li><a href="examples/moving-checklist/checklist.html">Moving checklist</a> (<a href="examples/moving-checklist/checklist.txt">plain-text rules</a>)</li>
-            <li><a href="examples/stretch-checklist/checklist.html">Stretch checklist</a> (<a href="examples/stretch-checklist/checklist.txt">plain-text rules</a>)</li>
-        </ul>
-        <h2>Run locally</h2>
-        <ol>
-            <li>Install Node.js 18 or newer.</li>
-            <li>From this folder, run <code>node scripts/build.js</code>.</li>
-            <li>Run <code>node scripts/serve.js 8000</code>.</li>
-            <li>Open <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>.</li>
-        </ol>
+      <p>
+        Answer the questions on a checklist. The page drops tasks that do not apply and lists the
+        remaining items in plain language.
+      </p>
+      <p>
+        <a href="llms.txt">Notes for automated agents (llms.txt)</a>
+        <a href="README.md">Readme</a>
+      </p>
+      <h2>Examples</h2>
+      <ul class="example-list">
+        <li>
+          <a href="examples/travel-checklist/checklist.html">Travel checklist</a> (<a
+            href="examples/travel-checklist/checklist.txt"
+            >plain-text rules</a
+          >)
+        </li>
+        <li>
+          <a href="examples/cleaning-checklist/checklist.html">Cleaning checklist</a> (<a
+            href="examples/cleaning-checklist/checklist.txt"
+            >plain-text rules</a
+          >)
+        </li>
+        <li>
+          <a href="examples/hotel-checkout-checklist/checklist.html">Hotel checkout checklist</a>
+          (<a href="examples/hotel-checkout-checklist/checklist.txt">plain-text rules</a>)
+        </li>
+        <li>
+          <a href="examples/jira-release-checklist/checklist.html">Jira release checklist</a> (<a
+            href="examples/jira-release-checklist/checklist.txt"
+            >plain-text rules</a
+          >)
+        </li>
+        <li>
+          <a href="examples/moving-checklist/checklist.html">Moving checklist</a> (<a
+            href="examples/moving-checklist/checklist.txt"
+            >plain-text rules</a
+          >)
+        </li>
+        <li>
+          <a href="examples/stretch-checklist/checklist.html">Stretch checklist</a> (<a
+            href="examples/stretch-checklist/checklist.txt"
+            >plain-text rules</a
+          >)
+        </li>
+      </ul>
+      <h2>Run locally</h2>
+      <ol>
+        <li>Install Node.js 18 or newer.</li>
+        <li>From this folder, run <code>node scripts/build.js</code>.</li>
+        <li>Run <code>node scripts/serve.js 8000</code>.</li>
+        <li>Open <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>.</li>
+      </ol>
     </main>
-</body>
+  </body>
 </html>

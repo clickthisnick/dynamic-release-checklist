@@ -2,10 +2,4 @@ Thank you for contributing! Create a pull request and I will review it to includ
 
 Run `node scripts/build.js` after changing questions, tasks, or `src/checklist.template.html`, and commit the generated `checklist.html` and `checklist.txt` files.
 
-Run the tests before opening a pull request:
-
-```bash
-node --test tests/checklist.test.js tests/build.test.js
-```
-
-Node.js 18 or newer is required. The published pages are static, so opening one does not run the build.
+Run `npm run check` before opening a pull request. Node.js 22 or newer is required for that command. Node.js 18 or newer can still build and serve the pages. The published pages are static, so opening one does not run the build.
